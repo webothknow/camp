@@ -61,28 +61,28 @@ function App() {
   };
 
   let [bg, setBg] = useState({
-    li: '#888',
-    air: '#888',
-    util: '#888',
-    cam: '#888',
-    set: '#888',
+    li: 'green',
+    air: 'green',
+    util: 'green',
+    cam: 'green',
+    set: 'green',
   });
 
   const colorchange = () => {
-    if (bg.li === '#555') {
-      setBg({ ...bg, li: '#888' });
+    if (bg.li === 'green') {
+      setBg({ ...bg, li: 'red' });
     }
-    if (bg.air === '#555') {
-      setBg({ ...bg, air: '#888' });
+    if (bg.air === 'green') {
+      setBg({ ...bg, air: 'red' });
     }
-    if (bg.util === '#555') {
-      setBg({ ...bg, util: '#888' });
+    if (bg.util === 'green') {
+      setBg({ ...bg, util: 'red' });
     }
-    if (bg.cam === '#555') {
-      setBg({ ...bg, cam: '#888' });
+    if (bg.cam === 'green') {
+      setBg({ ...bg, cam: 'red' });
     }
-    if (bg.set === '#555') {
-      setBg({ ...bg, set: '#888' });
+    if (bg.set === 'green') {
+      setBg({ ...bg, set: 'red' });
     }
   };
 
