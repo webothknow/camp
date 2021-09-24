@@ -60,29 +60,14 @@ function App() {
     colorchange();
   };
 
-  let [bg, setBg] = useState({
-    li: '#888',
-    air: '#888',
-    util: '#888',
-    cam: '#888',
-    set: '#888',
-  });
+  let [bg, setBg] = useState('#555');
 
   const colorchange = () => {
-    if (bg.li === '#555') {
-      setBg({ ...bg, li: '#888' });
+    if (bg === '#555') {
+      setBg('#888');
     }
-    if (bg.air === '#555') {
-      setBg({ ...bg, air: '#888' });
-    }
-    if (bg.util === '#555') {
-      setBg({ ...bg, util: '#888' });
-    }
-    if (bg.cam === '#555') {
-      setBg({ ...bg, cam: '#888' });
-    }
-    if (bg.set === '#555') {
-      setBg({ ...bg, set: '#888' });
+    if (bg === '#888') {
+      setBg('#555');
     }
   };
 
@@ -103,14 +88,14 @@ function App() {
             <div
               className="menu"
               onClick={() => navDisplayHandle(0)}
-              style={{ backgroundColor: bg.li }}
+              style={{ backgroundColor: bg }}
             >
               조명
             </div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(1)}
-              style={{ backgroundColor: bg.air }}
+              style={{ backgroundColor: bg }}
             >
               <div>
                 <div>공조</div>
@@ -120,7 +105,7 @@ function App() {
             <div
               className="menu"
               onClick={() => navDisplayHandle(2)}
-              style={{ backgroundColor: bg.util }}
+              style={{ backgroundColor: bg }}
             >
               <div>
                 <div>전기</div>
@@ -130,14 +115,14 @@ function App() {
             <div
               className="menu"
               onClick={() => navDisplayHandle(3)}
-              style={{ backgroundColor: bg.cam }}
+              style={{ backgroundColor: bg }}
             >
               카메라
             </div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(4)}
-              style={{ backgroundColor: bg.set }}
+              style={{ backgroundColor: bg }}
             >
               설정
             </div>
