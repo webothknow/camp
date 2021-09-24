@@ -1,0 +1,13 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: 'FuturaBT-Book';
+  src: url('./src/css/font/futura/fonts/FuturaBookfont.eot'); /* IE9 Compat Modes */
+  src: url('./src/css/font/futura/fonts/FuturaBookfont.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./src/css/font/futura/fonts/FuturaBookfont.otf') format('opentype'),
+    /* Open Type Font */ url('./src/css/font/futura/fonts/FuturaBookfont.svg') format('svg'),
+    /* Legacy iOS */ url('./src/css/font/futura/fonts/FuturaBookfont.ttf') format('truetype'),
+    /* Safari, Android, iOS */ url('./src/css/font/futura/fonts/FuturaBookfont.woff') format('woff'),
+    /* Modern Browsers */ url('./src/css/font/futura/fonts/FuturaBookfont.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
