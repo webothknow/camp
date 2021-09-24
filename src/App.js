@@ -61,24 +61,24 @@ function App() {
   };
 
   let [bg, setBg] = useState({
-    li: 'green',
-    air: 'green',
-    util: 'green',
-    cam: 'green',
-    set: 'green',
+    li: '#555',
+    air: '#555',
+    util: '#555',
+    cam: '#555',
+    set: '#555',
   });
 
   const colorchange = (idx) => {
-    if (idx === 0 && bg.li === 'green') {
-      setBg({ ...bg, li: 'red', air: 'green', util: 'green', cam: 'green', set: 'green' });
-    } else if (idx === 1 && bg.air === 'green') {
-      setBg({ ...bg, air: 'red', li: 'green', util: 'green', cam: 'green', set: 'green' });
-    } else if (idx === 2 && bg.util === 'green') {
-      setBg({ ...bg, util: 'red', li: 'green', air: 'green', cam: 'green', set: 'green' });
-    } else if (idx === 3 && bg.cam === 'green') {
-      setBg({ ...bg, cam: 'red', li: 'green', air: 'green', util: 'green', set: 'green' });
-    } else if (idx === 4 && bg.set === 'green') {
-      setBg({ ...bg, set: 'red', li: 'green', air: 'green', util: 'green', cam: 'green' });
+    if (idx === 0 && bg.li === '#555') {
+      setBg({ ...bg, li: '#888', air: '#555', util: '#555', cam: '#555', set: '#555' });
+    } else if (idx === 1 && bg.air === '#555') {
+      setBg({ ...bg, air: '#888', li: '#555', util: '#555', cam: '#555', set: '#555' });
+    } else if (idx === 2 && bg.util === '#555') {
+      setBg({ ...bg, util: '#888', li: '#555', air: '#555', cam: '#555', set: '#555' });
+    } else if (idx === 3 && bg.cam === '#555') {
+      setBg({ ...bg, cam: '#888', li: '#555', air: '#555', util: '#555', set: '#555' });
+    } else if (idx === 4 && bg.set === '#555') {
+      setBg({ ...bg, set: '#888', li: '#555', air: '#555', util: '#555', cam: '#555' });
     }
   };
 
