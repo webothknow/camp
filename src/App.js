@@ -73,6 +73,12 @@ function App() {
       setBg({ ...bg, li: 'red', air: 'green', util: 'green', cam: 'green', set: 'green' });
     } else if (idx === 1 && bg.air === 'green') {
       setBg({ ...bg, air: 'red', li: 'green', util: 'green', cam: 'green', set: 'green' });
+    } else if (idx === 2 && bg.util === 'green') {
+      setBg({ ...bg, util: 'red', li: 'green', air: 'green', cam: 'green', set: 'green' });
+    } else if (idx === 3 && bg.cam === 'green') {
+      setBg({ ...bg, cam: 'red', li: 'green', air: 'green', util: 'green', set: 'green' });
+    } else if (idx === 4 && bg.set === 'green') {
+      setBg({ ...bg, set: 'red', li: 'green', air: 'green', util: 'green', cam: 'green' });
     }
   };
 
