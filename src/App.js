@@ -71,6 +71,8 @@ function App() {
   const colorchange = (idx) => {
     if (idx === 0 && bg.li === 'green') {
       setBg({ ...bg, li: 'red', air: 'green', util: 'green', cam: 'green', set: 'green' });
+    } else if (idx === 1 && bg.air === 'green') {
+      setBg({ ...bg, air: 'red', li: 'green', util: 'green', cam: 'green', set: 'green' });
     }
   };
 
