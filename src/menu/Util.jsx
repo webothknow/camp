@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import RangeSlider from 'react-bootstrap-range-slider';
-import SemiCircleProgressBar from 'react-progressbar-semicircle';
+import React, { useState, useEffect } from "react";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import RangeSlider from "react-bootstrap-range-slider";
+import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 const Util = () => {
   return (
@@ -35,7 +35,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
@@ -68,44 +72,16 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div class="util_toggle_col_left_top">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="util_name_col"></div>
-          <div className="util_gauge_col">
-            <div>
-              <div>오수온도</div>
-            </div>
-            <div>
-              <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="row"></div>
         <div className="row">
           <div class="toggle_col"></div>
           <div className="slider_col"></div>
@@ -205,7 +181,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
@@ -218,7 +198,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
@@ -231,7 +215,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
@@ -308,7 +296,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>
@@ -321,7 +313,11 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
+                <SemiCircleProgressBar
+                  percentage={74}
+                  showPercentValue
+                  diameter={100}
+                />
               </div>
             </div>
           </div>

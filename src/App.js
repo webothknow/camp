@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Li from './menu/Li';
-import Air from './menu/Air';
-import Util from './menu/Util';
-import Cam from './menu/Cam';
-import Set from './menu/Set';
-import unnamed from './image/unnamed.png';
-import Nav from 'react-bootstrap/Nav';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Li from "./menu/Li";
+import Air from "./menu/Air";
+import Util from "./menu/Util";
+import Cam from "./menu/Cam";
+import Set from "./menu/Set";
+import unnamed from "./image/unnamed.png";
+import Nav from "react-bootstrap/Nav";
 
 // const wsc = new WebSocketClient(null, 8700, '/ws', 100);
-// const sender_id = 140;
 
-//푸트라폰트파일필요
 //웹소켓파일필요
 //send_cmd 수정필요
 
 function App() {
+  //ws
   useEffect(() => {
     // wsc.openConn();
   }, []);
 
-  //cmd control
+  //cmd
   const send_cmd = (target, cmd, grp) => {
     // let obj = {};
     // obj["target"] = target;
@@ -43,7 +42,7 @@ function App() {
     setInterval(getTime, 1000);
   }, []);
 
-  //nav show hide
+  //tab menu show hide
   const menuObj = {
     0: <Li />,
     1: <Air />,
@@ -51,34 +50,67 @@ function App() {
     3: <Cam />,
     4: <Set />,
   };
-
   const [activeTab, setActiveTab] = useState(0);
-
   const navDisplayHandle = (idx) => {
-    console.log('hi!', idx);
+    // console.log("hi!", idx);
     setActiveTab(idx);
     colorchange(idx);
   };
 
+  //tab menu color change
   let [bg, setBg] = useState({
-    li: '#555',
-    air: '#555',
-    util: '#555',
-    cam: '#555',
-    set: '#555',
+    li: "#555",
+    air: "#555",
+    util: "#555",
+    cam: "#555",
+    set: "#555",
   });
-
   const colorchange = (idx) => {
-    if (idx === 0 && bg.li === '#555') {
-      setBg({ ...bg, li: '#888', air: '#555', util: '#555', cam: '#555', set: '#555' });
-    } else if (idx === 1 && bg.air === '#555') {
-      setBg({ ...bg, air: '#888', li: '#555', util: '#555', cam: '#555', set: '#555' });
-    } else if (idx === 2 && bg.util === '#555') {
-      setBg({ ...bg, util: '#888', li: '#555', air: '#555', cam: '#555', set: '#555' });
-    } else if (idx === 3 && bg.cam === '#555') {
-      setBg({ ...bg, cam: '#888', li: '#555', air: '#555', util: '#555', set: '#555' });
-    } else if (idx === 4 && bg.set === '#555') {
-      setBg({ ...bg, set: '#888', li: '#555', air: '#555', util: '#555', cam: '#555' });
+    if (idx === 0 && bg.li === "#555") {
+      setBg({
+        ...bg,
+        li: "#888",
+        air: "#555",
+        util: "#555",
+        cam: "#555",
+        set: "#555",
+      });
+    } else if (idx === 1 && bg.air === "#555") {
+      setBg({
+        ...bg,
+        air: "#999",
+        li: "#555",
+        util: "#555",
+        cam: "#555",
+        set: "#555",
+      });
+    } else if (idx === 2 && bg.util === "#555") {
+      setBg({
+        ...bg,
+        util: "#888",
+        li: "#555",
+        air: "#555",
+        cam: "#555",
+        set: "#555",
+      });
+    } else if (idx === 3 && bg.cam === "#555") {
+      setBg({
+        ...bg,
+        cam: "#999",
+        li: "#555",
+        air: "#555",
+        util: "#555",
+        set: "#555",
+      });
+    } else if (idx === 4 && bg.set === "#555") {
+      setBg({
+        ...bg,
+        set: "#888",
+        li: "#555",
+        air: "#555",
+        util: "#555",
+        cam: "#555",
+      });
     }
   };
 

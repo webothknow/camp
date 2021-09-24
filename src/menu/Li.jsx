@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
-import RangeSlider from 'react-bootstrap-range-slider';
-import SemiCircleProgressBar from 'react-progressbar-semicircle';
+import React, { useState, useEffect } from "react";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import RangeSlider from "react-bootstrap-range-slider";
+import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 const Li = () => {
-  //range slider
+  //horizontal range slider
   const [rangevalue, setRangeValue] = useState({
     li_1_2: 0,
     li_1_3: 0,
