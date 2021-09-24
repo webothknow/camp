@@ -73,7 +73,7 @@ function App() {
         <div className="bottom_contents">
           <div className="navi">
             <div className="menu" onClick={() => navDisplayHandle(0)}>
-              조명
+              조명ㄴㄴㄴ
             </div>
             <div className="menu" onClick={() => navDisplayHandle(1)}>
               <div>
