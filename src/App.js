@@ -57,7 +57,7 @@ function App() {
   const navDisplayHandle = (idx) => {
     console.log('hi!', idx);
     setActiveTab(idx);
-    colorchange();
+    colorchange(idx);
   };
 
   let [bg, setBg] = useState({
@@ -68,21 +68,9 @@ function App() {
     set: 'green',
   });
 
-  const colorchange = () => {
-    if (bg.li === 'green') {
-      setBg({ ...bg, li: 'red' });
-    }
-    if (bg.air === 'green') {
-      setBg({ ...bg, air: 'red' });
-    }
-    if (bg.util === 'green') {
-      setBg({ ...bg, util: 'red' });
-    }
-    if (bg.cam === 'green') {
-      setBg({ ...bg, cam: 'red' });
-    }
-    if (bg.set === 'green') {
-      setBg({ ...bg, set: 'red' });
+  const colorchange = (idx) => {
+    if (idx === 0 && bg.li === 'green') {
+      setBg({ ...bg, li: 'red', air: 'green', util: 'green', cam: 'green', set: 'green' });
     }
   };
 
