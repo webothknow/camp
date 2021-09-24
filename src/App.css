@@ -193,8 +193,6 @@ body {
   align-items: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid #555;
-  border-right: none;
 }
 
 .contents {

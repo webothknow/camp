@@ -59,7 +59,7 @@ function App() {
 
   //tab menu color change
   let [bg, setBg] = useState({
-    li: "#555",
+    li: "#888",
     air: "#555",
     util: "#555",
     cam: "#555",
