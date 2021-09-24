@@ -1,32 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
-import RangeSlider from "react-bootstrap-range-slider";
-import SemiCircleProgressBar from "react-progressbar-semicircle";
+import React, { useState, useEffect } from 'react';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import RangeSlider from 'react-bootstrap-range-slider';
+import SemiCircleProgressBar from 'react-progressbar-semicircle';
 
 const Util = () => {
-  //range slider
-  const [rangevalue, setRangeValue] = useState({
-    li_1_2: 0,
-    li_1_3: 0,
-    li_1_4: 0,
-    li_1_5: 0,
-    li_2_2: 0,
-    li_2_3: 0,
-    air_2_1: 0,
-    air_2_2: 0,
-    air_2_3: 0,
-    air_2_4: 0,
-    air_3_1: 0,
-    air_3_2: 0,
-  });
-  const rangdesliderHandle = (e) => {
-    const value = e.target.value;
-    setRangeValue({
-      ...rangevalue,
-      [e.target.name]: value,
-    });
-  };
-
   return (
     <div className="inner_contents util_wrap">
       <div className="col">
@@ -58,11 +35,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -95,11 +68,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -132,11 +101,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -240,11 +205,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -257,11 +218,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -274,11 +231,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -355,11 +308,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>
@@ -372,11 +321,7 @@ const Util = () => {
             </div>
             <div>
               <div>
-                <SemiCircleProgressBar
-                  percentage={74}
-                  showPercentValue
-                  diameter={100}
-                />
+                <SemiCircleProgressBar percentage={74} showPercentValue diameter={100} />
               </div>
             </div>
           </div>

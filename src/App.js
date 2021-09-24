@@ -6,6 +6,7 @@ import Util from './menu/Util';
 import Cam from './menu/Cam';
 import Set from './menu/Set';
 import unnamed from './image/unnamed.png';
+import Nav from 'react-bootstrap/Nav';
 
 // const wsc = new WebSocketClient(null, 8700, '/ws', 100);
 // const sender_id = 140;
@@ -56,6 +57,18 @@ function App() {
   const navDisplayHandle = (idx) => {
     console.log('hi!', idx);
     setActiveTab(idx);
+    colorchange();
+  };
+
+  let [bg, setBg] = useState('#555');
+
+  const colorchange = () => {
+    if (bg === '#555') {
+      setBg('#888');
+    }
+    if (bg === '#888') {
+      setBg('#555');
+    }
   };
 
   return (
@@ -64,7 +77,7 @@ function App() {
         <div className="top_bar">
           <div className="top_bar_col time">{time}</div>
           <div className="top_bar_col logo">
-            <img src={unnamed}></img>
+            <img src={unnamed} alt=""></img>
           </div>
           <div className="top_bar_col fahrenheit">실내 25.5C</div>
           <div className="top_bar_col humid">50%</div>
@@ -72,25 +85,45 @@ function App() {
         </div>
         <div className="bottom_contents">
           <div className="navi">
-            <div className="menu" onClick={() => navDisplayHandle(0)}>
-              조명ㄴㄴㄴ
+            <div
+              className="menu"
+              onClick={() => navDisplayHandle(0)}
+              style={{ backgroundColor: bg }}
+            >
+              조명
             </div>
-            <div className="menu" onClick={() => navDisplayHandle(1)}>
+            <div
+              className="menu"
+              onClick={() => navDisplayHandle(1)}
+              style={{ backgroundColor: bg }}
+            >
               <div>
                 <div>공조</div>
                 <div>난방</div>
               </div>
             </div>
-            <div className="menu" onClick={() => navDisplayHandle(2)}>
+            <div
+              className="menu"
+              onClick={() => navDisplayHandle(2)}
+              style={{ backgroundColor: bg }}
+            >
               <div>
                 <div>전기</div>
                 <div>오폐수</div>
               </div>
             </div>
-            <div className="menu" onClick={() => navDisplayHandle(3)}>
+            <div
+              className="menu"
+              onClick={() => navDisplayHandle(3)}
+              style={{ backgroundColor: bg }}
+            >
               카메라
             </div>
-            <div className="menu" onClick={() => navDisplayHandle(4)}>
+            <div
+              className="menu"
+              onClick={() => navDisplayHandle(4)}
+              style={{ backgroundColor: bg }}
+            >
               설정
             </div>
           </div>
