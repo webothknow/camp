@@ -22,13 +22,13 @@ const Ctrl = () => {
   };
 
   //progress bar
-  let freshWater = '50%';
-  let wasteWater = '50%';
-  let batteryVoltage = '50%';
-  let batteryTemp = '50%';
-  let batteryCurrent = '50%';
-  let photovoltaics_200 = '50%';
-  let photovoltaics_600 = '50%';
+  let freshWater = 50;
+  let wasteWater = String(50);
+  let batteryVoltage = String(50);
+  let batteryTemp = String(50);
+  let batteryCurrent = String(50);
+  let photovoltaics_200 = String(50);
+  let photovoltaics_600 = String(50);
 
   return (
     <div className="inner_contents ctrl_wrap">
@@ -44,7 +44,7 @@ const Ctrl = () => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: { freshWater } }}
+                  style={{ height: `${freshWater}%` }}
                 >
                   <span class="sr-only">
                     <div>청수</div>
@@ -91,7 +91,7 @@ const Ctrl = () => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: { wasteWater } }}
+                  style={{ height: `${wasteWater}%` }}
                 >
                   <span class="sr-only">
                     <div>오수</div>
@@ -299,7 +299,7 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: { batteryVoltage } }}
+                style={{ height: `${batteryVoltage}%` }}
               >
                 <span class="sr-only">
                   <div>배터리전압</div>
@@ -316,7 +316,7 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: { photovoltaics_200 } }}
+                style={{ height: `${photovoltaics_200}%` }}
               >
                 <span class="sr-only">
                   <div>태양광(200)</div>
@@ -335,7 +335,7 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: { batteryTemp } }}
+                style={{ height: `${batteryTemp}%` }}
               >
                 <span class="sr-only">
                   <div>배터리온도</div>
@@ -352,7 +352,7 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: { photovoltaics_600 } }}
+                style={{ height: `${photovoltaics_600}%` }}
               >
                 <span class="sr-only">
                   <div>태양광(600)</div>
@@ -371,7 +371,7 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: { batteryCurrent } }}
+                style={{ height: `${batteryCurrent}%` }}
               >
                 <span class="sr-only">
                   <div>배터리전류</div>
@@ -514,7 +514,7 @@ const Ctrl = () => {
               </span>
             </label>
           </div>
-          <div className="inner_col_wrap_no_flex margin_right">
+          <div className="inner_col_wrap_no_flex">
             <label class="toggle">
               <input
                 id="mycheckbox"
