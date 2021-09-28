@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Ctrl from './menu/Ctrl';
+import Home from './menu/Home';
 import Air from './menu/Air';
 import Test from './menu/Test';
 import Cam from './menu/Cam';
@@ -43,7 +43,7 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Ctrl />,
+    0: <Home />,
     1: <Air />,
     2: <Cam />,
     3: <Test />,
@@ -58,7 +58,7 @@ function App() {
 
   //tab menu color change
   let [bg, setBg] = useState({
-    li: '#888',
+    li: '#3e3b3b',
     air: '#555',
     util: '#555',
     cam: '#555',
@@ -68,7 +68,7 @@ function App() {
     if (idx === 0 && bg.li === '#555') {
       setBg({
         ...bg,
-        li: '#888',
+        li: '#3e3b3b',
         air: '#555',
         util: '#555',
         cam: '#555',
@@ -77,7 +77,7 @@ function App() {
     } else if (idx === 1 && bg.air === '#555') {
       setBg({
         ...bg,
-        air: '#999',
+        air: '#424242',
         li: '#555',
         util: '#555',
         cam: '#555',
@@ -86,7 +86,7 @@ function App() {
     } else if (idx === 2 && bg.util === '#555') {
       setBg({
         ...bg,
-        util: '#888',
+        util: '#3e3b3b',
         li: '#555',
         air: '#555',
         cam: '#555',
@@ -95,7 +95,7 @@ function App() {
     } else if (idx === 3 && bg.cam === '#555') {
       setBg({
         ...bg,
-        cam: '#999',
+        cam: '#424242',
         li: '#555',
         air: '#555',
         util: '#555',
@@ -104,7 +104,7 @@ function App() {
     } else if (idx === 4 && bg.set === '#555') {
       setBg({
         ...bg,
-        set: '#888',
+        set: '#3e3b3b',
         li: '#555',
         air: '#555',
         util: '#555',
@@ -132,7 +132,7 @@ function App() {
               onClick={() => navDisplayHandle(0)}
               style={{ backgroundColor: bg.li }}
             >
-              제어
+              홈
             </div>
             <div
               className="menu"

@@ -3,7 +3,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'; //s
 import RangeSlider from 'react-bootstrap-range-slider'; //slider bar
 import { ProgressBar, Button } from 'react-bootstrap'; //progress bar
 
-const Ctrl = () => {
+const Home = () => {
   //horizontal range slider
   const [rangevalue, setRangeValue] = useState({
     li_3_livingroom_top: 0,
@@ -40,7 +40,7 @@ const Ctrl = () => {
   let photovoltaics_600 = String(50);
 
   return (
-    <div className="inner_contents ctrl_wrap">
+    <div className="inner_contents home_wrap">
       {/* column 1 */}
       <div className="col">
         <div className="row">
@@ -1230,4 +1230,4 @@ const Ctrl = () => {
   );
 };
 
-export default Ctrl;
+export default Home;
