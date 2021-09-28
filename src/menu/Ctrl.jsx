@@ -21,6 +21,15 @@ const Ctrl = () => {
     });
   };
 
+  //progress bar
+  let freshWater = '50%';
+  let wasteWater = '50%';
+  let batteryVoltage = '50%';
+  let batteryTemp = '50%';
+  let batteryCurrent = '50%';
+  let photovoltaics_200 = '50%';
+  let photovoltaics_600 = '50%';
+
   return (
     <div className="inner_contents ctrl_wrap">
       {/* column 1 */}
@@ -35,11 +44,11 @@ const Ctrl = () => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: '50%' }}
+                  style={{ height: { freshWater } }}
                 >
                   <span class="sr-only">
                     <div>청수</div>
-                    <div>50%</div>
+                    <div>{freshWater}</div>
                   </span>
                 </div>
               </div>
@@ -82,11 +91,11 @@ const Ctrl = () => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: '30%' }}
+                  style={{ height: { wasteWater } }}
                 >
                   <span class="sr-only">
                     <div>오수</div>
-                    <div>30%</div>
+                    <div>{wasteWater}</div>
                   </span>
                 </div>
               </div>
@@ -290,11 +299,11 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: '30%' }}
+                style={{ height: { batteryVoltage } }}
               >
                 <span class="sr-only">
                   <div>배터리전압</div>
-                  <div>30%</div>
+                  <div>{batteryVoltage}</div>
                 </span>
               </div>
             </div>
@@ -307,11 +316,11 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: '30%' }}
+                style={{ height: { photovoltaics_200 } }}
               >
                 <span class="sr-only">
                   <div>태양광(200)</div>
-                  <div>30%</div>
+                  <div>{photovoltaics_200}</div>
                 </span>
               </div>
             </div>
@@ -326,11 +335,11 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: '30%' }}
+                style={{ height: { batteryTemp } }}
               >
                 <span class="sr-only">
                   <div>배터리온도</div>
-                  <div>30%</div>
+                  <div>{batteryTemp}</div>
                 </span>
               </div>
             </div>
@@ -343,11 +352,11 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: '30%' }}
+                style={{ height: { photovoltaics_600 } }}
               >
                 <span class="sr-only">
                   <div>태양광(600)</div>
-                  <div>30%</div>
+                  <div>{photovoltaics_600}</div>
                 </span>
               </div>
             </div>
@@ -362,11 +371,11 @@ const Ctrl = () => {
                 aria-valuenow="30"
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={{ height: '30%' }}
+                style={{ height: { batteryCurrent } }}
               >
                 <span class="sr-only">
                   <div>배터리전류</div>
-                  <div>30%</div>
+                  <div>{batteryCurrent}</div>
                 </span>
               </div>
             </div>

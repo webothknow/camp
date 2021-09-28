@@ -6,7 +6,7 @@ const Test = () => {
   return (
     <div className="inner_contents util_wrap">
       <div className="col">
-        <div className="row"></div>
+        <div className="row">test</div>
         <div className="row"></div>
         <div className="row"></div>
         <div className="row"></div>

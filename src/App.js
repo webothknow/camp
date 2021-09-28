@@ -45,8 +45,8 @@ function App() {
   const menuObj = {
     0: <Ctrl />,
     1: <Air />,
-    2: <Test />,
-    3: <Cam />,
+    2: <Cam />,
+    3: <Test />,
     4: <Set />,
   };
   const [activeTab, setActiveTab] = useState(0);
