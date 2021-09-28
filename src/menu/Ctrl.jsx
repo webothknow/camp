@@ -895,7 +895,7 @@ const Ctrl = () => {
               </span>
             </label>
           </div>
-          <div className="inner_col_wrap_flex"></div>
+          <div className="inner_col_wrap_flex margin_right"></div>
         </div>
       </div>
     </div>
