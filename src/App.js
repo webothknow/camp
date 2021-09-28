@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Home from './menu/Home';
-import Air from './menu/Air';
-import Test from './menu/Test';
-import Cam from './menu/Cam';
-import Set from './menu/Set';
-import unnamed from './image/unnamed.png';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Home from "./menu/Home";
+import Air from "./menu/Air";
+import Test from "./menu/Test";
+import Cam from "./menu/Cam";
+import Set from "./menu/Set";
+import unnamed from "./image/unnamed.png";
 
 // const wsc = new WebSocketClient(null, 8700, '/ws', 100);
 
@@ -58,57 +58,57 @@ function App() {
 
   //tab menu color change
   let [bg, setBg] = useState({
-    li: '#3e3b3b',
-    air: '#555',
-    util: '#555',
-    cam: '#555',
-    set: '#555',
+    li: "#3e3b3b",
+    air: "#555",
+    util: "#555",
+    cam: "#555",
+    set: "#555",
   });
   const colorchange = (idx) => {
-    if (idx === 0 && bg.li === '#555') {
+    if (idx === 0 && bg.li === "#555") {
       setBg({
         ...bg,
-        li: '#3e3b3b',
-        air: '#555',
-        util: '#555',
-        cam: '#555',
-        set: '#555',
+        li: "#3e3b3b",
+        air: "#555",
+        util: "#555",
+        cam: "#555",
+        set: "#555",
       });
-    } else if (idx === 1 && bg.air === '#555') {
+    } else if (idx === 1 && bg.air === "#555") {
       setBg({
         ...bg,
-        air: '#424242',
-        li: '#555',
-        util: '#555',
-        cam: '#555',
-        set: '#555',
+        air: "#424242",
+        li: "#555",
+        util: "#555",
+        cam: "#555",
+        set: "#555",
       });
-    } else if (idx === 2 && bg.util === '#555') {
+    } else if (idx === 2 && bg.util === "#555") {
       setBg({
         ...bg,
-        util: '#3e3b3b',
-        li: '#555',
-        air: '#555',
-        cam: '#555',
-        set: '#555',
+        util: "#3e3b3b",
+        li: "#555",
+        air: "#555",
+        cam: "#555",
+        set: "#555",
       });
-    } else if (idx === 3 && bg.cam === '#555') {
+    } else if (idx === 3 && bg.cam === "#555") {
       setBg({
         ...bg,
-        cam: '#424242',
-        li: '#555',
-        air: '#555',
-        util: '#555',
-        set: '#555',
+        cam: "#424242",
+        li: "#555",
+        air: "#555",
+        util: "#555",
+        set: "#555",
       });
-    } else if (idx === 4 && bg.set === '#555') {
+    } else if (idx === 4 && bg.set === "#555") {
       setBg({
         ...bg,
-        set: '#3e3b3b',
-        li: '#555',
-        air: '#555',
-        util: '#555',
-        cam: '#555',
+        set: "#3e3b3b",
+        li: "#555",
+        air: "#555",
+        util: "#555",
+        cam: "#555",
       });
     }
   };
@@ -122,7 +122,7 @@ function App() {
             <img src={unnamed} alt=""></img>
           </div>
           <div className="top_bar_col fahrenheit">실내 25.5C</div>
-          <div className="top_bar_col humid">50%</div>
+          <div className="top_bar_col humid">습기 50%</div>
           <div className="top_bar_col celsius">실외 -10.5C</div>
         </div>
         <div className="bottom_contents">
@@ -131,48 +131,27 @@ function App() {
               className="menu"
               onClick={() => navDisplayHandle(0)}
               style={{ backgroundColor: bg.li }}
-            >
-              홈
-            </div>
+            ></div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(1)}
               style={{ backgroundColor: bg.air }}
-            >
-              <div>
-                <div>공조</div>
-                <div>난방</div>
-              </div>
-            </div>
+            ></div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(2)}
               style={{ backgroundColor: bg.util }}
-            >
-              <div>
-                <div>카메라</div>
-              </div>
-            </div>
+            ></div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(3)}
               style={{ backgroundColor: bg.cam }}
-            >
-              <div>
-                <div>임시</div>
-                <div>메뉴</div>
-              </div>
-            </div>
+            ></div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(4)}
               style={{ backgroundColor: bg.set }}
-            >
-              <div>
-                <div>임시</div>
-                <div>메뉴</div>
-              </div>
-            </div>
+            ></div>
           </div>
           <div className="contents">{menuObj[activeTab]}</div>
         </div>
