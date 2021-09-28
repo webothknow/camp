@@ -934,8 +934,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_floor"
-                value={rangevalue.air_1_floor}
+                name="air_1_bed"
+                value={rangevalue.air_1_bed}
                 step={10}
                 min={0}
                 max={100}
@@ -968,8 +968,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_bed"
-                value={rangevalue.air_1_bed}
+                name="air_1_floor"
+                value={rangevalue.air_1_floor}
                 step={10}
                 min={0}
                 max={100}
@@ -1004,8 +1004,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_bed"
-                value={rangevalue.air_1_bed}
+                name="air_2_bunker"
+                value={rangevalue.air_2_bunker}
                 step={10}
                 min={0}
                 max={100}
@@ -1038,8 +1038,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_bed"
-                value={rangevalue.air_1_bed}
+                name="air_2_warmair"
+                value={rangevalue.air_2_warmair}
                 step={10}
                 min={0}
                 max={100}
@@ -1074,8 +1074,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_bed"
-                value={rangevalue.air_1_bed}
+                name="air_3_heater_d2"
+                value={rangevalue.air_3_heater_d2}
                 step={10}
                 min={0}
                 max={100}
@@ -1110,8 +1110,8 @@ const Home = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="air_1_bed"
-                value={rangevalue.air_1_bed}
+                name="air_3_heater_d5"
+                value={rangevalue.air_3_heater_d5}
                 step={10}
                 min={0}
                 max={100}
