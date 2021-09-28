@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'; //slider bar
 import RangeSlider from 'react-bootstrap-range-slider'; //slider bar
 import { ProgressBar, Button } from 'react-bootstrap'; //progress bar
-// import 'bootstrap/dist/css/bootstrap.min.css'; //progress bar
 
 const Ctrl = () => {
   //horizontal range slider
   const [rangevalue, setRangeValue] = useState({
-    li_1_2: 0,
-    li_1_3: 0,
-    li_1_4: 0,
-    li_1_5: 0,
-    li_2_2: 0,
-    li_2_3: 0,
+    li_3_livingroom_top: 0,
+    li_3_livingroom_bottom: 0,
+    li_3_bedroom_top: 0,
+    li_3_bedroom_bottom: 0,
+    li_3_earning_left: 0,
+    li_3_earning_right: 0,
   });
   const rangdesliderHandle = (e) => {
     const value = e.target.value;
@@ -564,8 +563,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_1_2"
-                value={rangevalue.li_1_2}
+                name="li_3_livingroom_top"
+                value={rangevalue.li_3_livingroom_top}
                 step={10}
                 min={0}
                 max={100}
@@ -600,8 +599,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_1_3"
-                value={rangevalue.li_1_3}
+                name="li_3_livingroom_bottom"
+                value={rangevalue.li_3_livingroom_bottom}
                 step={10}
                 min={0}
                 max={100}
@@ -638,8 +637,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_2_2"
-                value={rangevalue.li_2_2}
+                name="li_3_bedroom_top"
+                value={rangevalue.li_3_bedroom_top}
                 step={10}
                 min={0}
                 max={100}
@@ -674,8 +673,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_2_3"
-                value={rangevalue.li_2_3}
+                name="li_3_bedroom_bottom"
+                value={rangevalue.li_3_bedroom_bottom}
                 step={10}
                 min={0}
                 max={100}
@@ -712,8 +711,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_1_4"
-                value={rangevalue.li_1_4}
+                name="li_3_earning_left"
+                value={rangevalue.li_3_earning_left}
                 step={10}
                 min={0}
                 max={100}
@@ -748,8 +747,8 @@ const Ctrl = () => {
             </label>
             <div className="range_slider">
               <RangeSlider
-                name="li_1_5"
-                value={rangevalue.li_1_5}
+                name="li_3_earning_right"
+                value={rangevalue.li_3_earning_right}
                 step={10}
                 min={0}
                 max={100}

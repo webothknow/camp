@@ -150,8 +150,7 @@ function App() {
               style={{ backgroundColor: bg.util }}
             >
               <div>
-                <div>ㅇㅇㅇ</div>
-                <div>ㅇㅇㅇ</div>
+                <div>카메라</div>
               </div>
             </div>
             <div
@@ -159,14 +158,20 @@ function App() {
               onClick={() => navDisplayHandle(3)}
               style={{ backgroundColor: bg.cam }}
             >
-              카메라
+              <div>
+                <div>임시</div>
+                <div>메뉴</div>
+              </div>
             </div>
             <div
               className="menu"
               onClick={() => navDisplayHandle(4)}
               style={{ backgroundColor: bg.set }}
             >
-              설정
+              <div>
+                <div>임시</div>
+                <div>메뉴</div>
+              </div>
             </div>
           </div>
           <div className="contents">{menuObj[activeTab]}</div>
