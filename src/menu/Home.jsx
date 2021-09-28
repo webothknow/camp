@@ -31,13 +31,13 @@ const Home = () => {
   };
 
   //progress bar
-  let freshWater = 50;
-  let wasteWater = String(50);
-  let batteryVoltage = String(50);
-  let batteryTemp = String(50);
-  let batteryCurrent = String(50);
-  let photovoltaics_200 = String(50);
-  let photovoltaics_600 = String(50);
+  let freshWater = 10;
+  let wasteWater = 20;
+  let batteryVoltage = 30;
+  let batteryTemp = 40;
+  let batteryCurrent = 50;
+  let photovoltaics_200 = 60;
+  let photovoltaics_600 = 70;
 
   return (
     <div className="inner_contents home_wrap">
