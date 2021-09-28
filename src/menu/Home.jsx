@@ -656,6 +656,9 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className="inner_col_wrap_flex margin_right"></div>
+          <div className="inner_col_wrap_flex margin_right"></div>
+          <div className="inner_col_wrap_flex margin_right"></div>
         </div>
         <div className="row"></div>
         <div className="row">
