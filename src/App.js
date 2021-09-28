@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Li from "./menu/Li";
-import Air from "./menu/Air";
-import Util from "./menu/Util";
-import Cam from "./menu/Cam";
-import Set from "./menu/Set";
-import unnamed from "./image/unnamed.png";
-import Nav from "react-bootstrap/Nav";
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import Ctrl from './menu/Ctrl';
+import Air from './menu/Air';
+import Test from './menu/Test';
+import Cam from './menu/Cam';
+import Set from './menu/Set';
+import unnamed from './image/unnamed.png';
 
 // const wsc = new WebSocketClient(null, 8700, '/ws', 100);
 
@@ -44,9 +43,9 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Li />,
+    0: <Ctrl />,
     1: <Air />,
-    2: <Util />,
+    2: <Test />,
     3: <Cam />,
     4: <Set />,
   };
@@ -59,57 +58,57 @@ function App() {
 
   //tab menu color change
   let [bg, setBg] = useState({
-    li: "#888",
-    air: "#555",
-    util: "#555",
-    cam: "#555",
-    set: "#555",
+    li: '#888',
+    air: '#555',
+    util: '#555',
+    cam: '#555',
+    set: '#555',
   });
   const colorchange = (idx) => {
-    if (idx === 0 && bg.li === "#555") {
+    if (idx === 0 && bg.li === '#555') {
       setBg({
         ...bg,
-        li: "#888",
-        air: "#555",
-        util: "#555",
-        cam: "#555",
-        set: "#555",
+        li: '#888',
+        air: '#555',
+        util: '#555',
+        cam: '#555',
+        set: '#555',
       });
-    } else if (idx === 1 && bg.air === "#555") {
+    } else if (idx === 1 && bg.air === '#555') {
       setBg({
         ...bg,
-        air: "#999",
-        li: "#555",
-        util: "#555",
-        cam: "#555",
-        set: "#555",
+        air: '#999',
+        li: '#555',
+        util: '#555',
+        cam: '#555',
+        set: '#555',
       });
-    } else if (idx === 2 && bg.util === "#555") {
+    } else if (idx === 2 && bg.util === '#555') {
       setBg({
         ...bg,
-        util: "#888",
-        li: "#555",
-        air: "#555",
-        cam: "#555",
-        set: "#555",
+        util: '#888',
+        li: '#555',
+        air: '#555',
+        cam: '#555',
+        set: '#555',
       });
-    } else if (idx === 3 && bg.cam === "#555") {
+    } else if (idx === 3 && bg.cam === '#555') {
       setBg({
         ...bg,
-        cam: "#999",
-        li: "#555",
-        air: "#555",
-        util: "#555",
-        set: "#555",
+        cam: '#999',
+        li: '#555',
+        air: '#555',
+        util: '#555',
+        set: '#555',
       });
-    } else if (idx === 4 && bg.set === "#555") {
+    } else if (idx === 4 && bg.set === '#555') {
       setBg({
         ...bg,
-        set: "#888",
-        li: "#555",
-        air: "#555",
-        util: "#555",
-        cam: "#555",
+        set: '#888',
+        li: '#555',
+        air: '#555',
+        util: '#555',
+        cam: '#555',
       });
     }
   };
@@ -133,7 +132,7 @@ function App() {
               onClick={() => navDisplayHandle(0)}
               style={{ backgroundColor: bg.li }}
             >
-              조명
+              제어
             </div>
             <div
               className="menu"
@@ -151,8 +150,8 @@ function App() {
               style={{ backgroundColor: bg.util }}
             >
               <div>
-                <div>전기</div>
-                <div>오폐수</div>
+                <div>ㅇㅇㅇ</div>
+                <div>ㅇㅇㅇ</div>
               </div>
             </div>
             <div

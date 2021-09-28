@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
-import SemiCircleProgressBar from 'react-progressbar-semicircle';
+// import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 const Air = () => {
   //range slider
@@ -25,175 +25,141 @@ const Air = () => {
     <div className="inner_contents air_wrap">
       <div className="col">
         <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
+          <div className="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label class="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="toggle_name">거실</div>
           </div>
-          <div className="slider_col">
-            <div>
-              <div>거실</div>
-              <div>
-                <div className="control">
-                  <div className="control_margin_right">
-                    <button>-</button>온도<button>+</button>
-                  </div>
-                  <div>
-                    <button>-</button>풍량<button>+</button>
-                  </div>
-                </div>
-                <div></div>
+          <div className="inner_col_wrap_flex">
+            <div className="control_wrap">
+              <div className="control">
+                <button>-</button>온도<button>+</button>
+              </div>
+              <div className="control">
+                <button>-</button>풍량<button>+</button>
               </div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
+          <div className="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label class="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="toggle_name">침실</div>
           </div>
-          <div className="slider_col">
-            <div>
-              <div>침실</div>
-              <div>
-                <div className="control">
-                  <div className="control_margin_right">
-                    <button>-</button>온도<button>+</button>
-                  </div>
-                  <div>
-                    <button>-</button>풍량<button>+</button>
-                  </div>
-                </div>
-                <div></div>
+          <div className="inner_col_wrap_flex">
+            <div className="control_wrap">
+              <div className="control">
+                <button>-</button>온도<button>+</button>
+              </div>
+              <div className="control">
+                <button>-</button>풍량<button>+</button>
               </div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
+          <div className="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label class="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="toggle_name">믹스팬</div>
           </div>
-          <div className="slider_col">
-            <div>
-              <div>맥스팬</div>
-              <div>
-                <div className="control">
-                  <div className="control_margin_right">
-                    <button>-</button>온도<button>+</button>
-                  </div>
-                  <div>
-                    <button>-</button>풍량<button>+</button>
-                  </div>
-                </div>
-                <div></div>
+          <div className="inner_col_wrap_flex">
+            <div className="control_wrap">
+              <div className="control">
+                <button>-</button>온도<button>+</button>
+              </div>
+              <div className="control">
+                <button>-</button>풍량<button>+</button>
               </div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>화장실팬</div>
-          </div>
-        </div>
-        <div className="row">
-          <div class="toggle_col"></div>
-          <div className="slider_col"></div>
-        </div>
+        <div className="row"></div>
+        <div className="row"></div>
       </div>
       <div className="col">
         <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>침대</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>침대</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_2_1"
                   value={rangevalue.air_2_1}
@@ -205,32 +171,32 @@ const Air = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>바닥</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>바닥</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_2_2"
                   value={rangevalue.air_2_2}
@@ -244,30 +210,32 @@ const Air = () => {
           </div>
         </div>
         <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>벙커</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>벙커</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_2_3"
                   value={rangevalue.air_2_3}
@@ -279,32 +247,32 @@ const Air = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>온풍</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>온풍</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_2_4"
                   value={rangevalue.air_2_4}
@@ -318,36 +286,32 @@ const Air = () => {
           </div>
         </div>
         <div className="row">
-          <div class="toggle_col"></div>
-          <div className="slider_col"></div>
-        </div>
-      </div>
-      <div className="col">
-        <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>히터(D2)</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>히터(D2)</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_3_1"
                   value={rangevalue.air_3_1}
@@ -359,32 +323,32 @@ const Air = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div class="toggle_col">
-            <label class="toggle">
-              <input
-                id="mycheckbox"
-                type="checkbox"
-                class="default"
-                id="SL00"
-                // onChange={(e) =>
-                //   send_cmd("gfs", "sol", [
-                //     0,
-                //     onOffCheck(e.target.checked),
-                //   ])
-                // }
-              />
-              <span class="dot">
-                <p class="text_on">on</p>
-                <p class="text_off">off</p>
-              </span>
-            </label>
-          </div>
-          <div className="slider_col">
-            <div>
-              <div>히터(D5)</div>
-              <div>
+          <div class="inner_col_wrap_flex">
+            <div className="toggle_wrap">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  class="default"
+                  id="SL00"
+                  // onChange={(e) =>
+                  //   send_cmd("gfs", "sol", [
+                  //     0,
+                  //     onOffCheck(e.target.checked),
+                  //   ])
+                  // }
+                />
+                <span class="dot">
+                  <p class="text_on">on</p>
+                  <p class="text_off">off</p>
+                </span>
+              </label>
+            </div>
+            <div className="range_name_wrap">
+              <div className="range_name">
+                <div>히터(D5)</div>
+              </div>
+              <div className="range_slider">
                 <RangeSlider
                   name="air_3_2"
                   value={rangevalue.air_3_2}
@@ -397,18 +361,15 @@ const Air = () => {
             </div>
           </div>
         </div>
-        <div className="row">
-          <div class="toggle_col"></div>
-          <div className="slider_col"></div>
-        </div>
-        <div className="row">
-          <div class="toggle_col"></div>
-          <div className="slider_col"></div>
-        </div>
-        <div className="row">
-          <div class="toggle_col"></div>
-          <div className="slider_col"></div>
-        </div>
+        <div className="row"></div>
+        <div className="row"></div>
+      </div>
+      <div className="col">
+        <div className="row"></div>
+        <div className="row"></div>
+        <div className="row"></div>
+        <div className="row"></div>
+        <div className="row"></div>
       </div>
     </div>
   );
