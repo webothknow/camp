@@ -58,7 +58,7 @@ function App() {
 
   //tab menu color change
   let [bg, setBg] = useState({
-    li: "#3e3b3b",
+    li: "#2c2a2a",
     air: "#555",
     util: "#555",
     cam: "#555",
@@ -68,7 +68,7 @@ function App() {
     if (idx === 0 && bg.li === "#555") {
       setBg({
         ...bg,
-        li: "#3e3b3b",
+        li: "#2c2a2a",
         air: "#555",
         util: "#555",
         cam: "#555",
@@ -86,7 +86,7 @@ function App() {
     } else if (idx === 2 && bg.util === "#555") {
       setBg({
         ...bg,
-        util: "#3e3b3b",
+        util: "#2c2a2a",
         li: "#555",
         air: "#555",
         cam: "#555",
@@ -104,7 +104,7 @@ function App() {
     } else if (idx === 4 && bg.set === "#555") {
       setBg({
         ...bg,
-        set: "#3e3b3b",
+        set: "#2c2a2a",
         li: "#555",
         air: "#555",
         util: "#555",
