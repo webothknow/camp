@@ -552,7 +552,7 @@ const Home = () => {
       {/* column 2 */}
       <div className="col">
         <div className="wrap_bg water_wrap">
-          <div className="title">오/폐수</div>
+          <div className="title">오수</div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
               <div className="vertical_bar">
