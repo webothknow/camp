@@ -3,6 +3,7 @@ import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css"; //s
 import RangeSlider from "react-bootstrap-range-slider"; //slider bar
 import { ProgressBar, Button } from "react-bootstrap"; //progress bar
 import { Modal } from "react-bootstrap"; //modal
+import Videojs from "../video.js"; //camera
 
 const Home = () => {
   //horizontal range slider
@@ -43,9 +44,39 @@ const Home = () => {
   // modal
   const [CameraModal, HandleCameraModal] = useState(false);
 
-  //uplod click event
+  //camera click event
   const showCamera = () => {
     HandleCameraModal(true);
+  };
+
+  //camera1
+  const videoJsOptions = {
+    autoplay: false,
+    playbackRates: [0.5, 1, 1.25, 1.5, 2],
+    width: 720,
+    height: 300,
+    controls: true,
+    sources: [
+      {
+        src: "//vjs.zencdn.net/v/oceans.mp4",
+        type: "video/mp4",
+      },
+    ],
+  };
+
+  //camera2
+  const videoJsOptions2 = {
+    autoplay: false,
+    playbackRates: [0.5, 1, 1.25, 1.5, 2],
+    width: 720,
+    height: 300,
+    controls: true,
+    sources: [
+      {
+        src: "//vjs.zencdn.net/v/oceans.mp4",
+        type: "video/mp4",
+      },
+    ],
   };
 
   return (
@@ -961,7 +992,7 @@ const Home = () => {
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
-                    <div>믹스팬</div>
+                    <div>맥스팬</div>
                     <div>온도</div>
                   </div>
                 </div>
@@ -1336,8 +1367,12 @@ const Home = () => {
           X
         </Button>
         <Modal.Body>
-          <div className="camera_view"></div>
-          <div className="camera_view"></div>
+          <div className="camera_view">
+            <Videojs {...videoJsOptions} />
+          </div>
+          <div className="camera_view">
+            <Videojs {...videoJsOptions2} />
+          </div>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
       </Modal>

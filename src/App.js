@@ -122,7 +122,7 @@ function App() {
             <img src={unnamed} alt=""></img>
           </div>
           <div className="top_bar_col fahrenheit">실내 25.5C</div>
-          <div className="top_bar_col humid">습기 50%</div>
+          <div className="top_bar_col humid">습도 50%</div>
           <div className="top_bar_col celsius">실외 -10.5C</div>
         </div>
         <div className="bottom_contents">
