@@ -51,7 +51,7 @@ const Home = () => {
 
   //camera1
   const videoJsOptions = {
-    autoplay: false,
+    autoplay: true,
     playbackRates: [0.5, 1, 1.25, 1.5, 2],
     width: 720,
     height: 300,
@@ -66,7 +66,7 @@ const Home = () => {
 
   //camera2
   const videoJsOptions2 = {
-    autoplay: false,
+    autoplay: true,
     playbackRates: [0.5, 1, 1.25, 1.5, 2],
     width: 720,
     height: 300,
