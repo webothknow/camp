@@ -876,7 +876,7 @@ const Home = () => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap_flex margin_right">
+            <div className="inner_col_wrap_flex">
               <label class="toggle">
                 <input
                   id="mycheckbox"
@@ -919,9 +919,10 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus control_margin_bottom">
+                  <div className="control_btn control_plus">
                     <div>+</div>
                   </div>
+                  <div className="control_margin_bottom"></div>
                   <div className="control_btn control_minus">
                     <div>-</div>
                   </div>
@@ -937,9 +938,10 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus control_margin_bottom">
+                  <div className="control_btn control_plus">
                     <div>+</div>
                   </div>
+                  <div className="control_margin_bottom"></div>
                   <div className="control_btn control_minus">
                     <div>-</div>
                   </div>
@@ -955,9 +957,10 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus control_margin_bottom">
+                  <div className="control_btn control_plus">
                     <div>+</div>
                   </div>
+                  <div className="control_margin_bottom"></div>
                   <div className="control_btn control_minus">
                     <div>-</div>
                   </div>
