@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css"; //slider bar
 import RangeSlider from "react-bootstrap-range-slider"; //slider bar
 import { ProgressBar, Button } from "react-bootstrap"; //progress bar
+import { Modal } from "react-bootstrap"; //modal
 
 const Home = () => {
   //horizontal range slider
@@ -38,6 +39,14 @@ const Home = () => {
   let batteryCurrent = 50;
   let photovoltaics_200 = 60;
   let photovoltaics_600 = 70;
+
+  // modal
+  const [CameraModal, HandleCameraModal] = useState(false);
+
+  //uplod click event
+  const showCamera = () => {
+    HandleCameraModal(true);
+  };
 
   return (
     <div className="inner_contents home_wrap">
@@ -919,11 +928,11 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus">
+                  <div className="control_btn">
                     <div>+</div>
                   </div>
                   <div className="control_margin_bottom"></div>
-                  <div className="control_btn control_minus">
+                  <div className="control_btn">
                     <div>-</div>
                   </div>
                 </div>
@@ -1213,28 +1222,9 @@ const Home = () => {
             <div className="inner_col_wrap_flex margin_right"></div>
             <div className="inner_col_wrap_flex margin_right"></div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
-                />
-                <span class="dot">
-                  <p class="text_on">
-                    <div>카메라</div>
-                  </p>
-                  <p class="text_off">
-                    <div>카메라</div>
-                  </p>
-                </span>
-              </label>
+              <div className="camera_btn" onClick={() => showCamera()}>
+                카메라
+              </div>
             </div>
           </div>
           <div className="row">
@@ -1337,6 +1327,20 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* camera modal */}
+      <Modal show={CameraModal} onHide={() => HandleCameraModal(false)}>
+        <Button
+          className="camera_close"
+          onClick={() => HandleCameraModal(false)}
+        >
+          X
+        </Button>
+        <Modal.Body>
+          <div className="camera_view"></div>
+          <div className="camera_view"></div>
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
     </div>
   );
 };

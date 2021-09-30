@@ -509,6 +509,67 @@ input[type="range"].range-slider.range-slider--primary:not(.disabled):active::-m
   height: 0.5rem;
 }
 
+/* camera modal */
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 1;
+}
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid blue; */
+}
+.modal-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.camera_close {
+  width: 5%;
+  height: 10%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  color: #ddd;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.modal-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* border: 1px solid red; */
+}
+.camera_view {
+  width: 50%;
+  height: 100%;
+  border: 1px solid violet;
+}
+
+/* 카메라 */
+.camera_btn {
+  width: 100%;
+  height: 100%;
+  background-color: #525252;
+  border-radius: 0.4rem;
+  border: 2px solid #ddd;
+  box-shadow: inset -3px -3px 5px #363535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.camera_btn:active {
+  background-color: #444;
+}
+
 /* app.css */
 .App {
   text-align: center;
