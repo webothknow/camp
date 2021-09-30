@@ -213,7 +213,7 @@ body {
 /* 조명장치 */
 .li_control_wrap {
   width: 100%;
-  height: 60%;
+  height: 59%;
 }
 .li_control_wrap .title {
   width: 100%;
@@ -227,7 +227,7 @@ body {
 /* 전기장치 */
 .util_control_wrap {
   width: 100%;
-  height: 39%;
+  height: 38%;
 }
 .util_control_wrap .title {
   width: 100%;
@@ -241,7 +241,7 @@ body {
 /* 기타장치 */
 .other_control_wrap {
   width: 100%;
-  height: 40%;
+  height: 39%;
 }
 .other_control_wrap .title {
   width: 100%;
