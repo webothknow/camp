@@ -5,24 +5,101 @@ import { ProgressBar, Button } from "react-bootstrap"; //progress bar
 import { Modal } from "react-bootstrap"; //modal
 import Videojs from "../video.js"; //camera
 
-const Home = () => {
+const Home = (data, { sendCmd }) => {
+  useEffect(() => {
+    console.log("home data: ", data);
+    console.log("sendCmd: ", sendCmd);
+    homeDataHandle(data);
+  }, [data]);
+
+  const homeDataHandle = (data) => {
+    let d = data;
+
+    if (
+      d &&
+      d["d1"] &&
+      d["d2"] &&
+      d["d3"] &&
+      d["d4"] &&
+      d["d5"] &&
+      d["d6"] &&
+      d["d7"] &&
+      d["d8"] &&
+      d["d9"] &&
+      d["d10"] &&
+      d["d11"] &&
+      d["d12"] &&
+      d["d13"] &&
+      d["d14"] &&
+      d["d15"] &&
+      d["d16"]
+    ) {
+      setHomeData({
+        ...homedata,
+        d1: d["d1"],
+        d2: d["d2"],
+        d3: d["d3"],
+        d4: d["d4"],
+        d5: d["d5"],
+        d6: d["d6"],
+        d7: d["d7"],
+        d8: d["d8"],
+        d9: d["d9"],
+        d10: d["d10"],
+        d11: d["d11"],
+        d12: d["d12"],
+        d13: d["d13"],
+        d14: d["d14"],
+        d15: d["d15"],
+        d16: d["d16"],
+      });
+    }
+  };
+
+  let na = "N/A";
+  let zero = 0;
+  const [homedata, setHomeData] = useState({
+    d1: zero,
+    d2: zero,
+    d3: zero,
+    d4: zero,
+    d5: zero,
+    d6: zero,
+    d7: zero,
+    d8: zero,
+    d9: zero,
+    d10: zero,
+    d11: zero,
+    d12: zero,
+    d13: zero,
+    d14: zero,
+    d15: zero,
+    d16: zero,
+    d17: zero,
+    d18: zero,
+    d19: zero,
+    d20: zero,
+    d21: zero,
+    d22: zero,
+  });
+
   //horizontal range slider
   const [rangevalue, setRangeValue] = useState({
-    li_3_livingroom_top: 0,
-    li_3_livingroom_bottom: 0,
-    li_3_bedroom_top: 0,
-    li_3_bedroom_bottom: 0,
-    li_3_earning_left: 0,
-    li_3_earning_right: 0,
-    air_1_livingroom_temp: 0,
-    air_1_bedroom_temp: 0,
-    air_1_bed: 0,
-    air_1_floor: 0,
-    air_2_mixfan_temp: 0,
-    air_2_bunker: 0,
-    air_2_warmair: 0,
-    air_3_heater_d2: 0,
-    air_3_heater_d5: 0,
+    li_3_livingroom_top: homedata.d1,
+    li_3_livingroom_bottom: homedata.d2,
+    li_3_bedroom_top: homedata.d3,
+    li_3_bedroom_bottom: homedata.d4,
+    li_3_earning_left: homedata.d5,
+    li_3_earning_right: homedata.d6,
+    air_1_livingroom_temp: homedata.d7,
+    air_1_bedroom_temp: homedata.d8,
+    air_1_bed: homedata.d9,
+    air_1_floor: homedata.d10,
+    air_2_mixfan_temp: homedata.d11,
+    air_2_bunker: homedata.d12,
+    air_2_warmair: homedata.d13,
+    air_3_heater_d2: homedata.d14,
+    air_3_heater_d5: homedata.d15,
   });
   const rangdesliderHandle = (e) => {
     const value = e.target.value;
@@ -33,13 +110,13 @@ const Home = () => {
   };
 
   //progress bar
-  let freshWater = 10;
-  let wasteWater = 20;
-  let batteryVoltage = 30;
-  let batteryTemp = 40;
-  let batteryCurrent = 50;
-  let photovoltaics_200 = 60;
-  let photovoltaics_600 = 70;
+  let freshWater = homedata.d16;
+  let wasteWater = homedata.d17;
+  let batteryVoltage = homedata.d18;
+  let batteryTemp = homedata.d19;
+  let batteryCurrent = homedata.d20;
+  let photovoltaics_200 = homedata.d21;
+  let photovoltaics_600 = homedata.d22;
 
   // modal
   const [CameraModal, HandleCameraModal] = useState(false);
@@ -47,6 +124,16 @@ const Home = () => {
   //camera click event
   const showCamera = () => {
     HandleCameraModal(true);
+    // player.pause();
+  };
+
+  const hideCamera = (e) => {
+    HandleCameraModal(false);
+    console.log("e: ", e);
+  };
+
+  const eventHandle = (e) => {
+    console.log("e2: ", e);
   };
 
   //camera1
@@ -79,6 +166,11 @@ const Home = () => {
     ],
   };
 
+  //onoff
+  const onOffHandle = (e, name) => {
+    sendCmd("bw0.1", name, e.target.checked === true ? 1 : 0);
+  };
+
   return (
     <div className="inner_contents home_wrap">
       {/* column 1 */}
@@ -86,29 +178,23 @@ const Home = () => {
         <div className="wrap_bg li_wrap">
           <div className="title">조명</div>
           <div className="row">
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "livingroom_top")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>거실</div>
                     <div>상부</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>거실</div>
                     <div>상부</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -122,29 +208,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_top")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>침실</div>
                     <div>상부</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>침실</div>
                     <div>상부</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -158,29 +238,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "earning_left")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>어닝</div>
                     <div>좌</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>어닝</div>
                     <div>좌</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -196,29 +270,23 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "livingroom_bottom")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>거실</div>
                     <div>하부</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>거실</div>
                     <div>하부</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -232,29 +300,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_bottom")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>침실</div>
                     <div>하부</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>침실</div>
                     <div>하부</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -268,29 +330,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "earning_right")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>어닝</div>
                     <div>우</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>어닝</div>
                     <div>우</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -310,236 +366,182 @@ const Home = () => {
           <div className="title">조명장치</div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "livingroom_main")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>거실</div>
                     <div>메인</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>거실</div>
                     <div>메인</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_main")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>침실</div>
                     <div>메인</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>침실</div>
                     <div>메인</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_main")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>화장실</div>
                     <div>메인</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>화장실</div>
                     <div>메인</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_indirect_light")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>화장실</div>
                     <div>간접등</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>화장실</div>
                     <div>간접등</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
           </div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bunker_main")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>벙커</div>
                     <div>메인</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>벙커</div>
                     <div>메인</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>벙커</div>
                     <div>간접등</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>벙커</div>
                     <div>간접등</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "kitchen")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>주방</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>주방</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>차량</div>
                     <div>하부등</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>차량</div>
                     <div>하부등</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
           </div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_left margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "all_light")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>전체등</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>전체등</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -556,16 +558,16 @@ const Home = () => {
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
               <div className="vertical_bar">
-                <div class="progress progress-bar-vertical">
+                <div className="progress progress-bar-vertical">
                   <div
-                    class="progress-bar"
+                    className="progress-bar"
                     role="progressbar"
                     aria-valuenow="30"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     style={{ height: `${freshWater}%` }}
                   >
-                    <span class="sr-only">
+                    <span className="sr-only">
                       <div>청수</div>
                       <div>{freshWater}</div>
                     </span>
@@ -578,39 +580,33 @@ const Home = () => {
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "freshWater")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>청수</div>
                     <div>퇴수</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>청수</div>
                     <div>퇴수</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
               <div className="vertical_bar">
-                <div class="progress progress-bar-vertical">
+                <div className="progress progress-bar-vertical">
                   <div
-                    class="progress-bar"
+                    className="progress-bar"
                     role="progressbar"
                     aria-valuenow="30"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     style={{ height: `${wasteWater}%` }}
                   >
-                    <span class="sr-only">
+                    <span className="sr-only">
                       <div>오수</div>
                       <div>{wasteWater}</div>
                     </span>
@@ -623,24 +619,18 @@ const Home = () => {
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "wasteWater")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>오수</div>
                     <div>퇴수</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>오수</div>
                     <div>퇴수</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -650,16 +640,16 @@ const Home = () => {
           <div className="title">배터리</div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <div class="progress progress-bar-vertical">
+              <div className="progress progress-bar-vertical">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style={{ height: `${batteryVoltage}%` }}
                 >
-                  <span class="sr-only">
+                  <span className="sr-only">
                     <div>
                       <div>배터리</div>
                       <div>전압</div>
@@ -670,16 +660,16 @@ const Home = () => {
               </div>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <div class="progress progress-bar-vertical">
+              <div className="progress progress-bar-vertical">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style={{ height: `${batteryTemp}%` }}
                 >
-                  <span class="sr-only">
+                  <span className="sr-only">
                     <div>
                       <div>배터리</div>
                       <div>온도</div>
@@ -690,16 +680,16 @@ const Home = () => {
               </div>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <div class="progress progress-bar-vertical">
+              <div className="progress progress-bar-vertical">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style={{ height: `${batteryCurrent}%` }}
                 >
-                  <span class="sr-only">
+                  <span className="sr-only">
                     <div>
                       <div>배터리</div>
                       <div>전류</div>
@@ -713,16 +703,16 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <div class="progress progress-bar-vertical">
+              <div className="progress progress-bar-vertical">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style={{ height: `${photovoltaics_200}%` }}
                 >
-                  <span class="sr-only">
+                  <span className="sr-only">
                     <div>
                       <div>태양광</div>
                       <div>(200)</div>
@@ -733,16 +723,16 @@ const Home = () => {
               </div>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <div class="progress progress-bar-vertical">
+              <div className="progress progress-bar-vertical">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
                   style={{ height: `${photovoltaics_600}%` }}
                 >
-                  <span class="sr-only">
+                  <span className="sr-only">
                     <div>
                       <div>태양광</div>
                       <div>(600)</div>
@@ -760,78 +750,60 @@ const Home = () => {
           <div className="title">전기장치</div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "refrigerator")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>냉장고</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>냉장고</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "pump_kitchen")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>펌프</div>
                     <div>주방</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>펌프</div>
                     <div>주방</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "pump_restroom")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>펌프</div>
                     <div>화장실</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>펌프</div>
                     <div>화장실</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -839,106 +811,82 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "inverter_kitchen")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>인버터</div>
                     <div>주방</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>인버터</div>
                     <div>주방</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "inverter_restroom")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>인버터</div>
                     <div>화장실</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>인버터</div>
                     <div>화장실</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "vehicle_start")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>차량</div>
                     <div>시동</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>차량</div>
                     <div>시동</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "Hydraulics_level")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>유압</div>
                     <div>레벨</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>유압</div>
                     <div>레벨</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -950,7 +898,7 @@ const Home = () => {
         <div className="wrap_bg temp_wrap">
           <div className="title">온도설정</div>
           <div className="row">
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -969,7 +917,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -988,7 +936,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -1009,27 +957,21 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "warmair")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>온풍</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>온풍</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1043,29 +985,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "heater_d2")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>히터</div>
                     <div>(D2)</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>히터</div>
                     <div>(D2)</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1079,29 +1015,23 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "heater_d5")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>히터</div>
                     <div>(D5)</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>히터</div>
                     <div>(D5)</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1117,27 +1047,21 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bed")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>침대</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>침대</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1151,27 +1075,21 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "floor")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>바닥</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>바닥</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1185,27 +1103,21 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div class="inner_col_wrap_flex slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bunker")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>벙커</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>벙커</div>
-                  </p>
+                  </div>
                 </span>
               </label>
               <div className="range_slider">
@@ -1225,28 +1137,22 @@ const Home = () => {
           <div className="title">장치</div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_fan")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>화장실</div>
                     <div>팬</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>화장실</div>
                     <div>팬</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -1260,98 +1166,74 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "aux1")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>AUX1</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>AUX1</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "aux2")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>AUX2</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>AUX2</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "aux3")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>AUX3</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>AUX3</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
             <div className="inner_col_wrap_flex margin_right">
-              <label class="toggle">
+              <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
-                  class="default"
-                  id="SL00"
-                  // onChange={(e) =>
-                  //   send_cmd("gfs", "sol", [
-                  //     0,
-                  //     onOffCheck(e.target.checked),
-                  //   ])
-                  // }
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "aux4")}
                 />
-                <span class="dot">
-                  <p class="text_on">
+                <span className="dot">
+                  <div className="text_on">
                     <div>AUX4</div>
-                  </p>
-                  <p class="text_off">
+                  </div>
+                  <div className="text_off">
                     <div>AUX4</div>
-                  </p>
+                  </div>
                 </span>
               </label>
             </div>
@@ -1360,15 +1242,12 @@ const Home = () => {
       </div>
       {/* camera modal */}
       <Modal show={CameraModal} onHide={() => HandleCameraModal(false)}>
-        <Button
-          className="camera_close"
-          onClick={() => HandleCameraModal(false)}
-        >
+        <Button className="camera_close" onClick={(e) => hideCamera(e)}>
           X
         </Button>
         <Modal.Body>
           <div className="camera_view">
-            <Videojs {...videoJsOptions} />
+            <Videojs {...videoJsOptions} onClick={(e) => eventHandle(e)} />
           </div>
           <div className="camera_view">
             <Videojs {...videoJsOptions2} />

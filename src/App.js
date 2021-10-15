@@ -6,27 +6,57 @@ import Test from "./menu/Test";
 import Cam from "./menu/Cam";
 import Set from "./menu/Set";
 import unnamed from "./image/unnamed.png";
+import WebSocketClient from "./js/ws/WebSocketClient"; //websocket
+import { observer } from "mobx-react"; //observer
+import { toJS } from "mobx"; //tojs
 
-// const wsc = new WebSocketClient(null, 8700, '/ws', 100);
+const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
 //웹소켓파일필요
 //send_cmd 수정필요
 
 function App() {
-  //ws
+  //websocket
   useEffect(() => {
-    // wsc.openConn();
+    wsc.openConn();
   }, []);
 
-  //cmd
-  const send_cmd = (target, cmd, grp) => {
-    // let obj = {};
-    // obj["target"] = target;
-    // obj["cmd"] = cmd;
-    // obj["sender"] = sender_id;
-    // obj["group"] = grp;
-    //wsc.sendMsg(JSON.stringify(obj));
+  //data cmd
+  const send_cmd = (target, cmd) => {
+    let obj = {};
+    obj["target"] = target;
+    obj["cmd"] = cmd;
+    wsc.sendMsg(JSON.stringify(obj));
   };
+
+  //data
+  let na = "N/A";
+  const [data, setData] = useState();
+  const [headerData, setHeaderData] = useState({
+    t1: na,
+    t2: na,
+    humi: na,
+  });
+
+  //data observer
+  const DataObserver = observer(({ store }) => {
+    let d = store.getLastMsg;
+    console.log("d: ", d);
+
+    if (d) {
+      setData(d);
+      if (d["t1"] && d["t2"] && d["humi"]) {
+        setHeaderData({
+          ...headerData,
+          t1: d["t1"],
+          t2: d["t2"],
+          humi: d["humi"],
+        });
+      }
+    }
+
+    return <></>;
+  });
 
   //time
   const tempo = new Date().toLocaleTimeString();
@@ -43,7 +73,7 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Home />,
+    0: <Home data={data} sendCmd={send_cmd} />, //data props
     1: <Air />,
     2: <Cam />,
     3: <Test />,
@@ -115,15 +145,16 @@ function App() {
 
   return (
     <div className="App">
+      <DataObserver store={wsc.store} />
       <div className="wrapper">
         <div className="top_bar">
           <div className="top_bar_col time">{time}</div>
           <div className="top_bar_col logo">
             <img src={unnamed} alt=""></img>
           </div>
-          <div className="top_bar_col fahrenheit">실내 25.5C</div>
-          <div className="top_bar_col humid">습도 50%</div>
-          <div className="top_bar_col celsius">실외 -10.5C</div>
+          <div className="top_bar_col fahrenheit">실내 {headerData.t1}</div>
+          <div className="top_bar_col humid">습도 {headerData.humi}%</div>
+          <div className="top_bar_col celsius">실외 {headerData.t2}</div>
         </div>
         <div className="bottom_contents">
           <div className="navi">
