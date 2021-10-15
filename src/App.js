@@ -12,7 +12,6 @@ import { toJS } from "mobx"; //tojs
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
-//웹소켓파일필요
 //send_cmd 수정필요
 
 function App() {
