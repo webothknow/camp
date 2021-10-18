@@ -32,7 +32,13 @@ const Home = (data, { sendCmd }) => {
       d["d13"] &&
       d["d14"] &&
       d["d15"] &&
-      d["d16"]
+      d["d16"] &&
+      d["d17"] &&
+      d["d18"] &&
+      d["d19"] &&
+      d["d20"] &&
+      d["d21"] &&
+      d["d22"]
     ) {
       setHomeData({
         ...homedata,
@@ -52,6 +58,12 @@ const Home = (data, { sendCmd }) => {
         d14: d["d14"],
         d15: d["d15"],
         d16: d["d16"],
+        d11: d["d17"],
+        d12: d["d18"],
+        d13: d["d19"],
+        d14: d["d20"],
+        d15: d["d21"],
+        d16: d["d22"],
       });
     }
   };
@@ -107,6 +119,7 @@ const Home = (data, { sendCmd }) => {
       ...rangevalue,
       [e.target.name]: value,
     });
+    sendCmd("0.1", e.target.name, value);
   };
 
   //progress bar
@@ -168,7 +181,7 @@ const Home = (data, { sendCmd }) => {
 
   //onoff
   const onOffHandle = (e, name) => {
-    sendCmd("bw0.1", name, e.target.checked === true ? 1 : 0);
+    sendCmd("0.1", name, e.target.checked === true ? 1 : 0);
   };
 
   return (

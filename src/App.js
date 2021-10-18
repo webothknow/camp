@@ -21,10 +21,12 @@ function App() {
   }, []);
 
   //data cmd
-  const send_cmd = (target, cmd) => {
+  const send_cmd = (target, cmd, status) => {
     let obj = {};
     obj["target"] = target;
     obj["cmd"] = cmd;
+    obj["status"] = status;
+
     wsc.sendMsg(JSON.stringify(obj));
   };
 
