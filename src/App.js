@@ -42,7 +42,7 @@ function App() {
   //data observer
   const DataObserver = observer(({ store }) => {
     let d = store.getLastMsg;
-    console.log("d: ", d);
+    //console.log("d: ", d);
 
     if (d) {
       setData(d);
@@ -74,7 +74,7 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Home data={data} sendCmd={send_cmd} />, //data props
+    0: <Home data={data} />, //data props
     1: <Air />,
     2: <Cam />,
     3: <Test />,
