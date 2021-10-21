@@ -203,7 +203,7 @@ const Home = ({ data, sendCmd }) => {
       (previouslivingroomtempCount) => previouslivingroomtempCount + 1
     );
     console.log(livingroomtempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, livingroomtempCount);
   };
 
   const livingroomtempMinus = (name) => {
@@ -211,7 +211,7 @@ const Home = ({ data, sendCmd }) => {
       (previouslivingroomtempCount) => previouslivingroomtempCount - 1
     );
     console.log(livingroomtempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, livingroomtempCount);
   };
 
   const bedroomtempPlus = (name) => {
@@ -219,7 +219,7 @@ const Home = ({ data, sendCmd }) => {
       (previousbedroomtempCount) => previousbedroomtempCount + 1
     );
     console.log(bedroomtempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, bedroomtempCount);
   };
 
   const bedroomtempMinus = (name) => {
@@ -227,7 +227,7 @@ const Home = ({ data, sendCmd }) => {
       (previousbedroomtempCount) => previousbedroomtempCount - 1
     );
     console.log(bedroomtempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, bedroomtempCount);
   };
 
   const maxfantempCountPlus = (name) => {
@@ -235,7 +235,7 @@ const Home = ({ data, sendCmd }) => {
       (previousmaxfantempCount) => previousmaxfantempCount + 1
     );
     console.log(maxfantempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, maxfantempCount);
   };
 
   const maxfantempCountMinus = (name) => {
@@ -243,7 +243,7 @@ const Home = ({ data, sendCmd }) => {
       (previousmaxfantempCount) => previousmaxfantempCount - 1
     );
     console.log(maxfantempCount);
-    //sendCmd("0.1", name, number);
+    sendCmd("0.1", name, maxfantempCount);
   };
 
   return (
