@@ -11,64 +11,65 @@ const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
 const Home = ({ data, sendCmd }) => {
   useEffect(() => {
-    //console.log("home data: ", data);
-    homeDataHandle(data);
+    console.log("home data: ", data);
   }, [data]);
 
-  const homeDataHandle = (data) => {
-    let d = data;
+  let d = data;
 
-    if (
-      d &&
-      d["d1"] &&
-      d["d2"] &&
-      d["d3"] &&
-      d["d4"] &&
-      d["d5"] &&
-      d["d6"] &&
-      d["d7"] &&
-      d["d8"] &&
-      d["d9"] &&
-      d["d10"] &&
-      d["d11"] &&
-      d["d12"] &&
-      d["d13"] &&
-      d["d14"] &&
-      d["d15"] &&
-      d["d16"] &&
-      d["d17"] &&
-      d["d18"] &&
-      d["d19"] &&
-      d["d20"] &&
-      d["d21"] &&
-      d["d22"]
-    ) {
-      setHomeData({
-        ...homedata,
-        d1: d["d1"],
-        d2: d["d2"],
-        d3: d["d3"],
-        d4: d["d4"],
-        d5: d["d5"],
-        d6: d["d6"],
-        d7: d["d7"],
-        d8: d["d8"],
-        d9: d["d9"],
-        d10: d["d10"],
-        d11: d["d11"],
-        d12: d["d12"],
-        d13: d["d13"],
-        d14: d["d14"],
-        d15: d["d15"],
-        d16: d["d16"],
-        d17: d["d17"],
-        d18: d["d18"],
-        d19: d["d19"],
-        d20: d["d20"],
-        d21: d["d21"],
-        d22: d["d22"],
-      });
-    }
+  const homeDataHandle = () => {
+    console.log("home data2: ", d);
+
+    // if (
+    //   d &&
+    //   d["d1"] &&
+    //   d["d2"] &&
+    //   d["d3"] &&
+    //   d["d4"] &&
+    //   d["d5"] &&
+    //   d["d6"] &&
+    //   d["d7"] &&
+    //   d["d8"] &&
+    //   d["d9"] &&
+    //   d["d10"] &&
+    //   d["d11"] &&
+    //   d["d12"] &&
+    //   d["d13"] &&
+    //   d["d14"] &&
+    //   d["d15"] &&
+    //   d["d16"] &&
+    //   d["d17"] &&
+    //   d["d18"] &&
+    //   d["d19"] &&
+    //   d["d20"] &&
+    //   d["d21"] &&
+    //   d["d22"]
+    // ) {
+    //   setHomeData({
+    //     ...homedata,
+    //     d1: d["d1"],
+    //     d2: d["d2"],
+    //     d3: d["d3"],
+    //     d4: d["d4"],
+    //     d5: d["d5"],
+    //     d6: d["d6"],
+    //     d7: d["d7"],
+    //     d8: d["d8"],
+    //     d9: d["d9"],
+    //     d10: d["d10"],
+    //     d11: d["d11"],
+    //     d12: d["d12"],
+    //     d13: d["d13"],
+    //     d14: d["d14"],
+    //     d15: d["d15"],
+    //     d16: d["d16"],
+    //     d17: d["d17"],
+    //     d18: d["d18"],
+    //     d19: d["d19"],
+    //     d20: d["d20"],
+    //     d21: d["d21"],
+    //     d22: d["d22"],
+    //   });
+    // }
   };
 
   let na = "N/A";
@@ -185,6 +186,64 @@ const Home = ({ data, sendCmd }) => {
   //onoff
   const onOffHandle = (e, name) => {
     sendCmd("0.1", name, e.target.checked === true ? 1 : 0);
+  };
+
+  // const [number, setNumber] = useState({
+  //   livingroom_temp: 1,
+  //   bedroom_temp: 1,
+  //   maxfan_temp: 1,
+  // });
+
+  const [livingroomtempCount, setlivingroomtempCount] = useState(5);
+  const [bedroomtempCount, setbedroomtempCount] = useState(5);
+  const [maxfantempCount, setmaxfantempCount] = useState(5);
+
+  const livingroomtempPlus = (name) => {
+    setlivingroomtempCount(
+      (previouslivingroomtempCount) => previouslivingroomtempCount + 1
+    );
+    console.log(livingroomtempCount);
+    //sendCmd("0.1", name, number);
+  };
+
+  const livingroomtempMinus = (name) => {
+    setlivingroomtempCount(
+      (previouslivingroomtempCount) => previouslivingroomtempCount - 1
+    );
+    console.log(livingroomtempCount);
+    //sendCmd("0.1", name, number);
+  };
+
+  const bedroomtempPlus = (name) => {
+    setbedroomtempCount(
+      (previousbedroomtempCount) => previousbedroomtempCount + 1
+    );
+    console.log(bedroomtempCount);
+    //sendCmd("0.1", name, number);
+  };
+
+  const bedroomtempMinus = (name) => {
+    setbedroomtempCount(
+      (previousbedroomtempCount) => previousbedroomtempCount - 1
+    );
+    console.log(bedroomtempCount);
+    //sendCmd("0.1", name, number);
+  };
+
+  const maxfantempCountPlus = (name) => {
+    setmaxfantempCount(
+      (previousmaxfantempCount) => previousmaxfantempCount + 1
+    );
+    console.log(maxfantempCount);
+    //sendCmd("0.1", name, number);
+  };
+
+  const maxfantempCountMinus = (name) => {
+    setmaxfantempCount(
+      (previousmaxfantempCount) => previousmaxfantempCount - 1
+    );
+    console.log(maxfantempCount);
+    //sendCmd("0.1", name, number);
   };
 
   return (
@@ -923,11 +982,17 @@ const Home = ({ data, sendCmd }) => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn">
+                  <div
+                    className="control_btn"
+                    onClick={() => livingroomtempPlus("livingroom_temp")}
+                  >
                     <div>+</div>
                   </div>
                   <div className="control_margin_bottom"></div>
-                  <div className="control_btn">
+                  <div
+                    className="control_btn"
+                    onClick={() => livingroomtempMinus("livingroom_temp")}
+                  >
                     <div>-</div>
                   </div>
                 </div>
@@ -942,11 +1007,17 @@ const Home = ({ data, sendCmd }) => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus">
+                  <div
+                    className="control_btn control_plus"
+                    onClick={() => bedroomtempPlus("bedroom_temp")}
+                  >
                     <div>+</div>
                   </div>
                   <div className="control_margin_bottom"></div>
-                  <div className="control_btn control_minus">
+                  <div
+                    className="control_btn control_minus"
+                    onClick={() => bedroomtempMinus("bedroom_temp")}
+                  >
                     <div>-</div>
                   </div>
                 </div>
@@ -961,11 +1032,17 @@ const Home = ({ data, sendCmd }) => {
                   </div>
                 </div>
                 <div className="buttons">
-                  <div className="control_btn control_plus">
+                  <div
+                    className="control_btn control_plus"
+                    onClick={() => maxfantempCountPlus("maxfan_temp")}
+                  >
                     <div>+</div>
                   </div>
                   <div className="control_margin_bottom"></div>
-                  <div className="control_btn control_minus">
+                  <div
+                    className="control_btn control_minus"
+                    onClick={() => maxfantempCountMinus("maxfan_temp")}
+                  >
                     <div>-</div>
                   </div>
                 </div>

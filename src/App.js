@@ -42,19 +42,19 @@ function App() {
   //data observer
   const DataObserver = observer(({ store }) => {
     let d = store.getLastMsg;
-    //console.log("d: ", d);
+    console.log("d: ", d);
 
-    if (d) {
-      setData(d);
-      if (d["t1"] && d["t2"] && d["humi"]) {
-        setHeaderData({
-          ...headerData,
-          t1: d["t1"],
-          t2: d["t2"],
-          humi: d["humi"],
-        });
-      }
-    }
+    // if (d) {
+    //   setData(d);
+    //   if (d["t1"] && d["t2"] && d["humi"]) {
+    //     setHeaderData({
+    //       ...headerData,
+    //       t1: d["t1"],
+    //       t2: d["t2"],
+    //       humi: d["humi"],
+    //     });
+    //   }
+    // }
 
     return <></>;
   });
