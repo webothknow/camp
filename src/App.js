@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   //data cmd
-  const send_cmd = (target, cmd, status) => {
+  const sendCmd = (target, cmd, status) => {
     let obj = {};
     obj["target"] = target;
     obj["cmd"] = cmd;
@@ -74,7 +74,7 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Home data={data} />, //data props
+    0: <Home data={data} sendCmd={sendCmd} />, //data props
     1: <Air />,
     2: <Cam />,
     3: <Test />,

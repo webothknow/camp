@@ -9,21 +9,11 @@ import { observer } from "mobx-react"; //observer
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
-const Home = (data) => {
+const Home = ({ data, sendCmd }) => {
   useEffect(() => {
     //console.log("home data: ", data);
     homeDataHandle(data);
   }, [data]);
-
-  //data cmd
-  const send_cmd = (target, cmd, status) => {
-    let obj = {};
-    obj["target"] = target;
-    obj["cmd"] = cmd;
-    obj["status"] = status;
-
-    wsc.sendMsg(JSON.stringify(obj));
-  };
 
   const homeDataHandle = (data) => {
     let d = data;
@@ -132,7 +122,7 @@ const Home = (data) => {
       ...rangevalue,
       [e.target.name]: value,
     });
-    send_cmd("0.1", e.target.name, value);
+    sendCmd("0.1", e.target.name, value);
   };
 
   //progress bar
@@ -194,7 +184,7 @@ const Home = (data) => {
 
   //onoff
   const onOffHandle = (e, name) => {
-    send_cmd("0.1", name, e.target.checked === true ? 1 : 0);
+    sendCmd("0.1", name, e.target.checked === true ? 1 : 0);
   };
 
   return (
