@@ -44,32 +44,76 @@ const Home = ({ data, sendCmd }) => {
     //   d["d21"] &&
     //   d["d22"]
     // ) {
-    //   setHomeData({
-    //     ...homedata,
-    //     d1: d["d1"],
-    //     d2: d["d2"],
-    //     d3: d["d3"],
-    //     d4: d["d4"],
-    //     d5: d["d5"],
-    //     d6: d["d6"],
-    //     d7: d["d7"],
-    //     d8: d["d8"],
-    //     d9: d["d9"],
-    //     d10: d["d10"],
-    //     d11: d["d11"],
-    //     d12: d["d12"],
-    //     d13: d["d13"],
-    //     d14: d["d14"],
-    //     d15: d["d15"],
-    //     d16: d["d16"],
-    //     d17: d["d17"],
-    //     d18: d["d18"],
-    //     d19: d["d19"],
-    //     d20: d["d20"],
-    //     d21: d["d21"],
-    //     d22: d["d22"],
-    //   });
-    // }
+    setHomeData({
+      ...homedata,
+      //     d1: d["d1"],
+      //     d2: d["d2"],
+      //     d3: d["d3"],
+      //     d4: d["d4"],
+      //     d5: d["d5"],
+      //     d6: d["d6"],
+      //     d7: d["d7"],
+      //     d8: d["d8"],
+      //     d9: d["d9"],
+      //     d10: d["d10"],
+      //     d11: d["d11"],
+      //     d12: d["d12"],
+      //     d13: d["d13"],
+      //     d14: d["d14"],
+      //     d15: d["d15"],
+      //     d16: d["d16"],
+      //     d17: d["d17"],
+      //     d18: d["d18"],
+      //     d19: d["d19"],
+      //     d20: d["d20"],
+      //     d21: d["d21"],
+      //     d22: d["d22"],
+      //   c1: d["d23"],
+      //   c2: d["d24"],
+      //   c3: d["d25"],
+      //   c4: d["d26"],
+      //   c5: d["d27"],
+      //   c6: d["d28"],
+      //   c7: d["d29"],
+      //   c8: d["d30"],
+      //   c8: d["d31"],
+      //   c8: d["d32"],
+      //   c8: d["d33"],
+      //   c8: d["d34"],
+      //   c8: d["d35"],
+      //   c8: d["d36"],
+      //   c8: d["d37"],
+      //   c8: d["d38"],
+      //   c8: d["d39"],
+      //   c8: d["d40"],
+      //   c9: d["d41"],
+      //   c10: d["d42"],
+      //   c11: d["d43"],
+      //   c12: d["d44"],
+      //   c13: d["d45"],
+      //   c14: d["d46"],
+      //   c15: d["d47"],
+      //   c16: d["d48"],
+      //   c17: d["d49"],
+      //   c18: d["d50"],
+      //   c19: d["d51"],
+      //   c20: d["d52"],
+      //   c21: d["d53"],
+      //   c22: d["d54"],
+      //   c23: d["d55"],
+      //   c24: d["d56"],
+      //   c25: d["d57"],
+      //   c26: d["d58"],
+      //   c27: d["d59"],
+      //   c28: d["d60"],
+      //   c29: d["d61"],
+      //   c30: d["d62"],
+      //   c31: d["d63"],
+      //   c32: d["d64"],
+      //   c33: d["d65"],
+      //   c34: d["d66"],
+      //   c35: d["d67"],
+    });
   };
 
   let na = "N/A";
@@ -97,6 +141,41 @@ const Home = ({ data, sendCmd }) => {
     d20: zero,
     d21: zero,
     d22: zero,
+    c1: zero, //check버튼의 zero를 1로 바꿔보면 체크된 버튼을 볼 수 있음
+    c2: zero,
+    c3: zero,
+    c4: zero,
+    c5: zero,
+    c6: zero,
+    c7: zero,
+    c8: zero,
+    c9: zero,
+    c10: zero,
+    c11: zero,
+    c12: zero,
+    c13: zero,
+    c14: zero,
+    c15: zero,
+    c16: zero,
+    c17: zero,
+    c18: zero,
+    c19: zero,
+    c20: zero,
+    c21: zero,
+    c22: zero,
+    c23: zero,
+    c24: zero,
+    c25: zero,
+    c26: zero,
+    c27: zero,
+    c28: zero,
+    c29: zero,
+    c30: zero,
+    c31: zero,
+    c32: zero,
+    c33: zero,
+    c34: zero,
+    c35: zero,
   });
 
   //horizontal range slider
@@ -246,6 +325,50 @@ const Home = ({ data, sendCmd }) => {
     sendCmd("0.1", name, maxfantempCount);
   };
 
+  //토글버튼 ex거실상부, 침실상부
+  //버튼 체크 상태 1이면 체크됨, 0이면 체크안됨, setDefaultToggle를 homeDataHandle함수에 넣어서 데이터를 지정해주면됨.
+  //예시 const [defaultToggle, setDefaultToggle] = useState(1);
+
+  const [defaultToggle, setDefaultToggle] = useState({
+    livingroom_top_check: homedata.c1,
+    bedroom_top_check: homedata.c2,
+    earning_left_check: homedata.c3,
+    livingroom_bottom_check: homedata.c4,
+    bedroom_bottom_check: homedata.c5,
+    earning_right_check: homedata.c6,
+    livingroom_main_check: homedata.c7,
+    bedroom_main_check: homedata.c8,
+    restroom_main_check: homedata.c9,
+    restroom_indirect_light_check: homedata.c10,
+    bunker_main_check: homedata.c11,
+    bunker_indirect_light_check: homedata.c12,
+    kitchen_check: homedata.c13,
+    vehicle_bottom_light_check: homedata.c14,
+    all_light_check: homedata.c15,
+    freshWater_check: homedata.c16,
+    wasteWater_check: homedata.c17,
+    refrigerator_check: homedata.c18,
+    pump_kitchen_check: homedata.c19,
+    pump_restroom_check: homedata.c20,
+    inverter_kitchen_check: homedata.c21,
+    inverter_restroom_check: homedata.c22,
+    vehicle_start_check: homedata.c23,
+    Hydraulics_level_check: homedata.c24,
+    warmair_check: homedata.c25,
+    heater_d2_check: homedata.c26,
+    heater_d5_check: homedata.c27,
+    bed_check: homedata.c28,
+    floor_check: homedata.c29,
+    bunker_check: homedata.c30,
+    restroom_fan_check: homedata.c31,
+    aux1_check: homedata.c32,
+    aux2_check: homedata.c33,
+    aux3_check: homedata.c34,
+    aux4_check: homedata.c35,
+  });
+
+  console.log(homedata.c1);
+
   return (
     <div className="inner_contents home_wrap">
       {/* column 1 */}
@@ -259,6 +382,9 @@ const Home = ({ data, sendCmd }) => {
                   id="mycheckbox"
                   type="checkbox"
                   className="default"
+                  defaultChecked={
+                    defaultToggle.livingroom_top_check === 1 ? true : false
+                  }
                   onChange={(e) => onOffHandle(e, "livingroom_top")}
                 />
                 <span className="dot">
@@ -290,6 +416,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bedroom_top")}
+                  defaultChecked={
+                    defaultToggle.bedroom_top_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -320,6 +449,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "earning_left")}
+                  defaultChecked={
+                    defaultToggle.earning_left_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -352,6 +484,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "livingroom_bottom")}
+                  defaultChecked={
+                    defaultToggle.bedroom_bottom_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -382,6 +517,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bedroom_bottom")}
+                  defaultChecked={
+                    defaultToggle.bedroom_bottom_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -412,6 +550,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "earning_right")}
+                  defaultChecked={
+                    defaultToggle.earning_right_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -447,6 +588,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "livingroom_main")}
+                  defaultChecked={
+                    defaultToggle.livingroom_main_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -467,6 +611,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bedroom_main")}
+                  defaultChecked={
+                    defaultToggle.bedroom_main_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -487,6 +634,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "restroom_main")}
+                  defaultChecked={
+                    defaultToggle.restroom_main_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -507,6 +657,11 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "restroom_indirect_light")}
+                  defaultChecked={
+                    defaultToggle.restroom_indirect_light_check === 1
+                      ? true
+                      : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -529,6 +684,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bunker_main")}
+                  defaultChecked={
+                    defaultToggle.bunker_main_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -549,6 +707,11 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
+                  defaultChecked={
+                    defaultToggle.bunker_indirect_light_check === 1
+                      ? true
+                      : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -569,6 +732,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "kitchen")}
+                  defaultChecked={
+                    defaultToggle.kitchen_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -587,6 +753,11 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                  defaultChecked={
+                    defaultToggle.vehicle_bottom_light_check === 1
+                      ? true
+                      : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -609,6 +780,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "all_light")}
+                  defaultChecked={
+                    defaultToggle.all_light_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -657,6 +831,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "freshWater")}
+                  defaultChecked={
+                    defaultToggle.freshWater_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -696,6 +873,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "wasteWater")}
+                  defaultChecked={
+                    defaultToggle.wasteWater_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -831,6 +1011,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "refrigerator")}
+                  defaultChecked={
+                    defaultToggle.refrigerator_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -849,6 +1032,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "pump_kitchen")}
+                  defaultChecked={
+                    defaultToggle.pump_kitchen_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -869,6 +1055,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "pump_restroom")}
+                  defaultChecked={
+                    defaultToggle.pump_restroom_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -892,6 +1081,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "inverter_kitchen")}
+                  defaultChecked={
+                    defaultToggle.inverter_kitchen_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -912,6 +1104,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "inverter_restroom")}
+                  defaultChecked={
+                    defaultToggle.inverter_restroom_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -932,6 +1127,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "vehicle_start")}
+                  defaultChecked={
+                    defaultToggle.vehicle_start_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -952,6 +1150,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "Hydraulics_level")}
+                  defaultChecked={
+                    defaultToggle.Hydraulics_level_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1057,6 +1258,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "warmair")}
+                  defaultChecked={
+                    defaultToggle.warmair_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1085,6 +1289,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "heater_d2")}
+                  defaultChecked={
+                    defaultToggle.heater_d2_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1115,6 +1322,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "heater_d5")}
+                  defaultChecked={
+                    defaultToggle.heater_d5_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1147,6 +1357,7 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bed")}
+                  defaultChecked={defaultToggle.bed_check === 1 ? true : false}
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1175,6 +1386,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "floor")}
+                  defaultChecked={
+                    defaultToggle.floor_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1203,6 +1417,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "bunker")}
+                  defaultChecked={
+                    defaultToggle.bunker_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1236,6 +1453,9 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "restroom_fan")}
+                  defaultChecked={
+                    defaultToggle.restroom_fan_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1265,6 +1485,7 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "aux1")}
+                  defaultChecked={defaultToggle.aux1_check === 1 ? true : false}
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1283,6 +1504,7 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "aux2")}
+                  defaultChecked={defaultToggle.aux2_check === 1 ? true : false}
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1301,6 +1523,7 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "aux3")}
+                  defaultChecked={defaultToggle.aux3_check === 1 ? true : false}
                 />
                 <span className="dot">
                   <div className="text_on">
@@ -1319,6 +1542,7 @@ const Home = ({ data, sendCmd }) => {
                   type="checkbox"
                   className="default"
                   onChange={(e) => onOffHandle(e, "aux4")}
+                  defaultChecked={defaultToggle.aux4_check === 1 ? true : false}
                 />
                 <span className="dot">
                   <div className="text_on">
