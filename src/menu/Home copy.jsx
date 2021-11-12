@@ -208,9 +208,11 @@ const Home = ({ data, sendCmd }) => {
   //progress bar
   let freshWater = homedata.d16;
   let wasteWater = homedata.d17;
-  let batteryLevel = homedata.d18;
-  let alternator = homedata.d20;
-  let photovoltaics = homedata.d21;
+  let batteryVoltage = homedata.d18;
+  let batteryTemp = homedata.d19;
+  let batteryCurrent = homedata.d20;
+  let photovoltaics_200 = homedata.d21;
+  let photovoltaics_600 = homedata.d22;
 
   // modal
   const [CameraModal, HandleCameraModal] = useState(false);
@@ -340,6 +342,7 @@ const Home = ({ data, sendCmd }) => {
     restroom_indirect_light_check: homedata.c10,
     bunker_main_check: homedata.c11,
     bunker_indirect_light_check: homedata.c12,
+    kitchen_check: homedata.c13,
     vehicle_bottom_light_check: homedata.c14,
     all_light_check: homedata.c15,
     freshWater_check: homedata.c16,
@@ -371,81 +374,29 @@ const Home = ({ data, sendCmd }) => {
         <div className="wrap_bg li_wrap">
           <div className="title">조명</div>
           <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "livingroom_main")}
-                    defaultChecked={
-                      defaultToggle.livingroom_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>거실</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>거실</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      defaultChecked={
-                        defaultToggle.livingroom_top_check === 1 ? true : false
-                      }
-                      onChange={(e) => onOffHandle(e, "livingroom_top")}
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>거실</div>
-                        <div>상부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>거실</div>
-                        <div>상부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "livingroom_bottom")}
-                      defaultChecked={
-                        defaultToggle.bedroom_bottom_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>거실</div>
-                        <div>하부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>거실</div>
-                        <div>하부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider slider_margin_bottom">
+            <div className="inner_col_wrap_flex slider_width margin_right">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  defaultChecked={
+                    defaultToggle.livingroom_top_check === 1 ? true : false
+                  }
+                  onChange={(e) => onOffHandle(e, "livingroom_top")}
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>거실</div>
+                    <div>상부</div>
+                  </div>
+                  <div className="text_off">
+                    <div>거실</div>
+                    <div>상부</div>
+                  </div>
+                </span>
+              </label>
+              <div className="range_slider">
                 <RangeSlider
                   name="li_3_livingroom_top"
                   value={rangevalue.li_3_livingroom_top}
@@ -455,6 +406,97 @@ const Home = ({ data, sendCmd }) => {
                   onChange={(e) => rangdesliderHandle(e)}
                 />
               </div>
+            </div>
+            <div className="inner_col_wrap_flex slider_width margin_right">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_top")}
+                  defaultChecked={
+                    defaultToggle.bedroom_top_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>침실</div>
+                    <div>상부</div>
+                  </div>
+                  <div className="text_off">
+                    <div>침실</div>
+                    <div>상부</div>
+                  </div>
+                </span>
+              </label>
+              <div className="range_slider">
+                <RangeSlider
+                  name="li_3_bedroom_top"
+                  value={rangevalue.li_3_bedroom_top}
+                  step={5}
+                  min={0}
+                  max={100}
+                  onChange={(e) => rangdesliderHandle(e)}
+                />
+              </div>
+            </div>
+            <div className="inner_col_wrap_flex slider_width">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "earning_left")}
+                  defaultChecked={
+                    defaultToggle.earning_left_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>어닝</div>
+                    <div>좌</div>
+                  </div>
+                  <div className="text_off">
+                    <div>어닝</div>
+                    <div>좌</div>
+                  </div>
+                </span>
+              </label>
+              <div className="range_slider">
+                <RangeSlider
+                  name="li_3_earning_left"
+                  value={rangevalue.li_3_earning_left}
+                  step={5}
+                  min={0}
+                  max={100}
+                  onChange={(e) => rangdesliderHandle(e)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="inner_col_wrap_flex slider_width margin_right">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "livingroom_bottom")}
+                  defaultChecked={
+                    defaultToggle.bedroom_bottom_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>거실</div>
+                    <div>하부</div>
+                  </div>
+                  <div className="text_off">
+                    <div>거실</div>
+                    <div>하부</div>
+                  </div>
+                </span>
+              </label>
               <div className="range_slider">
                 <RangeSlider
                   name="li_3_livingroom_bottom"
@@ -466,92 +508,28 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "bedroom_main")}
-                    defaultChecked={
-                      defaultToggle.bedroom_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>침실</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>침실</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "bedroom_top")}
-                      defaultChecked={
-                        defaultToggle.bedroom_top_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>침실</div>
-                        <div>상부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>침실</div>
-                        <div>상부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "bedroom_bottom")}
-                      defaultChecked={
-                        defaultToggle.bedroom_bottom_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>침실</div>
-                        <div>하부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>침실</div>
-                        <div>하부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_bedroom_top"
-                  value={rangevalue.li_3_bedroom_top}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
+            <div className="inner_col_wrap_flex slider_width margin_right">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_bottom")}
+                  defaultChecked={
+                    defaultToggle.bedroom_bottom_check === 1 ? true : false
+                  }
                 />
-              </div>
+                <span className="dot">
+                  <div className="text_on">
+                    <div>침실</div>
+                    <div>하부</div>
+                  </div>
+                  <div className="text_off">
+                    <div>침실</div>
+                    <div>하부</div>
+                  </div>
+                </span>
+              </label>
               <div className="range_slider">
                 <RangeSlider
                   name="li_3_bedroom_bottom"
@@ -563,90 +541,28 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "all_light")}
-                    defaultChecked={
-                      defaultToggle.all_light_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>전체등</div>
-                    </div>
-                    <div className="text_off">
-                      <div>전체등</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "earning_left")}
-                      defaultChecked={
-                        defaultToggle.earning_left_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>어닝</div>
-                        <div>좌</div>
-                      </div>
-                      <div className="text_off">
-                        <div>어닝</div>
-                        <div>좌</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "earning_right")}
-                      defaultChecked={
-                        defaultToggle.earning_right_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>어닝</div>
-                        <div>우</div>
-                      </div>
-                      <div className="text_off">
-                        <div>어닝</div>
-                        <div>우</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_earning_left"
-                  value={rangevalue.li_3_earning_left}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
+            <div className="inner_col_wrap_flex slider_width">
+              <label className="toggle toggle_slider">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "earning_right")}
+                  defaultChecked={
+                    defaultToggle.earning_right_check === 1 ? true : false
+                  }
                 />
-              </div>
+                <span className="dot">
+                  <div className="text_on">
+                    <div>어닝</div>
+                    <div>우</div>
+                  </div>
+                  <div className="text_off">
+                    <div>어닝</div>
+                    <div>우</div>
+                  </div>
+                </span>
+              </label>
               <div className="range_slider">
                 <RangeSlider
                   name="li_3_earning_right"
@@ -659,236 +575,320 @@ const Home = ({ data, sendCmd }) => {
               </div>
             </div>
           </div>
-          <div className="row row_padding">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right li_text_center">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "bunker_main")}
-                    defaultChecked={
-                      defaultToggle.bunker_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>벙커</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>벙커</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
-                    defaultChecked={
-                      defaultToggle.bunker_indirect_light_check === 1
-                        ? true
-                        : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>벙커</div>
-                      <div>간접등</div>
-                    </div>
-                    <div className="text_off">
-                      <div>벙커</div>
-                      <div>간접등</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
+          <div className="row">
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "livingroom_main")}
+                  defaultChecked={
+                    defaultToggle.livingroom_main_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>거실</div>
+                    <div>메인</div>
+                  </div>
+                  <div className="text_off">
+                    <div>거실</div>
+                    <div>메인</div>
+                  </div>
+                </span>
+              </label>
             </div>
-            <div className="inner_col_wrap li_flex">
-              <div className="col_wrap_inner_left margin_right li_text_center">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "restroom_main")}
-                    defaultChecked={
-                      defaultToggle.restroom_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>화장실</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>화장실</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "restroom_indirect_light")}
-                    defaultChecked={
-                      defaultToggle.restroom_indirect_light_check === 1
-                        ? true
-                        : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>화장실</div>
-                      <div>간접등</div>
-                    </div>
-                    <div className="text_off">
-                      <div>화장실</div>
-                      <div>간접등</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bedroom_main")}
+                  defaultChecked={
+                    defaultToggle.bedroom_main_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>침실</div>
+                    <div>메인</div>
+                  </div>
+                  <div className="text_off">
+                    <div>침실</div>
+                    <div>메인</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_main")}
+                  defaultChecked={
+                    defaultToggle.restroom_main_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>화장실</div>
+                    <div>메인</div>
+                  </div>
+                  <div className="text_off">
+                    <div>화장실</div>
+                    <div>메인</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bunker_main")}
+                  defaultChecked={
+                    defaultToggle.bunker_main_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>벙커</div>
+                    <div>메인</div>
+                  </div>
+                  <div className="text_off">
+                    <div>벙커</div>
+                    <div>메인</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
+                  defaultChecked={
+                    defaultToggle.bunker_indirect_light_check === 1
+                      ? true
+                      : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>벙커</div>
+                    <div>간접등</div>
+                  </div>
+                  <div className="text_off">
+                    <div>벙커</div>
+                    <div>간접등</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "kitchen")}
+                  defaultChecked={
+                    defaultToggle.kitchen_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>주방</div>
+                  </div>
+                  <div className="text_off">
+                    <div>주방</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_indirect_light")}
+                  defaultChecked={
+                    defaultToggle.restroom_indirect_light_check === 1
+                      ? true
+                      : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>화장실</div>
+                    <div>간접등</div>
+                  </div>
+                  <div className="text_off">
+                    <div>화장실</div>
+                    <div>간접등</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "all_light")}
+                  defaultChecked={
+                    defaultToggle.all_light_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>전체등</div>
+                  </div>
+                  <div className="text_off">
+                    <div>전체등</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "restroom_fan")}
+                  defaultChecked={
+                    defaultToggle.restroom_fan_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>화장실</div>
+                    <div>팬</div>
+                  </div>
+                  <div className="text_off">
+                    <div>화장실</div>
+                    <div>팬</div>
+                  </div>
+                </span>
+              </label>
             </div>
           </div>
         </div>
+        {/* <div className="wrap_bg li_control_wrap">
+          <div className="title">조명장치</div>
+
+        </div> */}
       </div>
       {/* column 2 */}
       <div className="col">
-        <div className="water_wrap_flex">
-          <div className="wrap_bg water_wrap water_margin">
-            <div className="title">청수</div>
-            <div className="row">
-              <div className="inner_col_wrap margin_right">
-                <div className="vertical_bar">
-                  <div className="progress progress-bar-vertical">
-                    <div
-                      className="progress-bar pro_bar_blue"
-                      role="progressbar"
-                      aria-valuenow="30"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ height: `${freshWater}%` }}
-                    >
-                      <span className="sr-only">
-                        <div>{freshWater}%</div>
-                      </span>
-                    </div>
+        <div className="wrap_bg water_wrap">
+          <div className="title">오수</div>
+          <div className="row">
+            <div className="inner_col_wrap_flex margin_right">
+              <div className="vertical_bar">
+                <div className="progress progress-bar-vertical">
+                  <div
+                    className="progress-bar pro_bar_blue"
+                    role="progressbar"
+                    aria-valuenow="30"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    style={{ height: `${freshWater}%` }}
+                  >
+                    <span className="sr-only">
+                      <div>청수</div>
+                      <div>{freshWater}%</div>
+                    </span>
                   </div>
-                </div>
-              </div>
-              <div className="inner_col_wrap">
-                <div className="water_top">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "freshWater")}
-                      defaultChecked={
-                        defaultToggle.freshWater_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>퇴수</div>
-                      </div>
-                      <div className="text_off">
-                        <div>퇴수</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="water_bottom">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "water_pump")}
-                      defaultChecked={
-                        defaultToggle.water_pump_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>물펌프</div>
-                      </div>
-                      <div className="text_off">
-                        <div>물펌프</div>
-                      </div>
-                    </span>
-                  </label>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="wrap_bg water_wrap">
-            <div className="title">오수</div>
-            <div className="row">
-              <div className="inner_col_wrap margin_right">
-                <div className="vertical_bar">
-                  <div className="progress progress-bar-vertical">
-                    <div
-                      className="progress-bar pro_bar_red"
-                      role="progressbar"
-                      aria-valuenow="30"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ height: `${wasteWater}%` }}
-                    >
-                      <span className="sr-only">
-                        <div>{wasteWater}%</div>
-                      </span>
-                    </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "freshWater")}
+                  defaultChecked={
+                    defaultToggle.freshWater_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>청수</div>
+                    <div>퇴수</div>
                   </div>
-                </div>
-              </div>
-              <div className="inner_col_wrap">
-                <div className="water_top">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "wasteWater")}
-                      defaultChecked={
-                        defaultToggle.wasteWater_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>퇴수</div>
-                      </div>
-                      <div className="text_off">
-                        <div>퇴수</div>
-                      </div>
+                  <div className="text_off">
+                    <div>청수</div>
+                    <div>퇴수</div>
+                  </div>
+                </span>
+              </label>
+            </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <div className="vertical_bar">
+                <div className="progress progress-bar-vertical">
+                  <div
+                    className="progress-bar pro_bar_red"
+                    role="progressbar"
+                    aria-valuenow="30"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    style={{ height: `${wasteWater}%` }}
+                  >
+                    <span className="sr-only">
+                      <div>오수</div>
+                      <div>{wasteWater}%</div>
                     </span>
-                  </label>
-                </div>
-                <div className="water_bottom">
-                  <div className="camera_btn" onClick={() => showCamera()}>
-                    카메라
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="inner_col_wrap_flex">
+              <label className="toggle">
+                <input
+                  id="mycheckbox"
+                  type="checkbox"
+                  className="default"
+                  onChange={(e) => onOffHandle(e, "wasteWater")}
+                  defaultChecked={
+                    defaultToggle.wasteWater_check === 1 ? true : false
+                  }
+                />
+                <span className="dot">
+                  <div className="text_on">
+                    <div>오수</div>
+                    <div>퇴수</div>
+                  </div>
+                  <div className="text_off">
+                    <div>오수</div>
+                    <div>퇴수</div>
+                  </div>
+                </span>
+              </label>
             </div>
           </div>
         </div>
         <div className="wrap_bg battery_wrap">
           <div className="title">배터리</div>
           <div className="row">
-            <div className="inner_col_wrap margin_right battery_width">
+            <div className="inner_col_wrap_flex margin_right">
               <div className="progress progress-bar-vertical">
                 <div
                   className="progress-bar"
@@ -896,19 +896,19 @@ const Home = ({ data, sendCmd }) => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: `${batteryLevel}%` }}
+                  style={{ height: `${batteryVoltage}%` }}
                 >
                   <span className="sr-only">
                     <div>
                       <div>배터리</div>
-                      <div>잔량</div>
+                      <div>전압</div>
                     </div>
-                    <div>{batteryLevel}%</div>
+                    <div>{batteryVoltage}</div>
                   </span>
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap margin_right battery_width">
+            <div className="inner_col_wrap_flex margin_right">
               <div className="progress progress-bar-vertical">
                 <div
                   className="progress-bar"
@@ -916,16 +916,19 @@ const Home = ({ data, sendCmd }) => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: `${photovoltaics}%` }}
+                  style={{ height: `${batteryTemp}%` }}
                 >
                   <span className="sr-only">
-                    <div>태양광</div>
-                    <div>{photovoltaics}%</div>
+                    <div>
+                      <div>배터리</div>
+                      <div>온도</div>
+                    </div>
+                    <div>{batteryTemp}</div>
                   </span>
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap battery_width">
+            <div className="inner_col_wrap_flex margin_right">
               <div className="progress progress-bar-vertical">
                 <div
                   className="progress-bar"
@@ -933,25 +936,69 @@ const Home = ({ data, sendCmd }) => {
                   aria-valuenow="30"
                   aria-valuemin="0"
                   aria-valuemax="100"
-                  style={{ height: `${alternator}%` }}
+                  style={{ height: `${batteryCurrent}%` }}
                 >
                   <span className="sr-only">
-                    <div>알터</div>
-                    <div>{alternator}%</div>
+                    <div>
+                      <div>배터리</div>
+                      <div>전류</div>
+                    </div>
+                    <div>{batteryCurrent}</div>
                   </span>
                 </div>
               </div>
             </div>
+            <div className="inner_col_wrap_flex"></div>
           </div>
           <div className="row">
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap"></div>
+            <div className="inner_col_wrap_flex margin_right">
+              <div className="progress progress-bar-vertical">
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  aria-valuenow="30"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={{ height: `${photovoltaics_200}%` }}
+                >
+                  <span className="sr-only">
+                    <div>
+                      <div>태양광</div>
+                      <div>(200)</div>
+                    </div>
+                    <div>{photovoltaics_200}</div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="inner_col_wrap_flex margin_right">
+              <div className="progress progress-bar-vertical">
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  aria-valuenow="30"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style={{ height: `${photovoltaics_600}%` }}
+                >
+                  <span className="sr-only">
+                    <div>
+                      <div>태양광</div>
+                      <div>(600)</div>
+                    </div>
+                    <div>{photovoltaics_600}</div>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="inner_col_wrap_flex margin_right"></div>
+            <div className="inner_col_wrap_flex"></div>
           </div>
         </div>
         <div className="wrap_bg util_control_wrap">
           <div className="title">전기장치</div>
           <div className="row">
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -972,7 +1019,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -993,7 +1040,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1016,7 +1063,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap">
+            <div className="inner_col_wrap_flex">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1041,31 +1088,28 @@ const Home = ({ data, sendCmd }) => {
             </div>
           </div>
           <div className="row">
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
                   className="default"
-                  onChange={(e) => onOffHandle(e, "restroom_fan")}
+                  onChange={(e) => onOffHandle(e, "water_pump")}
                   defaultChecked={
-                    defaultToggle.restroom_fan_check === 1 ? true : false
+                    defaultToggle.water_pump_check === 1 ? true : false
                   }
                 />
                 <span className="dot">
                   <div className="text_on">
-                    <div>화장실</div>
-                    <div>팬</div>
+                    <div>물펌프</div>
                   </div>
                   <div className="text_off">
-                    <div>화장실</div>
-                    <div>팬</div>
+                    <div>물펌프</div>
                   </div>
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap">
+            <div className="inner_col_wrap_flex">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1090,7 +1134,8 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap"></div>
+            <div className="inner_col_wrap_flex margin_right"></div>
+            <div className="inner_col_wrap_flex"></div>
           </div>
         </div>
       </div>
@@ -1099,7 +1144,7 @@ const Home = ({ data, sendCmd }) => {
         <div className="wrap_bg temp_wrap">
           <div className="title">온도설정</div>
           <div className="row">
-            <div className="inner_col_wrap temp_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -1124,7 +1169,7 @@ const Home = ({ data, sendCmd }) => {
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap temp_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -1149,7 +1194,7 @@ const Home = ({ data, sendCmd }) => {
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap temp_width">
+            <div className="inner_col_wrap_flex slider_width">
               <div className="control_wrap">
                 <div className="control_name">
                   <div>
@@ -1176,7 +1221,7 @@ const Home = ({ data, sendCmd }) => {
             </div>
           </div>
           <div className="row">
-            <div className="inner_col_wrap slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1207,7 +1252,7 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-            <div className="inner_col_wrap slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1240,7 +1285,7 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-            <div className="inner_col_wrap slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1275,7 +1320,7 @@ const Home = ({ data, sendCmd }) => {
             </div>
           </div>
           <div className="row">
-            <div className="inner_col_wrap slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1304,7 +1349,7 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-            <div className="inner_col_wrap slider_width margin_right">
+            <div className="inner_col_wrap_flex slider_width margin_right">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1335,7 +1380,7 @@ const Home = ({ data, sendCmd }) => {
                 />
               </div>
             </div>
-            <div className="inner_col_wrap slider_width">
+            <div className="inner_col_wrap_flex slider_width">
               <label className="toggle toggle_slider">
                 <input
                   id="mycheckbox"
@@ -1371,13 +1416,17 @@ const Home = ({ data, sendCmd }) => {
         <div className="wrap_bg other_control_wrap">
           <div className="title">장치</div>
           <div className="row">
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
+            <div className="inner_col_wrap_flex margin_right"></div>
+            <div className="inner_col_wrap_flex margin_right"></div>
+            <div className="inner_col_wrap_flex margin_right"></div>
+            <div className="inner_col_wrap_flex margin_right">
+              <div className="camera_btn" onClick={() => showCamera()}>
+                카메라
+              </div>
+            </div>
           </div>
           <div className="row">
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1396,7 +1445,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1415,7 +1464,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"
@@ -1434,7 +1483,7 @@ const Home = ({ data, sendCmd }) => {
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
+            <div className="inner_col_wrap_flex margin_right">
               <label className="toggle">
                 <input
                   id="mycheckbox"

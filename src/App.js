@@ -9,6 +9,7 @@ import unnamed from "./image/unnamed.png";
 import WebSocketClient from "./js/ws/WebSocketClient"; //websocket
 import { observer } from "mobx-react"; //observer
 import { toJS } from "mobx"; //tojs
+// import { apiDefineProperty } from "mobx/dist/internal";
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
@@ -18,6 +19,20 @@ function App() {
   useEffect(() => {
     wsc.openConn();
   }, []);
+
+  let elem = document.documentElement;
+
+  function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
 
   //data cmd
   const sendCmd = (target, cmd, status) => {
@@ -84,6 +99,10 @@ function App() {
     // console.log("hi!", idx);
     setActiveTab(idx);
     colorchange(idx);
+
+    if (idx === 4) {
+      window.close();
+    }
   };
 
   //tab menu color change
