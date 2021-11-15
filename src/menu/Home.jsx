@@ -68,6 +68,10 @@ const Home = ({ data, sendCmd }) => {
       //     d20: d["d20"],
       //     d21: d["d21"],
       //     d22: d["d22"],
+      //     d23: d["d23"],
+      //     d24: d["d24"],
+      //     d25: d["d25"],
+      //     d26: d["d26"],
       //   c1: d["d23"],
       //   c2: d["d24"],
       //   c3: d["d25"],
@@ -113,6 +117,9 @@ const Home = ({ data, sendCmd }) => {
       //   c33: d["d65"],
       //   c34: d["d66"],
       //   c35: d["d67"],
+      //   c36: d["d68"],
+      //   c37: d["d69"],
+      //   c38: d["d70"],
     });
   };
 
@@ -141,6 +148,10 @@ const Home = ({ data, sendCmd }) => {
     d20: zero,
     d21: zero,
     d22: zero,
+    d23: zero,
+    d24: zero,
+    d25: zero,
+    d26: zero,
     c1: zero, //check버튼의 zero를 1로 바꿔보면 체크된 버튼을 볼 수 있음
     c2: zero,
     c3: zero,
@@ -176,6 +187,9 @@ const Home = ({ data, sendCmd }) => {
     c33: zero,
     c34: zero,
     c35: zero,
+    c36: zero,
+    c37: zero,
+    c38: zero,
   });
 
   //horizontal range slider
@@ -188,13 +202,11 @@ const Home = ({ data, sendCmd }) => {
     li_3_earning_right: homedata.d6,
     air_1_livingroom_temp: homedata.d7,
     air_1_bedroom_temp: homedata.d8,
-    air_1_bed: homedata.d9,
-    air_1_floor: homedata.d10,
     air_2_mixfan_temp: homedata.d11,
-    air_2_bunker: homedata.d12,
-    air_2_warmair: homedata.d13,
-    air_3_heater_d2: homedata.d14,
-    air_3_heater_d5: homedata.d15,
+    floor_heater: homedata.d23,
+    air_heater: homedata.d24,
+    aqua_bed_warmer: homedata.d25,
+    aqua_bunker_warmer: homedata.d26,
   });
   const rangdesliderHandle = (e) => {
     const value = e.target.value;
@@ -212,7 +224,7 @@ const Home = ({ data, sendCmd }) => {
   let alternator = homedata.d20;
   let photovoltaics = homedata.d21;
 
-  // modal
+  //camera modal
   const [CameraModal, HandleCameraModal] = useState(false);
 
   //camera click event
@@ -265,62 +277,93 @@ const Home = ({ data, sendCmd }) => {
     sendCmd("0.1", name, e.target.checked === true ? 1 : 0);
   };
 
-  // const [number, setNumber] = useState({
-  //   livingroom_temp: 1,
-  //   bedroom_temp: 1,
-  //   maxfan_temp: 1,
-  // });
-
-  const [livingroomtempCount, setlivingroomtempCount] = useState(5);
-  const [bedroomtempCount, setbedroomtempCount] = useState(5);
+  const [airconLivingroomTempCount, setairconLivingroomTempCount] = useState(5);
+  const [airconLivingroomWindCount, setairconLivingroomWindCount] = useState(5);
+  const [airconBedroomTempCount, setairconBedroomTempCount] = useState(5);
+  const [airconBedroomWindCount, setairconBedroomWindCount] = useState(5);
   const [maxfantempCount, setmaxfantempCount] = useState(5);
+  const [heaterd2Count, setheaterd2Count] = useState(5);
 
-  const livingroomtempPlus = (name) => {
-    setlivingroomtempCount(
-      (previouslivingroomtempCount) => previouslivingroomtempCount + 1
-    );
-    console.log(livingroomtempCount);
-    sendCmd("0.1", name, livingroomtempCount);
+  // 에어컨 거실 온도
+  const airconLivingroomTempCal = (target, name, op) => {
+    if (op === "p") {
+      setairconLivingroomTempCount(
+        (prevairconLivingroomTempCount) => prevairconLivingroomTempCount + 1
+      );
+    } else if (op === "m") {
+      setairconLivingroomTempCount(
+        (prevairconLivingroomTempCount) => prevairconLivingroomTempCount - 1
+      );
+    }
+    console.log("Count liv temp: ", target, name, airconLivingroomTempCount);
+    sendCmd(target, name, airconLivingroomTempCount);
   };
 
-  const livingroomtempMinus = (name) => {
-    setlivingroomtempCount(
-      (previouslivingroomtempCount) => previouslivingroomtempCount - 1
-    );
-    console.log(livingroomtempCount);
-    sendCmd("0.1", name, livingroomtempCount);
+  //에어컨 거실 풍향
+  const airconLivingroomWindCal = (target, name, op) => {
+    if (op === "p") {
+      setairconLivingroomWindCount(
+        (prevairconLivingroomWindCount) => prevairconLivingroomWindCount + 1
+      );
+    } else if (op === "m") {
+      setairconLivingroomWindCount(
+        (prevairconLivingroomWindCount) => prevairconLivingroomWindCount - 1
+      );
+    }
+    console.log("Count liv wind: ", target, name, airconLivingroomWindCount);
+    sendCmd(target, name, airconLivingroomWindCount);
   };
 
-  const bedroomtempPlus = (name) => {
-    setbedroomtempCount(
-      (previousbedroomtempCount) => previousbedroomtempCount + 1
-    );
-    console.log(bedroomtempCount);
-    sendCmd("0.1", name, bedroomtempCount);
+  //에어컨 침실 온도
+  const airconBedroomTempCal = (target, name, op) => {
+    if (op === "p") {
+      setairconBedroomTempCount(
+        (prevairconBedroomTempCount) => prevairconBedroomTempCount + 1
+      );
+    } else if (op === "m") {
+      setairconBedroomTempCount(
+        (prevairconBedroomTempCount) => prevairconBedroomTempCount - 1
+      );
+    }
+    //console.log("Count bed temp: ", target, name, airconBedroomTempCount);
+    sendCmd(target, name, airconBedroomTempCount);
   };
 
-  const bedroomtempMinus = (name) => {
-    setbedroomtempCount(
-      (previousbedroomtempCount) => previousbedroomtempCount - 1
-    );
-    console.log(bedroomtempCount);
-    sendCmd("0.1", name, bedroomtempCount);
+  //에어컨 침실 풍향
+  const airconBedroomWindCal = (target, name, op) => {
+    if (op === "p") {
+      setairconBedroomWindCount(
+        (prevairconBedroomWindCount) => prevairconBedroomWindCount + 1
+      );
+    } else if (op === "m") {
+      setairconBedroomWindCount(
+        (prevairconBedroomWindCount) => prevairconBedroomWindCount - 1
+      );
+    }
+    //console.log("Count bed wind: ", target, name, airconBedroomWindCount);
+    sendCmd(target, name, airconBedroomWindCount);
   };
 
-  const maxfantempCountPlus = (name) => {
-    setmaxfantempCount(
-      (previousmaxfantempCount) => previousmaxfantempCount + 1
-    );
-    console.log(maxfantempCount);
-    sendCmd("0.1", name, maxfantempCount);
+  //맥스팬 온도
+  const maxfanCal = (target, name, op) => {
+    if (op === "p") {
+      setmaxfantempCount((prevmaxfantempCount) => prevmaxfantempCount + 1);
+    } else if (op === "m") {
+      setmaxfantempCount((prevmaxfantempCount) => prevmaxfantempCount - 1);
+    }
+    console.log("Count maxfan temp: ", target, name, maxfantempCount);
+    sendCmd(target, name, maxfantempCount);
   };
 
-  const maxfantempCountMinus = (name) => {
-    setmaxfantempCount(
-      (previousmaxfantempCount) => previousmaxfantempCount - 1
-    );
-    console.log(maxfantempCount);
-    sendCmd("0.1", name, maxfantempCount);
+  //히터 D2 온도
+  const heaterd2Cal = (target, name, op) => {
+    if (op === "p") {
+      setheaterd2Count((prevheaterd2Count) => prevheaterd2Count + 1);
+    } else if (op === "m") {
+      setheaterd2Count((prevheaterd2Count) => prevheaterd2Count - 1);
+    }
+    console.log("Count maxfan temp: ", target, name, heaterd2Count);
+    sendCmd(target, name, heaterd2Count);
   };
 
   //토글버튼 ex거실상부, 침실상부
@@ -349,17 +392,14 @@ const Home = ({ data, sendCmd }) => {
     inverter_check: homedata.c21,
     vehicle_start_check: homedata.c23,
     Hydraulics_level_check: homedata.c24,
-    warmair_check: homedata.c25,
-    heater_d2_check: homedata.c26,
-    heater_d5_check: homedata.c27,
-    bed_check: homedata.c28,
-    floor_check: homedata.c29,
-    bunker_check: homedata.c30,
     restroom_fan_check: homedata.c31,
     aux1_check: homedata.c32,
     aux2_check: homedata.c33,
     aux3_check: homedata.c34,
     aux4_check: homedata.c35,
+    maxfan_check: homedata.c36,
+    heaterd2_check: homedata.c37,
+    heaterd5_check: homedata.c38,
   });
 
   console.log(homedata.c1);
@@ -370,391 +410,492 @@ const Home = ({ data, sendCmd }) => {
       <div className="col">
         <div className="wrap_bg li_wrap">
           <div className="title">조명</div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "livingroom_main")}
-                    defaultChecked={
-                      defaultToggle.livingroom_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>거실</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>거실</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
+          <div className="row_wrap">
+            <div className="row">
+              <div className="inner_col_wrap margin_right li_flex">
+                <div className="col_wrap_inner_left margin_right">
+                  <label className="toggle">
                     <input
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
+                      onChange={(e) => onOffHandle(e, "livingroom_main")}
                       defaultChecked={
-                        defaultToggle.livingroom_top_check === 1 ? true : false
+                        defaultToggle.livingroom_main_check === 1 ? true : false
                       }
-                      onChange={(e) => onOffHandle(e, "livingroom_top")}
                     />
                     <span className="dot">
                       <div className="text_on">
                         <div>거실</div>
-                        <div>상부</div>
+                        <div>메인</div>
                       </div>
                       <div className="text_off">
                         <div>거실</div>
-                        <div>상부</div>
+                        <div>메인</div>
                       </div>
                     </span>
                   </label>
                 </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "livingroom_bottom")}
-                      defaultChecked={
-                        defaultToggle.bedroom_bottom_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>거실</div>
-                        <div>하부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>거실</div>
-                        <div>하부</div>
-                      </div>
-                    </span>
-                  </label>
+                <div className="col_wrap_inner_right">
+                  <div className="col_wrap_inner_right_top">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        defaultChecked={
+                          defaultToggle.livingroom_top_check === 1
+                            ? true
+                            : false
+                        }
+                        onChange={(e) => onOffHandle(e, "livingroom_top")}
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>거실</div>
+                          <div>상부</div>
+                        </div>
+                        <div className="text_off">
+                          <div>거실</div>
+                          <div>상부</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "livingroom_bottom")}
+                        defaultChecked={
+                          defaultToggle.bedroom_bottom_check === 1
+                            ? true
+                            : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>거실</div>
+                          <div>하부</div>
+                        </div>
+                        <div className="text_off">
+                          <div>거실</div>
+                          <div>하부</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="inner_col_wrap slider_height">
+                <div className="range_slider slider_margin_bottom">
+                  <RangeSlider
+                    name="li_3_livingroom_top"
+                    value={rangevalue.li_3_livingroom_top}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+                <div className="range_slider">
+                  <RangeSlider
+                    name="li_3_livingroom_bottom"
+                    value={rangevalue.li_3_livingroom_bottom}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider slider_margin_bottom">
-                <RangeSlider
-                  name="li_3_livingroom_top"
-                  value={rangevalue.li_3_livingroom_top}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
+            <div className="row">
+              <div className="inner_col_wrap margin_right li_flex">
+                <div className="col_wrap_inner_left margin_right">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "bedroom_main")}
+                      defaultChecked={
+                        defaultToggle.bedroom_main_check === 1 ? true : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>침실</div>
+                        <div>메인</div>
+                      </div>
+                      <div className="text_off">
+                        <div>침실</div>
+                        <div>메인</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+                <div className="col_wrap_inner_right">
+                  <div className="col_wrap_inner_right_top">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "bedroom_top")}
+                        defaultChecked={
+                          defaultToggle.bedroom_top_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>침실</div>
+                          <div>상부</div>
+                        </div>
+                        <div className="text_off">
+                          <div>침실</div>
+                          <div>상부</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "bedroom_bottom")}
+                        defaultChecked={
+                          defaultToggle.bedroom_bottom_check === 1
+                            ? true
+                            : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>침실</div>
+                          <div>하부</div>
+                        </div>
+                        <div className="text_off">
+                          <div>침실</div>
+                          <div>하부</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                </div>
               </div>
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_livingroom_bottom"
-                  value={rangevalue.li_3_livingroom_bottom}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
+              <div className="inner_col_wrap slider_height">
+                <div className="range_slider">
+                  <RangeSlider
+                    name="li_3_bedroom_top"
+                    value={rangevalue.li_3_bedroom_top}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+                <div className="range_slider">
+                  <RangeSlider
+                    name="li_3_bedroom_bottom"
+                    value={rangevalue.li_3_bedroom_bottom}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="inner_col_wrap margin_right li_flex">
+                <div className="col_wrap_inner_left margin_right">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "all_light")}
+                      defaultChecked={
+                        defaultToggle.all_light_check === 1 ? true : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>전체등</div>
+                      </div>
+                      <div className="text_off">
+                        <div>전체등</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+                <div className="col_wrap_inner_right">
+                  <div className="col_wrap_inner_right_top">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "earning_left")}
+                        defaultChecked={
+                          defaultToggle.earning_left_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>어닝</div>
+                          <div>좌</div>
+                        </div>
+                        <div className="text_off">
+                          <div>어닝</div>
+                          <div>좌</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <label className="toggle toggle_slider">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "earning_right")}
+                        defaultChecked={
+                          defaultToggle.earning_right_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>어닝</div>
+                          <div>우</div>
+                        </div>
+                        <div className="text_off">
+                          <div>어닝</div>
+                          <div>우</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="inner_col_wrap slider_height">
+                <div className="range_slider">
+                  <RangeSlider
+                    name="li_3_earning_left"
+                    value={rangevalue.li_3_earning_left}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+                <div className="range_slider">
+                  <RangeSlider
+                    name="li_3_earning_right"
+                    value={rangevalue.li_3_earning_right}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="inner_col_wrap margin_right li_flex">
+                <div className="col_wrap_inner_left margin_right li_btn_center">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "bunker_main")}
+                      defaultChecked={
+                        defaultToggle.bunker_main_check === 1 ? true : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>벙커</div>
+                        <div>메인</div>
+                      </div>
+                      <div className="text_off">
+                        <div>벙커</div>
+                        <div>메인</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+                <div className="col_wrap_inner_right li_btn_center">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
+                      defaultChecked={
+                        defaultToggle.bunker_indirect_light_check === 1
+                          ? true
+                          : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>벙커</div>
+                        <div>간접등</div>
+                      </div>
+                      <div className="text_off">
+                        <div>벙커</div>
+                        <div>간접등</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div className="inner_col_wrap li_flex">
+                <div className="col_wrap_inner_left margin_right li_btn_center">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "restroom_main")}
+                      defaultChecked={
+                        defaultToggle.restroom_main_check === 1 ? true : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>화장실</div>
+                        <div>메인</div>
+                      </div>
+                      <div className="text_off">
+                        <div>화장실</div>
+                        <div>메인</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+                <div className="col_wrap_inner_right li_btn_center">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) =>
+                        onOffHandle(e, "restroom_indirect_light")
+                      }
+                      defaultChecked={
+                        defaultToggle.restroom_indirect_light_check === 1
+                          ? true
+                          : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>화장실</div>
+                        <div>간접등</div>
+                      </div>
+                      <div className="text_off">
+                        <div>화장실</div>
+                        <div>간접등</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
+        </div>
+        <div className="wrap_bg other_wrap">
+          <div className="title">장치</div>
+          <div className="row_wrap">
+            <div className="row">
+              <div className="inner_col_wrap margin_right">
                 <label className="toggle">
                   <input
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle(e, "bedroom_main")}
+                    onChange={(e) => onOffHandle(e, "aux1")}
                     defaultChecked={
-                      defaultToggle.bedroom_main_check === 1 ? true : false
+                      defaultToggle.aux1_check === 1 ? true : false
                     }
                   />
                   <span className="dot">
                     <div className="text_on">
-                      <div>침실</div>
-                      <div>메인</div>
+                      <div>AUX1</div>
                     </div>
                     <div className="text_off">
-                      <div>침실</div>
-                      <div>메인</div>
+                      <div>AUX1</div>
                     </div>
                   </span>
                 </label>
               </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "bedroom_top")}
-                      defaultChecked={
-                        defaultToggle.bedroom_top_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>침실</div>
-                        <div>상부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>침실</div>
-                        <div>상부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "bedroom_bottom")}
-                      defaultChecked={
-                        defaultToggle.bedroom_bottom_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>침실</div>
-                        <div>하부</div>
-                      </div>
-                      <div className="text_off">
-                        <div>침실</div>
-                        <div>하부</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_bedroom_top"
-                  value={rangevalue.li_3_bedroom_top}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_bedroom_bottom"
-                  value={rangevalue.li_3_bedroom_bottom}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right">
+              <div className="inner_col_wrap margin_right">
                 <label className="toggle">
                   <input
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle(e, "all_light")}
+                    onChange={(e) => onOffHandle(e, "aux2")}
                     defaultChecked={
-                      defaultToggle.all_light_check === 1 ? true : false
+                      defaultToggle.aux2_check === 1 ? true : false
                     }
                   />
                   <span className="dot">
                     <div className="text_on">
-                      <div>전체등</div>
+                      <div>AUX2</div>
                     </div>
                     <div className="text_off">
-                      <div>전체등</div>
+                      <div>AUX2</div>
                     </div>
                   </span>
                 </label>
               </div>
-              <div className="col_wrap_inner_right">
-                <div className="colwrap_inner_right_top">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "earning_left")}
-                      defaultChecked={
-                        defaultToggle.earning_left_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>어닝</div>
-                        <div>좌</div>
-                      </div>
-                      <div className="text_off">
-                        <div>어닝</div>
-                        <div>좌</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="colwrap_inner_right_bottm">
-                  <label className="toggle toggle_slider">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "earning_right")}
-                      defaultChecked={
-                        defaultToggle.earning_right_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>어닝</div>
-                        <div>우</div>
-                      </div>
-                      <div className="text_off">
-                        <div>어닝</div>
-                        <div>우</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_height">
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_earning_left"
-                  value={rangevalue.li_3_earning_left}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-              <div className="range_slider">
-                <RangeSlider
-                  name="li_3_earning_right"
-                  value={rangevalue.li_3_earning_right}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row row_padding">
-            <div className="inner_col_wrap margin_right li_flex">
-              <div className="col_wrap_inner_left margin_right li_text_center">
+              <div className="inner_col_wrap margin_right">
                 <label className="toggle">
                   <input
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle(e, "bunker_main")}
+                    onChange={(e) => onOffHandle(e, "aux3")}
                     defaultChecked={
-                      defaultToggle.bunker_main_check === 1 ? true : false
+                      defaultToggle.aux3_check === 1 ? true : false
                     }
                   />
                   <span className="dot">
                     <div className="text_on">
-                      <div>벙커</div>
-                      <div>메인</div>
+                      <div>AUX3</div>
                     </div>
                     <div className="text_off">
-                      <div>벙커</div>
-                      <div>메인</div>
+                      <div>AUX3</div>
                     </div>
                   </span>
                 </label>
               </div>
-              <div className="col_wrap_inner_right">
+              <div className="inner_col_wrap">
                 <label className="toggle">
                   <input
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
+                    onChange={(e) => onOffHandle(e, "aux4")}
                     defaultChecked={
-                      defaultToggle.bunker_indirect_light_check === 1
-                        ? true
-                        : false
+                      defaultToggle.aux4_check === 1 ? true : false
                     }
                   />
                   <span className="dot">
                     <div className="text_on">
-                      <div>벙커</div>
-                      <div>간접등</div>
+                      <div>AUX4</div>
                     </div>
                     <div className="text_off">
-                      <div>벙커</div>
-                      <div>간접등</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-            </div>
-            <div className="inner_col_wrap li_flex">
-              <div className="col_wrap_inner_left margin_right li_text_center">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "restroom_main")}
-                    defaultChecked={
-                      defaultToggle.restroom_main_check === 1 ? true : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>화장실</div>
-                      <div>메인</div>
-                    </div>
-                    <div className="text_off">
-                      <div>화장실</div>
-                      <div>메인</div>
-                    </div>
-                  </span>
-                </label>
-              </div>
-              <div className="col_wrap_inner_right">
-                <label className="toggle">
-                  <input
-                    id="mycheckbox"
-                    type="checkbox"
-                    className="default"
-                    onChange={(e) => onOffHandle(e, "restroom_indirect_light")}
-                    defaultChecked={
-                      defaultToggle.restroom_indirect_light_check === 1
-                        ? true
-                        : false
-                    }
-                  />
-                  <span className="dot">
-                    <div className="text_on">
-                      <div>화장실</div>
-                      <div>간접등</div>
-                    </div>
-                    <div className="text_off">
-                      <div>화장실</div>
-                      <div>간접등</div>
+                      <div>AUX4</div>
                     </div>
                   </span>
                 </label>
@@ -768,117 +909,121 @@ const Home = ({ data, sendCmd }) => {
         <div className="water_wrap_flex">
           <div className="wrap_bg water_wrap water_margin">
             <div className="title">청수</div>
-            <div className="row">
-              <div className="inner_col_wrap margin_right">
-                <div className="vertical_bar">
-                  <div className="progress progress-bar-vertical">
-                    <div
-                      className="progress-bar pro_bar_blue"
-                      role="progressbar"
-                      aria-valuenow="30"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ height: `${freshWater}%` }}
-                    >
-                      <span className="sr-only">
-                        <div>{freshWater}%</div>
-                      </span>
+            <div className="row_wrap">
+              <div className="row">
+                <div className="inner_col_wrap margin_right">
+                  <div className="vertical_bar">
+                    <div className="progress progress-bar-vertical">
+                      <div
+                        className="progress-bar pro_bar_blue"
+                        role="progressbar"
+                        aria-valuenow="30"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        style={{ height: `${freshWater}%` }}
+                      >
+                        <span className="sr-only">
+                          <div>{freshWater}%</div>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="inner_col_wrap">
-                <div className="water_top">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "freshWater")}
-                      defaultChecked={
-                        defaultToggle.freshWater_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>퇴수</div>
-                      </div>
-                      <div className="text_off">
-                        <div>퇴수</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="water_bottom">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "water_pump")}
-                      defaultChecked={
-                        defaultToggle.water_pump_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>물펌프</div>
-                      </div>
-                      <div className="text_off">
-                        <div>물펌프</div>
-                      </div>
-                    </span>
-                  </label>
+                <div className="inner_col_wrap">
+                  <div className="water_top">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "freshWater")}
+                        defaultChecked={
+                          defaultToggle.freshWater_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>퇴수</div>
+                        </div>
+                        <div className="text_off">
+                          <div>퇴수</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="water_bottom">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "water_pump")}
+                        defaultChecked={
+                          defaultToggle.water_pump_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>물펌프</div>
+                        </div>
+                        <div className="text_off">
+                          <div>물펌프</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="wrap_bg water_wrap">
             <div className="title">오수</div>
-            <div className="row">
-              <div className="inner_col_wrap margin_right">
-                <div className="vertical_bar">
-                  <div className="progress progress-bar-vertical">
-                    <div
-                      className="progress-bar pro_bar_red"
-                      role="progressbar"
-                      aria-valuenow="30"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ height: `${wasteWater}%` }}
-                    >
-                      <span className="sr-only">
-                        <div>{wasteWater}%</div>
-                      </span>
+            <div className="row_wrap">
+              <div className="row">
+                <div className="inner_col_wrap margin_right">
+                  <div className="vertical_bar">
+                    <div className="progress progress-bar-vertical">
+                      <div
+                        className="progress-bar pro_bar_red"
+                        role="progressbar"
+                        aria-valuenow="30"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        style={{ height: `${wasteWater}%` }}
+                      >
+                        <span className="sr-only">
+                          <div>{wasteWater}%</div>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="inner_col_wrap">
-                <div className="water_top">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "wasteWater")}
-                      defaultChecked={
-                        defaultToggle.wasteWater_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>퇴수</div>
-                      </div>
-                      <div className="text_off">
-                        <div>퇴수</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="water_bottom">
-                  <div className="camera_btn" onClick={() => showCamera()}>
-                    카메라
+                <div className="inner_col_wrap">
+                  <div className="water_top">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "wasteWater")}
+                        defaultChecked={
+                          defaultToggle.wasteWater_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>퇴수</div>
+                        </div>
+                        <div className="text_off">
+                          <div>퇴수</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="water_bottom">
+                    <div className="camera_btn" onClick={() => showCamera()}>
+                      카메라
+                    </div>
                   </div>
                 </div>
               </div>
@@ -887,210 +1032,233 @@ const Home = ({ data, sendCmd }) => {
         </div>
         <div className="wrap_bg battery_wrap">
           <div className="title">배터리</div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right battery_width">
-              <div className="progress progress-bar-vertical">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="30"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style={{ height: `${batteryLevel}%` }}
-                >
-                  <span className="sr-only">
-                    <div>
-                      <div>배터리</div>
-                      <div>잔량</div>
+          <div className="row_wrap">
+            <div className="row">
+              <div className="inner_col_wrap margin_right battery_flex">
+                <div className="progress_left margin_right">
+                  <div className="progress progress-bar-vertical">
+                    <div
+                      className="progress-bar pro_bar_green"
+                      role="progressbar"
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style={{ height: `${batteryLevel}%` }}
+                    >
+                      <span className="sr-only">
+                        <div>
+                          <div>배터리</div>
+                          <div>잔량</div>
+                        </div>
+                        <div>{batteryLevel}%</div>
+                      </span>
                     </div>
-                    <div>{batteryLevel}%</div>
-                  </span>
+                  </div>
+                </div>
+                <div className="progress_right">
+                  <div>전압 {}V</div>
+                  <div>전류 {}A</div>
+                  <div>온도 {}도</div>
+                  <div>{}</div>
+                </div>
+              </div>
+              <div className="inner_col_wrap battery_flex">
+                <div className="progress_left margin_right">
+                  <div className="progress progress-bar-vertical">
+                    <div
+                      className="progress-bar pro_bar_yellowgreen"
+                      role="progressbar"
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style={{ height: `${photovoltaics}%` }}
+                    >
+                      <span className="sr-only">
+                        <div>태양광</div>
+                        <div>{photovoltaics}%</div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="progress_right">
+                  <div>전류 {}A</div>
+                  <div>발전량 {}Ah</div>
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap margin_right battery_width">
-              <div className="progress progress-bar-vertical">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="30"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style={{ height: `${photovoltaics}%` }}
-                >
-                  <span className="sr-only">
-                    <div>태양광</div>
-                    <div>{photovoltaics}%</div>
-                  </span>
+            <div className="row">
+              <div className="inner_col_wrap margin_right battery_flex">
+                <div className="progress_left margin_right">
+                  <div className="progress progress-bar-vertical">
+                    <div
+                      className="progress-bar pro_bar_orange"
+                      role="progressbar"
+                      aria-valuenow="30"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                      style={{ height: `${alternator}%` }}
+                    >
+                      <span className="sr-only">
+                        <div>알터</div>
+                        <div>{alternator}%</div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="progress_right">
+                  <div>전류 {}A</div>
+                  <div>발전량 {}Ah</div>
                 </div>
               </div>
+              <div className="inner_col_wrap battery_flex"></div>
             </div>
-            <div className="inner_col_wrap battery_width">
-              <div className="progress progress-bar-vertical">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  aria-valuenow="30"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style={{ height: `${alternator}%` }}
-                >
-                  <span className="sr-only">
-                    <div>알터</div>
-                    <div>{alternator}%</div>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap"></div>
           </div>
         </div>
-        <div className="wrap_bg util_control_wrap">
+        <div className="wrap_bg util_wrap">
           <div className="title">전기장치</div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "refrigerator")}
-                  defaultChecked={
-                    defaultToggle.refrigerator_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>냉장고</div>
-                  </div>
-                  <div className="text_off">
-                    <div>냉장고</div>
-                  </div>
-                </span>
-              </label>
+          <div className="row_wrap">
+            <div className="row">
+              <div className="inner_col_wrap margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "refrigerator")}
+                    defaultChecked={
+                      defaultToggle.refrigerator_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>냉장고</div>
+                    </div>
+                    <div className="text_off">
+                      <div>냉장고</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="inner_col_wrap margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "inverter")}
+                    defaultChecked={
+                      defaultToggle.inverter_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>인버터</div>
+                    </div>
+                    <div className="text_off">
+                      <div>인버터</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="inner_col_wrap margin_right"></div>
+              <div className="inner_col_wrap">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "Hydraulics_level")}
+                    defaultChecked={
+                      defaultToggle.Hydraulics_level_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>유압</div>
+                      <div>레벨</div>
+                    </div>
+                    <div className="text_off">
+                      <div>유압</div>
+                      <div>레벨</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
             </div>
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "inverter")}
-                  defaultChecked={
-                    defaultToggle.inverter_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>인버터</div>
-                  </div>
-                  <div className="text_off">
-                    <div>인버터</div>
-                  </div>
-                </span>
-              </label>
+            <div className="row">
+              <div className="inner_col_wrap margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "restroom_fan")}
+                    defaultChecked={
+                      defaultToggle.restroom_fan_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>화장실</div>
+                      <div>팬</div>
+                    </div>
+                    <div className="text_off">
+                      <div>화장실</div>
+                      <div>팬</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="inner_col_wrap margin_right"></div>
+              <div className="inner_col_wrap margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                    defaultChecked={
+                      defaultToggle.vehicle_bottom_light_check === 1
+                        ? true
+                        : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>차량</div>
+                      <div>하부등</div>
+                    </div>
+                    <div className="text_off">
+                      <div>차량</div>
+                      <div>하부등</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="inner_col_wrap">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "vehicle_start")}
+                    defaultChecked={
+                      defaultToggle.vehicle_start_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>차량</div>
+                      <div>시동</div>
+                    </div>
+                    <div className="text_off">
+                      <div>차량</div>
+                      <div>시동</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
             </div>
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "vehicle_start")}
-                  defaultChecked={
-                    defaultToggle.vehicle_start_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>차량</div>
-                    <div>시동</div>
-                  </div>
-                  <div className="text_off">
-                    <div>차량</div>
-                    <div>시동</div>
-                  </div>
-                </span>
-              </label>
-            </div>
-            <div className="inner_col_wrap">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "Hydraulics_level")}
-                  defaultChecked={
-                    defaultToggle.Hydraulics_level_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>유압</div>
-                    <div>레벨</div>
-                  </div>
-                  <div className="text_off">
-                    <div>유압</div>
-                    <div>레벨</div>
-                  </div>
-                </span>
-              </label>
-            </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "restroom_fan")}
-                  defaultChecked={
-                    defaultToggle.restroom_fan_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>화장실</div>
-                    <div>팬</div>
-                  </div>
-                  <div className="text_off">
-                    <div>화장실</div>
-                    <div>팬</div>
-                  </div>
-                </span>
-              </label>
-            </div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
-                  defaultChecked={
-                    defaultToggle.vehicle_bottom_light_check === 1
-                      ? true
-                      : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>차량</div>
-                    <div>하부등</div>
-                  </div>
-                  <div className="text_off">
-                    <div>차량</div>
-                    <div>하부등</div>
-                  </div>
-                </span>
-              </label>
-            </div>
-            <div className="inner_col_wrap"></div>
           </div>
         </div>
       </div>
@@ -1098,360 +1266,392 @@ const Home = ({ data, sendCmd }) => {
       <div className="col">
         <div className="wrap_bg temp_wrap">
           <div className="title">온도설정</div>
-          <div className="row">
-            <div className="inner_col_wrap temp_width margin_right">
-              <div className="control_wrap">
-                <div className="control_name">
-                  <div>
-                    <div>거실</div>
-                    <div>온도</div>
+          <div className="row_wrap">
+            <div className="row">
+              <div className="inner_col_wrap temp_width margin_right">
+                <div className="control_top margin_bottom">
+                  <div className="control_inner margin_right">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>거실</div>
+                          <div>on</div>
+                        </div>
+                        <div className="text_off">
+                          <div>거실</div>
+                          <div>off</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="control_inner margin_right">
+                    <div
+                      className="control_btn"
+                      onClick={() =>
+                        airconLivingroomTempCal(
+                          "0.1",
+                          "aircon_livingroom_temp",
+                          "p"
+                        )
+                      }
+                    >
+                      <div>+</div>
+                    </div>
+                  </div>
+                  <div className="control_inner">
+                    <div
+                      className="control_btn"
+                      onClick={() =>
+                        airconLivingroomTempCal(
+                          "0.1",
+                          "aircon_livingroom_temp",
+                          "m"
+                        )
+                      }
+                    >
+                      <div>-</div>
+                    </div>
                   </div>
                 </div>
-                <div className="buttons">
-                  <div
-                    className="control_btn"
-                    onClick={() => livingroomtempPlus("livingroom_temp")}
-                  >
-                    <div>+</div>
+                <div className="control_bottom">
+                  <div className="control_inner margin_right">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
-                  <div className="control_margin_bottom"></div>
-                  <div
-                    className="control_btn"
-                    onClick={() => livingroomtempMinus("livingroom_temp")}
-                  >
-                    <div>-</div>
+                  <div className="control_inner margin_right">
+                    <div
+                      className="control_btn control_plus"
+                      onClick={() =>
+                        airconLivingroomWindCal(
+                          "0.1",
+                          "aircon_livingroom_wind",
+                          "p"
+                        )
+                      }
+                    >
+                      <div>+</div>
+                    </div>
+                  </div>
+                  <div className="control_inner">
+                    <div
+                      className="control_btn"
+                      onClick={() =>
+                        airconLivingroomWindCal(
+                          "0.1",
+                          "aircon_livingroom_wind",
+                          "m"
+                        )
+                      }
+                    >
+                      <div>-</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="inner_col_wrap temp_width">
+                <div className="control_top margin_bottom">
+                  <div className="control_inner margin_right">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>침실</div>
+                          <div>on</div>
+                        </div>
+                        <div className="text_off">
+                          <div>침실</div>
+                          <div>off</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="control_inner margin_right">
+                    <div
+                      className="control_btn control_plus"
+                      onClick={() =>
+                        airconBedroomTempCal("0.1", "aircon_bedroom_temp", "p")
+                      }
+                    >
+                      <div>+</div>
+                    </div>
+                  </div>
+                  <div className="control_inner">
+                    <div
+                      className="control_btn"
+                      onClick={() =>
+                        airconBedroomTempCal("0.1", "aircon_bedroom_temp", "m")
+                      }
+                    >
+                      <div>-</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="control_bottom">
+                  <div className="control_inner margin_right">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
+                  </div>
+                  <div className="control_inner margin_right">
+                    <div
+                      className="control_btn control_plus"
+                      onClick={() =>
+                        airconBedroomWindCal("0.1", "aircon_bedroom_wind", "p")
+                      }
+                    >
+                      <div>+</div>
+                    </div>
+                  </div>
+                  <div className="control_inner">
+                    <div
+                      className="control_btn"
+                      onClick={() =>
+                        airconBedroomWindCal("0.1", "aircon_bedroom_wind", "m")
+                      }
+                    >
+                      <div>-</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="inner_col_wrap temp_width margin_right">
-              <div className="control_wrap">
-                <div className="control_name">
-                  <div>
-                    <div>침실</div>
-                    <div>온도</div>
-                  </div>
-                </div>
-                <div className="buttons">
-                  <div
-                    className="control_btn control_plus"
-                    onClick={() => bedroomtempPlus("bedroom_temp")}
-                  >
-                    <div>+</div>
-                  </div>
-                  <div className="control_margin_bottom"></div>
-                  <div
-                    className="control_btn control_minus"
-                    onClick={() => bedroomtempMinus("bedroom_temp")}
-                  >
-                    <div>-</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="inner_col_wrap temp_width">
-              <div className="control_wrap">
-                <div className="control_name">
-                  <div>
-                    <div>맥스팬</div>
-                    <div>온도</div>
-                  </div>
-                </div>
-                <div className="buttons">
-                  <div
-                    className="control_btn control_plus"
-                    onClick={() => maxfantempCountPlus("maxfan_temp")}
-                  >
-                    <div>+</div>
-                  </div>
-                  <div className="control_margin_bottom"></div>
-                  <div
-                    className="control_btn control_minus"
-                    onClick={() => maxfantempCountMinus("maxfan_temp")}
-                  >
-                    <div>-</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap slider_width margin_right">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "warmair")}
-                  defaultChecked={
-                    defaultToggle.warmair_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>온풍</div>
-                  </div>
-                  <div className="text_off">
-                    <div>온풍</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_2_warmair"
-                  value={rangevalue.air_2_warmair}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_width margin_right">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "heater_d2")}
-                  defaultChecked={
-                    defaultToggle.heater_d2_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>히터</div>
-                    <div>(D2)</div>
-                  </div>
-                  <div className="text_off">
-                    <div>히터</div>
-                    <div>(D2)</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_3_heater_d2"
-                  value={rangevalue.air_3_heater_d2}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_width">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "heater_d5")}
-                  defaultChecked={
-                    defaultToggle.heater_d5_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>히터</div>
-                    <div>(D5)</div>
-                  </div>
-                  <div className="text_off">
-                    <div>히터</div>
-                    <div>(D5)</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_3_heater_d5"
-                  value={rangevalue.air_3_heater_d5}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap slider_width margin_right">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "bed")}
-                  defaultChecked={defaultToggle.bed_check === 1 ? true : false}
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>침대</div>
-                  </div>
-                  <div className="text_off">
-                    <div>침대</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_1_bed"
-                  value={rangevalue.air_1_bed}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_width margin_right">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "floor")}
-                  defaultChecked={
-                    defaultToggle.floor_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>바닥</div>
-                  </div>
-                  <div className="text_off">
-                    <div>바닥</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_1_floor"
-                  value={rangevalue.air_1_floor}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-            <div className="inner_col_wrap slider_width">
-              <label className="toggle toggle_slider">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "bunker")}
-                  defaultChecked={
-                    defaultToggle.bunker_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>벙커</div>
-                  </div>
-                  <div className="text_off">
-                    <div>벙커</div>
-                  </div>
-                </span>
-              </label>
-              <div className="range_slider">
-                <RangeSlider
-                  name="air_2_bunker"
-                  value={rangevalue.air_2_bunker}
-                  step={5}
-                  min={0}
-                  max={100}
-                  onChange={(e) => rangdesliderHandle(e)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="wrap_bg other_control_wrap">
-          <div className="title">장치</div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
-            <div className="inner_col_wrap margin_right"></div>
-          </div>
-          <div className="row">
-            <div className="inner_col_wrap margin_right">
+            <div className="control_last_row">
               <label className="toggle">
                 <input
                   id="mycheckbox"
                   type="checkbox"
                   className="default"
-                  onChange={(e) => onOffHandle(e, "aux1")}
-                  defaultChecked={defaultToggle.aux1_check === 1 ? true : false}
+                  onChange={(e) => onOffHandle(e, "heaterd5")}
+                  defaultChecked={
+                    defaultToggle.heaterd5_check === 1 ? true : false
+                  }
                 />
                 <span className="dot">
                   <div className="text_on">
-                    <div>AUX1</div>
+                    <div>히터D5 on</div>
                   </div>
                   <div className="text_off">
-                    <div>AUX1</div>
+                    <div>히터D5 off</div>
                   </div>
                 </span>
               </label>
             </div>
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "aux2")}
-                  defaultChecked={defaultToggle.aux2_check === 1 ? true : false}
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>AUX2</div>
+            <div className="row">
+              <div className="inner_col_wrap control_width con_flex margin_right">
+                <div className="col_wrap_inner_left margin_right">
+                  <label className="toggle">
+                    <input
+                      id="mycheckbox"
+                      type="checkbox"
+                      className="default"
+                      onChange={(e) => onOffHandle(e, "heaterd2")}
+                      defaultChecked={
+                        defaultToggle.heaterd2_check === 1 ? true : false
+                      }
+                    />
+                    <span className="dot">
+                      <div className="text_on">
+                        <div>히터D2</div>
+                        <div>on</div>
+                      </div>
+                      <div className="text_off">
+                        <div>히터D2</div>
+                        <div>off</div>
+                      </div>
+                    </span>
+                  </label>
+                </div>
+                <div className="col_wrap_inner_right">
+                  <div className="col_wrap_inner_right_top">
+                    <div
+                      className="control_btn control_plus"
+                      onClick={() => heaterd2Cal("0.1", "headerd2", "p")}
+                    >
+                      <div>+</div>
+                    </div>
                   </div>
-                  <div className="text_off">
-                    <div>AUX2</div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <div
+                      className="control_btn"
+                      onClick={() => heaterd2Cal("0.1", "headerd2", "m")}
+                    >
+                      <div>-</div>
+                    </div>
                   </div>
-                </span>
-              </label>
+                </div>
+              </div>
+              <div className="inner_col_wrap control_width ">
+                <div className="slider_wrap">
+                  <RangeSlider
+                    name="air_3_heater_d2"
+                    value={rangevalue.aqua_bed_warmer}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+                <div className="slider_wrap">
+                  <RangeSlider
+                    name="air_3_heater_d2"
+                    value={rangevalue.aqua_bunker_warmer}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "aux3")}
-                  defaultChecked={defaultToggle.aux3_check === 1 ? true : false}
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>AUX3</div>
+            <div className="row">
+              <div className="inner_col_wrap control_width con_flex margin_right">
+                <div className="col_wrap_inner_left margin_right">
+                  <div className="col_wrap_inner_right_top">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "maxfan")}
+                        defaultChecked={
+                          defaultToggle.maxfan_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>맥스팬</div>
+                          <div>on</div>
+                        </div>
+                        <div className="text_off">
+                          <div>맥스팬</div>
+                          <div>off</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
-                  <div className="text_off">
-                    <div>AUX3</div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "maxfan")}
+                        defaultChecked={
+                          defaultToggle.maxfan_check === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>맥스팬</div>
+                          <div>in</div>
+                        </div>
+                        <div className="text_off">
+                          <div>맥스팬</div>
+                          <div>out</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
-                </span>
-              </label>
-            </div>
-            <div className="inner_col_wrap margin_right">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "aux4")}
-                  defaultChecked={defaultToggle.aux4_check === 1 ? true : false}
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>AUX4</div>
+                </div>
+                <div className="col_wrap_inner_right">
+                  <div className="col_wrap_inner_right_top">
+                    <div
+                      className="control_btn control_plus"
+                      onClick={() => maxfanCal("0.1", "maxfan", "p")}
+                    >
+                      <div>+</div>
+                    </div>
                   </div>
-                  <div className="text_off">
-                    <div>AUX4</div>
+                  <div className="col_wrap_inner_right_bottm">
+                    <div
+                      className="control_btn"
+                      onClick={() => maxfanCal("0.1", "maxfan", "m")}
+                    >
+                      <div>-</div>
+                    </div>
                   </div>
-                </span>
-              </label>
+                </div>
+              </div>
+              <div className="inner_col_wrap control_width ">
+                <div className="slider_wrap">
+                  <RangeSlider
+                    name="air_3_heater_d2"
+                    value={rangevalue.floor_heater}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+                <div className="slider_wrap">
+                  <RangeSlider
+                    name="air_3_heater_d2"
+                    value={rangevalue.air_heater}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

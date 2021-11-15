@@ -56,6 +56,7 @@ body {
 .inner_col_wrap {
   width: 50%;
   height: 100%;
+  /* border: 1px solid palegreen; */
 }
 .col_wrap_inner_left {
   width: 50%;
@@ -65,12 +66,12 @@ body {
   width: 50%;
   height: 100%;
 }
-.colwrap_inner_right_top,
-.colwrap_inner_right_bottm {
+.col_wrap_inner_right_top,
+.col_wrap_inner_right_bottm {
   width: 100%;
   height: 46%;
 }
-.colwrap_inner_right_top {
+.col_wrap_inner_right_top {
   margin-bottom: 0.5rem;
 }
 .li_flex {
@@ -79,13 +80,18 @@ body {
 .slider_width {
   height: 50%;
 }
-.temp_width {
+/* .temp_width {
   width: 33.33%;
-}
+} */
 .slider_height {
   width: 50%;
 }
-.li_text_center {
+/* .li_text_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.li_btn_center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,6 +163,7 @@ body {
 .inner_contents .col .row {
   border-left: none;
 }
+
 .col {
   width: 33.33%;
   height: 100%;
@@ -168,7 +175,7 @@ body {
   height: 20%;
   /* border: 1px solid sienna; */
   display: flex;
-  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 /* bg and title*/
@@ -188,77 +195,212 @@ body {
 /* 조명 */
 .li_wrap {
   width: 100%;
-  height: 100%;
+  height: 82.8%;
 }
 .li_wrap .title {
   width: 100%;
-  height: 4%;
+  height: 4.7%;
 }
-.li_wrap .row {
+.li_wrap .row_wrap {
+  height: 95.3%;
+  padding: 0.5rem;
+}
+.li_wrap .row_wrap .row {
   width: 100%;
-  height: 24%;
+  height: 27.3%;
 }
-.row_padding {
-  padding-top: 3rem;
+.li_wrap .row:nth-child(1) .col_wrap_inner_right,
+.li_wrap .row:nth-child(2) .col_wrap_inner_right,
+.li_wrap .row:nth-child(3) .col_wrap_inner_right {
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+}
+.li_wrap .row_wrap .row:nth-child(1) .col_wrap_inner_right .toggle_slider,
+.li_wrap .row_wrap .row:nth-child(1) .col_wrap_inner_right .toggle {
+  width: 90%;
+  height: 90%;
+}
+.li_wrap .row_wrap .row:nth-child(2) .col_wrap_inner_right .toggle_slider,
+.li_wrap .row_wrap .row:nth-child(2) .col_wrap_inner_right .toggle {
+  width: 90%;
+  height: 90%;
+}
+.li_wrap .row_wrap .row:nth-child(3) .col_wrap_inner_right .toggle_slider,
+.li_wrap .row_wrap .row:nth-child(3) .col_wrap_inner_right .toggle {
+  width: 90%;
+  height: 90%;
+}
+.li_wrap .row_wrap .row:nth-child(odd) {
+  background-color: #232222 !important;
+}
+.li_wrap .row_wrap .row:last-child {
+  margin-bottom: 0rem;
+  height: 13%;
 }
 
 /* 배터리 */
 .battery_wrap {
   width: 100%;
-  height: 30.2%;
+  height: 42.2%;
 }
 .battery_wrap .title {
   width: 100%;
-  height: 13.7%;
+  height: 9%;
 }
-.battery_wrap .row {
+.battery_wrap .row_wrap {
   width: 100%;
-  height: 45%;
+  height: 90%;
+  padding: 0.5rem;
 }
-.battery_width {
-  width: 33.33%;
+.battery_wrap .row_wrap .row {
+  width: 100%;
+  height: 48%;
+}
+.battery_flex {
+  display: flex;
+}
+.progress_left,
+.progress_right {
+  height: 100%;
+}
+.progress_left {
+  width: 45%;
+}
+.progress_right {
+  width: 55%;
+  text-align: left;
+  text-transform: initial;
 }
 
 /* 온도 */
 .temp_wrap {
   width: 100%;
-  height: 59.6%;
+  height: 100%;
 }
 .temp_wrap .title {
   width: 100%;
-  height: 7%;
+  height: 4%;
 }
-.temp_wrap .row {
+.temp_wrap .row_wrap {
   width: 100%;
-  height: 31%;
+  height: 96%;
+  padding: 0.5rem;
+}
+.temp_wrap .row_wrap .row {
+  width: 100%;
+  height: 27.3%;
+}
+.temp_wrap .row_wrap .row:nth-child(odd) {
+  background-color: #232222 !important;
+}
+.temp_wrap .row:nth-child(2) {
+  height: 24% !important;
+}
+.control_wrap {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+  padding-bottom: 0.5rem;
+}
+.control_top,
+.control_bottom {
+  width: 100%;
+  height: 46%;
+  display: flex;
+  /* border: 1px solid green; */
+}
+.con_flex {
+  display: flex;
+}
+.margin_bottom {
+  margin-bottom: 0.5rem;
+}
+.control_inner {
+  width: 33.33%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+.control_btn {
+  /* width: 100%;
+  height: 100%; */
+  width: 90%;
+  height: 90%;
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+  background-color: #525252;
+  border-radius: 0.4rem;
+  border: 2px solid #ddd;
+  box-shadow: inset -3px -3px 5px #363535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.control_btn:active {
+  background-color: #444;
+}
+.control_margin_bottom {
+  width: 100%;
+  height: 0.5rem;
+}
+.slider_wrap {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid khaki; */
+}
+.slider_text {
+  font-size: 0.8rem;
+}
+.control_last_row {
+  width: 48%;
+  height: 13%;
+  margin-bottom: 1rem;
+}
+.control_last_row .text_on,
+.control_last_row .text_off {
+  width: 7rem;
 }
 
 /* 전기장치 */
-.util_control_wrap {
+.util_wrap {
   width: 100%;
-  height: 39%;
+  height: 27%;
 }
-.util_control_wrap .title {
+.util_wrap .title {
   width: 100%;
-  height: 10%;
+  height: 15%;
 }
-.util_control_wrap .row {
+.util_wrap .row_wrap {
   width: 100%;
-  height: 45%;
+  height: 85%;
+  padding: 0.5rem;
+}
+.util_wrap .row_wrap .row {
+  width: 100%;
+  height: 47%;
 }
 
 /* 기타장치 */
-.other_control_wrap {
+.other_wrap {
   width: 100%;
-  height: 39%;
+  height: 16%;
 }
-.other_control_wrap .title {
+.other_wrap .title {
   width: 100%;
-  height: 10.6%;
+  height: 25%;
 }
-.other_control_wrap .row {
+.other_wrap .row_wrap {
   width: 100%;
-  height: 45%;
+  height: 75%;
+  padding: 0.5rem;
+}
+.other_wrap .row {
+  width: 100%;
+  height: 100%;
 }
 
 /* 청/오수 */
@@ -272,16 +414,20 @@ body {
   width: 50%;
   height: 100%;
 }
-.water_margin {
-  margin-right: 0.5rem;
-}
 .water_wrap .title {
   width: 100%;
   height: 14%;
 }
+.water_wrap .row_wrap {
+  height: 86%;
+  padding: 0.5rem;
+}
+.water_margin {
+  margin-right: 0.5rem;
+}
 .water_wrap .row {
   width: 100%;
-  height: 86.5%;
+  height: 100%;
 }
 .freshwater_wrap,
 .wastwater_wrap {
@@ -304,6 +450,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .toggle_slider {
   height: 100%;
   margin-bottom: 0.6rem;
@@ -458,6 +605,15 @@ input.default:checked + .dot {
 .pro_bar_red {
   background-color: #8b0707;
 }
+.pro_bar_green {
+  background-color: #0a8539;
+}
+.pro_bar_yellowgreen {
+  background-color: #76c021;
+}
+.pro_bar_orange {
+  background-color: #db5b06;
+}
 .sr-only {
   position: absolute;
   top: 50%;
@@ -479,7 +635,31 @@ input.default:checked + .dot {
   margin-bottom: 0.3rem;
 }
 .range-slider__wrap {
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider_wrap .range-slider__wrap:before {
+  font-size: 0.8rem;
+  position: absolute;
+  top: -10%;
+}
+.row:nth-child(3) .slider_wrap:nth-child(1) .range-slider__wrap:before {
+  content: "바닥난방";
+  left: 30%;
+}
+.row:nth-child(3) .slider_wrap:nth-child(2) .range-slider__wrap:before {
+  content: "공기난방(온풍)";
+  left: 30%;
+}
+.row:nth-child(4) .slider_wrap:nth-child(1) .range-slider__wrap:before {
+  content: "침대온수매트";
+  left: 30%;
+}
+.row:nth-child(4) .slider_wrap:nth-child(2) .range-slider__wrap:before {
+  content: "벙커온수매트";
+  left: 30%;
 }
 input[type="range"].range-slider::-webkit-slider-runnable-track {
   height: 10px !important;
@@ -532,47 +712,6 @@ input[type="range"].range-slider.range-slider--primary:not(.disabled):active::-m
 input[type="range"].range-slider.range-slider--primary:not(.disabled):focus::-ms-thumb,
 input[type="range"].range-slider.range-slider--primary:not(.disabled):active::-ms-thumb {
   box-shadow: inset -3px -3px 5px #363535 !important;
-}
-
-/* control */
-.control_wrap {
-  width: 100%;
-  height: 100%;
-  /* border: 1px solid red; */
-  display: flex;
-  padding-bottom: 0.5rem;
-}
-.control_name {
-  width: 60%;
-  height: 100%;
-  /* border: 1px solid olive; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.buttons {
-  width: 40%;
-  height: 100%;
-  /* border: 1px solild darkcyan; */
-}
-.control_btn {
-  width: 100%;
-  height: 50%;
-  background-color: #525252;
-  border-radius: 0.4rem;
-  border: 2px solid #ddd;
-  box-shadow: inset -3px -3px 5px #363535;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.control_btn:active {
-  background-color: #444;
-}
-.control_margin_bottom {
-  width: 100%;
-  height: 0.5rem;
 }
 
 /* camera modal */
