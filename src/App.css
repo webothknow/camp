@@ -202,7 +202,7 @@ body {
   height: 5%;
 }
 .li_wrap .row_wrap {
-  height: 95.5%;
+  height: 94.8%;
   padding: 0.5rem;
 }
 .li_wrap .row_wrap .row {
@@ -230,9 +230,9 @@ body {
   width: 90%;
   height: 90%;
 }
-.li_wrap .row_wrap .row:nth-child(odd) {
+/* .li_wrap .row_wrap .row:nth-child(odd) {
   background-color: #232222 !important;
-}
+} */
 .li_wrap .row_wrap .row:last-child {
   margin-bottom: 0rem;
   height: 13%;
@@ -249,7 +249,7 @@ body {
 }
 .battery_wrap .row_wrap {
   width: 100%;
-  height: 89.5%;
+  height: 91%;
   padding: 0.5rem;
 }
 .battery_wrap .row_wrap .row {
@@ -283,16 +283,16 @@ body {
 }
 .temp_wrap .row_wrap {
   width: 100%;
-  height: 85.5%;
+  height: 86.5%;
   padding: 0.5rem;
 }
 .temp_wrap .row_wrap .row {
   width: 100%;
   height: 100%;
 }
-.temp_wrap .row_wrap .row:nth-child(odd) {
+/* .temp_wrap .row_wrap .row:nth-child(odd) {
   background-color: #232222 !important;
-}
+} */
 .temp_wrap .row:nth-child(2) {
   height: 24% !important;
 }
@@ -362,7 +362,7 @@ body {
 }
 .heater_wrap .row_wrap {
   width: 100%;
-  height: 92.5%;
+  height: 93%;
   padding: 0.5rem;
 }
 .heater_wrap .row_wrap .row {
@@ -375,18 +375,20 @@ body {
   height: 21%;
   display: flex;
 }
-.heater_row:nth-child(1),
-.heater_row:nth-child(2) {
+.heater_row:nth-child(1) {
   margin-bottom: 0.5rem;
+}
+.heater_row:nth-child(2) {
+  margin-bottom: 1.5rem;
 }
 .heater_btns {
   width: 25%;
   height: 100%;
   color: #bbb;
 }
-.heater_wrap .row_wrap .row:nth-child(odd) {
+/* .heater_wrap .row_wrap .row:nth-child(odd) {
   background-color: #232222 !important;
-}
+} */
 .slider_wrap {
   width: 100%;
   height: 50%;
@@ -698,38 +700,37 @@ input.default:checked + .dot {
   align-items: center;
 }
 .slider_wrap .range-slider__wrap:before {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   position: absolute;
-  top: -10%;
+  top: -40%;
+  left: 40%;
   z-index: 1;
+  color: #ddd;
 }
 .heater_wrap
   .col_wrap_inner_left
   .slider_wrap:nth-child(1)
   .range-slider__wrap:before {
   content: "바닥난방";
-  left: 30%;
+  left: 40%;
 }
 .heater_wrap
   .col_wrap_inner_left
   .slider_wrap:nth-child(2)
   .range-slider__wrap:before {
-  content: "공기난방(온풍)";
-  left: 30%;
+  content: "온풍난방";
 }
 .heater_wrap
   .col_wrap_inner_right
   .slider_wrap:nth-child(1)
   .range-slider__wrap:before {
-  content: "침대온수매트";
-  left: 30%;
+  content: "침대온수";
 }
 .heater_wrap
   .col_wrap_inner_right
   .slider_wrap:nth-child(2)
   .range-slider__wrap:before {
-  content: "벙커온수매트";
-  left: 30%;
+  content: "벙커온수";
 }
 input[type="range"].range-slider::-webkit-slider-runnable-track {
   height: 10px !important;

@@ -1313,7 +1313,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>온도</div>
-                        <div>+</div>
+                        <div>╋</div>
                       </div>
                     </div>
                   </div>
@@ -1330,7 +1330,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>온도</div>
-                        <div>-</div>
+                        <div>─</div>
                       </div>
                     </div>
                   </div>
@@ -1372,7 +1372,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>풍량</div>
-                        <div>∧</div>
+                        <div>△</div>
                       </div>
                     </div>
                   </div>
@@ -1389,7 +1389,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>풍량</div>
-                        <div>∨</div>
+                        <div>▽</div>
                       </div>
                     </div>
                   </div>
@@ -1431,7 +1431,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>온도</div>
-                        <div>+</div>
+                        <div>╋</div>
                       </div>
                     </div>
                   </div>
@@ -1444,7 +1444,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>온도</div>
-                        <div>-</div>
+                        <div>─</div>
                       </div>
                     </div>
                   </div>
@@ -1482,7 +1482,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>풍량</div>
-                        <div>∧</div>
+                        <div>△</div>
                       </div>
                     </div>
                   </div>
@@ -1495,7 +1495,7 @@ const Home = ({ data, sendCmd }) => {
                     >
                       <div className="pmtext">
                         <div>풍량</div>
-                        <div>∨</div>
+                        <div>▽</div>
                       </div>
                     </div>
                   </div>
@@ -1538,7 +1538,7 @@ const Home = ({ data, sendCmd }) => {
                 >
                   <div className="pmtext">
                     <div>온도</div>
-                    <div>+</div>
+                    <div>╋</div>
                   </div>
                 </div>
               </div>
@@ -1549,7 +1549,7 @@ const Home = ({ data, sendCmd }) => {
                 >
                   <div className="pmtext">
                     <div>온도</div>
-                    <div>-</div>
+                    <div>─</div>
                   </div>
                 </div>
               </div>
@@ -1732,7 +1732,7 @@ const Home = ({ data, sendCmd }) => {
                 >
                   <div className="pmtext">
                     <div>풍량</div>
-                    <div>∧</div>
+                    <div>△</div>
                   </div>
                 </div>
               </div>
@@ -1743,7 +1743,7 @@ const Home = ({ data, sendCmd }) => {
                 >
                   <div className="pmtext">
                     <div>풍량</div>
-                    <div>∨</div>
+                    <div>▽</div>
                   </div>
                 </div>
               </div>
