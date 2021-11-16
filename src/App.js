@@ -50,6 +50,7 @@ function App() {
   const [headerData, setHeaderData] = useState({
     t1: na,
     t2: na,
+    t3: na,
     humi: na,
   });
 
@@ -174,6 +175,7 @@ function App() {
           <div className="top_bar_col fahrenheit">실내 {headerData.t1}</div>
           <div className="top_bar_col humid">습도 {headerData.humi}%</div>
           <div className="top_bar_col celsius">실외 {headerData.t2}</div>
+          <div className="top_bar_col celsius">오수통 {headerData.t3}</div>
         </div>
         <div className="bottom_contents">
           <div className="navi">

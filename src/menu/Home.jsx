@@ -920,7 +920,8 @@ const Home = ({ data, sendCmd }) => {
                         aria-valuenow="30"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                        style={{ height: `${freshWater}%` }}
+                        // style={{ height: `${freshWater}%` }}
+                        style={{ height: "10%" }}
                       >
                         <span className="sr-only">
                           <div>{freshWater}%</div>
@@ -989,7 +990,8 @@ const Home = ({ data, sendCmd }) => {
                         aria-valuenow="30"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                        style={{ height: `${wasteWater}%` }}
+                        // style={{ height: `${wasteWater}%` }}
+                        style={{ height: "10%" }}
                       >
                         <span className="sr-only">
                           <div>{wasteWater}%</div>
@@ -1043,7 +1045,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      style={{ height: `${batteryLevel}%` }}
+                      // style={{ height: `${batteryLevel}%` }}
+                      style={{ height: "10%" }}
                     >
                       <span className="sr-only">
                         <div>
@@ -1071,7 +1074,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      style={{ height: `${photovoltaics}%` }}
+                      // style={{ height: `${photovoltaics}%` }}
+                      style={{ height: "10%" }}
                     >
                       <span className="sr-only">
                         <div>태양광</div>
@@ -1096,7 +1100,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      style={{ height: `${alternator}%` }}
+                      // style={{ height: `${alternator}%` }}
+                      style={{ height: "10%" }}
                     >
                       <span className="sr-only">
                         <div>알터</div>
@@ -1265,7 +1270,7 @@ const Home = ({ data, sendCmd }) => {
       {/* column 3 */}
       <div className="col">
         <div className="wrap_bg temp_wrap">
-          <div className="title">온도설정</div>
+          <div className="title">에어컨</div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap temp_width margin_right">
@@ -1306,7 +1311,10 @@ const Home = ({ data, sendCmd }) => {
                         )
                       }
                     >
-                      <div>+</div>
+                      <div className="pmtext">
+                        <div>온도</div>
+                        <div>+</div>
+                      </div>
                     </div>
                   </div>
                   <div className="control_inner">
@@ -1320,7 +1328,10 @@ const Home = ({ data, sendCmd }) => {
                         )
                       }
                     >
-                      <div>-</div>
+                      <div className="pmtext">
+                        <div>온도</div>
+                        <div>-</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1359,7 +1370,10 @@ const Home = ({ data, sendCmd }) => {
                         )
                       }
                     >
-                      <div>+</div>
+                      <div className="pmtext">
+                        <div>풍량</div>
+                        <div>∧</div>
+                      </div>
                     </div>
                   </div>
                   <div className="control_inner">
@@ -1373,7 +1387,10 @@ const Home = ({ data, sendCmd }) => {
                         )
                       }
                     >
-                      <div>-</div>
+                      <div className="pmtext">
+                        <div>풍량</div>
+                        <div>∨</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1412,7 +1429,10 @@ const Home = ({ data, sendCmd }) => {
                         airconBedroomTempCal("0.1", "aircon_bedroom_temp", "p")
                       }
                     >
-                      <div>+</div>
+                      <div className="pmtext">
+                        <div>온도</div>
+                        <div>+</div>
+                      </div>
                     </div>
                   </div>
                   <div className="control_inner">
@@ -1422,7 +1442,10 @@ const Home = ({ data, sendCmd }) => {
                         airconBedroomTempCal("0.1", "aircon_bedroom_temp", "m")
                       }
                     >
-                      <div>-</div>
+                      <div className="pmtext">
+                        <div>온도</div>
+                        <div>-</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1457,7 +1480,10 @@ const Home = ({ data, sendCmd }) => {
                         airconBedroomWindCal("0.1", "aircon_bedroom_wind", "p")
                       }
                     >
-                      <div>+</div>
+                      <div className="pmtext">
+                        <div>풍량</div>
+                        <div>∧</div>
+                      </div>
                     </div>
                   </div>
                   <div className="control_inner">
@@ -1467,91 +1493,155 @@ const Home = ({ data, sendCmd }) => {
                         airconBedroomWindCal("0.1", "aircon_bedroom_wind", "m")
                       }
                     >
-                      <div>-</div>
+                      <div className="pmtext">
+                        <div>풍량</div>
+                        <div>∨</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="control_last_row">
-              <label className="toggle">
-                <input
-                  id="mycheckbox"
-                  type="checkbox"
-                  className="default"
-                  onChange={(e) => onOffHandle(e, "heaterd5")}
-                  defaultChecked={
-                    defaultToggle.heaterd5_check === 1 ? true : false
-                  }
-                />
-                <span className="dot">
-                  <div className="text_on">
-                    <div>히터D5 on</div>
+          </div>
+        </div>
+        <div className="wrap_bg heater_wrap">
+          <div className="title">히터</div>
+          <div className="row_wrap">
+            <div className="heater_row">
+              <div className="heater_btns margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd2")}
+                    defaultChecked={
+                      defaultToggle.heaterd2_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>히터D2</div>
+                      <div>on</div>
+                    </div>
+                    <div className="text_off">
+                      <div>히터D2</div>
+                      <div>off</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="heater_btns margin_right">
+                <div
+                  className="control_btn control_plus"
+                  onClick={() => heaterd2Cal("0.1", "header_d2_temp", "p")}
+                >
+                  <div className="pmtext">
+                    <div>온도</div>
+                    <div>+</div>
                   </div>
-                  <div className="text_off">
-                    <div>히터D5 off</div>
+                </div>
+              </div>
+              <div className="heater_btns margin_right">
+                <div
+                  className="control_btn control_plus"
+                  onClick={() => heaterd2Cal("0.1", "header_d2_temp", "m")}
+                >
+                  <div className="pmtext">
+                    <div>온도</div>
+                    <div>-</div>
                   </div>
-                </span>
-              </label>
+                </div>
+              </div>
+              <div className="heater_btns">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd2_reset")}
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                    <div className="text_off">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div className="heater_row">
+              <div className="heater_btns margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd5")}
+                    defaultChecked={
+                      defaultToggle.heaterd5_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>히터D5 on</div>
+                    </div>
+                    <div className="text_off">
+                      <div>히터D5 off</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="heater_btns margin_right"></div>
+              <div className="heater_btns margin_right"></div>
+              <div className="heater_btns">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd5_reset")}
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                    <div className="text_off">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
             </div>
             <div className="row">
-              <div className="inner_col_wrap control_width con_flex margin_right">
-                <div className="col_wrap_inner_left margin_right">
-                  <label className="toggle">
-                    <input
-                      id="mycheckbox"
-                      type="checkbox"
-                      className="default"
-                      onChange={(e) => onOffHandle(e, "heaterd2")}
-                      defaultChecked={
-                        defaultToggle.heaterd2_check === 1 ? true : false
-                      }
-                    />
-                    <span className="dot">
-                      <div className="text_on">
-                        <div>히터D2</div>
-                        <div>on</div>
-                      </div>
-                      <div className="text_off">
-                        <div>히터D2</div>
-                        <div>off</div>
-                      </div>
-                    </span>
-                  </label>
-                </div>
-                <div className="col_wrap_inner_right">
-                  <div className="col_wrap_inner_right_top">
-                    <div
-                      className="control_btn control_plus"
-                      onClick={() => heaterd2Cal("0.1", "headerd2", "p")}
-                    >
-                      <div>+</div>
-                    </div>
-                  </div>
-                  <div className="col_wrap_inner_right_bottm">
-                    <div
-                      className="control_btn"
-                      onClick={() => heaterd2Cal("0.1", "headerd2", "m")}
-                    >
-                      <div>-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="inner_col_wrap control_width ">
+              <div className="col_wrap_inner_left margin_right">
                 <div className="slider_wrap">
                   <RangeSlider
-                    name="air_3_heater_d2"
+                    name="aqua_bed_warmer"
                     value={rangevalue.aqua_bed_warmer}
                     step={5}
                     min={0}
                     max={100}
                     onChange={(e) => rangdesliderHandle(e)}
                   />
+                  {/* <RangeSlider
+                    name="li_3_livingroom_top"
+                    value={rangevalue.li_3_livingroom_top}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  /> */}
                 </div>
                 <div className="slider_wrap">
                   <RangeSlider
-                    name="air_3_heater_d2"
+                    name="aqua_bunker_warmer"
                     value={rangevalue.aqua_bunker_warmer}
                     step={5}
                     min={0}
@@ -1560,80 +1650,10 @@ const Home = ({ data, sendCmd }) => {
                   />
                 </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="inner_col_wrap control_width con_flex margin_right">
-                <div className="col_wrap_inner_left margin_right">
-                  <div className="col_wrap_inner_right_top">
-                    <label className="toggle">
-                      <input
-                        id="mycheckbox"
-                        type="checkbox"
-                        className="default"
-                        onChange={(e) => onOffHandle(e, "maxfan")}
-                        defaultChecked={
-                          defaultToggle.maxfan_check === 1 ? true : false
-                        }
-                      />
-                      <span className="dot">
-                        <div className="text_on">
-                          <div>맥스팬</div>
-                          <div>on</div>
-                        </div>
-                        <div className="text_off">
-                          <div>맥스팬</div>
-                          <div>off</div>
-                        </div>
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col_wrap_inner_right_bottm">
-                    <label className="toggle">
-                      <input
-                        id="mycheckbox"
-                        type="checkbox"
-                        className="default"
-                        onChange={(e) => onOffHandle(e, "maxfan")}
-                        defaultChecked={
-                          defaultToggle.maxfan_check === 1 ? true : false
-                        }
-                      />
-                      <span className="dot">
-                        <div className="text_on">
-                          <div>맥스팬</div>
-                          <div>in</div>
-                        </div>
-                        <div className="text_off">
-                          <div>맥스팬</div>
-                          <div>out</div>
-                        </div>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-                <div className="col_wrap_inner_right">
-                  <div className="col_wrap_inner_right_top">
-                    <div
-                      className="control_btn control_plus"
-                      onClick={() => maxfanCal("0.1", "maxfan", "p")}
-                    >
-                      <div>+</div>
-                    </div>
-                  </div>
-                  <div className="col_wrap_inner_right_bottm">
-                    <div
-                      className="control_btn"
-                      onClick={() => maxfanCal("0.1", "maxfan", "m")}
-                    >
-                      <div>-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="inner_col_wrap control_width ">
+              <div className="col_wrap_inner_right">
                 <div className="slider_wrap">
                   <RangeSlider
-                    name="air_3_heater_d2"
+                    name="floor_heater"
                     value={rangevalue.floor_heater}
                     step={5}
                     min={0}
@@ -1643,13 +1663,88 @@ const Home = ({ data, sendCmd }) => {
                 </div>
                 <div className="slider_wrap">
                   <RangeSlider
-                    name="air_3_heater_d2"
+                    name="air_heater"
                     value={rangevalue.air_heater}
                     step={5}
                     min={0}
                     max={100}
                     onChange={(e) => rangdesliderHandle(e)}
                   />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="wrap_bg maxfan_wrap">
+          <div className="title">맥스팬</div>
+          <div className="row_wrap">
+            <div className="row">
+              <div className="maxfan_btns margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "maxfan")}
+                    defaultChecked={
+                      defaultToggle.maxfan_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>맥스팬</div>
+                      <div>on</div>
+                    </div>
+                    <div className="text_off">
+                      <div>맥스팬</div>
+                      <div>off</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="maxfan_btns margin_right">
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "maxfan")}
+                    defaultChecked={
+                      defaultToggle.maxfan_check === 1 ? true : false
+                    }
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>맥스팬</div>
+                      <div>in</div>
+                    </div>
+                    <div className="text_off">
+                      <div>맥스팬</div>
+                      <div>out</div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+              <div className="maxfan_btns margin_right">
+                <div
+                  className="control_btn control_plus"
+                  onClick={() => maxfanCal("0.1", "maxfan", "p")}
+                >
+                  <div className="pmtext">
+                    <div>풍량</div>
+                    <div>∧</div>
+                  </div>
+                </div>
+              </div>
+              <div className="maxfan_btns">
+                <div
+                  className="control_btn"
+                  onClick={() => maxfanCal("0.1", "maxfan", "m")}
+                >
+                  <div className="pmtext">
+                    <div>풍량</div>
+                    <div>∨</div>
+                  </div>
                 </div>
               </div>
             </div>
