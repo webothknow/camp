@@ -205,15 +205,15 @@ const Home = ({ data, sendCmd, primarykey }) => {
 
   //camera modal
   const [CameraModal, HandleCameraModal] = useState(false);
-
-  //camera click event
+  //camera click event (modal show)
   const showCamera = () => {
     HandleCameraModal(true);
     // player.pause();
   };
+  //camera click event (modal hide)
   const hideCamera = (e) => {
     HandleCameraModal(false);
-    console.log("e: ", e);
+    //console.log("e: ", e);
   };
 
   //camera1
@@ -246,7 +246,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
     ],
   };
 
-  //ON OFF 버튼 및
+  //ON OFF 버튼
   const onOffHandle = (target, name, e) => {
     sendCmd(target, name, e.target.checked === true ? 1 : 0);
   };
