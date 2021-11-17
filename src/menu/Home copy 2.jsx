@@ -48,143 +48,168 @@ const Home = ({ data, sendCmd, primarykey }) => {
     // ) {
     setHomeData({
       ...homedata,
-      //     r1: d["d1"],
-      //     r2: d["d2"],
-      //     r3: d["d3"],
-      //     r4: d["d4"],
-      //     r5: d["d5"],
-      //     r6: d["d6"],
-      //     r7: d["d7"],
-      //     r8: d["d8"],
-      //     r9: d["d9"],
-      //     r10: d["d10"],
-      //     i1: d["d11"],
-      //     i2: d["d12"],
-      //     i3: d["d13"],
-      //     i4: d["d14"],
-      //     i5: d["d15"],
-      //     i6: d["d16"],
-      //     i7: d["d17"],
-      //     i8: d["d18"],
-      //     i9: d["d19"],
-      //     i10: d["d20"],
-      //     i11: d["d21"],
-      //     i12: d["d22"],
-      //     i13: d["d23"],
-      //     i14: d["d24"],
-      //     i15: d["d25"],
-      //     i16: d["d26"],
-      //   i17: d["d27"],
-      //   i18: d["d28"],
-      //   i19: d["d29"],
-      //   i20: d["d30"],
-      //   i21: d["d31"],
-      //   i22: d["d32"],
-      //   i23: d["d33"],
-      //   i24: d["d34"],
-      //   i25: d["d35"],
-      //   i26: d["d36"],
-      //   i27: d["d37"],
-      //   i28: d["d38"],
-      //   i29: d["d39"],
-      //   i30: d["d40"],
-      //   i31: d["d41"],
-      //   i32: d["d42"],
-      //   i33: d["d43"],
-      //   i34: d["d44"],
-      //   pb1: d["d45"],
-      //   pb2: d["d46"],
-      //   pb3: d["d47"],
-      //   pb4: d["d48"],
-      //   pb5: d["d49"],
-      //   pi1: d["d50"],
-      //   pi2: d["d51"],
-      //   pi3: d["d52"],
-      //   pi4: d["d53"],
-      //   pi5: d["d54"],
-      //   pi6: d["d55"],
-      //   pi7: d["d56"],
-      //   pi8: d["d57"],
+      //     d1: d["d1"],
+      //     d2: d["d2"],
+      //     d3: d["d3"],
+      //     d4: d["d4"],
+      //     d5: d["d5"],
+      //     d6: d["d6"],
+      //     d7: d["d7"],
+      //     d8: d["d8"],
+      //     d9: d["d9"],
+      //     d10: d["d10"],
+      //     d11: d["d11"],
+      //     d12: d["d12"],
+      //     d13: d["d13"],
+      //     d14: d["d14"],
+      //     d15: d["d15"],
+      //     d16: d["d16"],
+      //     d17: d["d17"],
+      //     d18: d["d18"],
+      //     d19: d["d19"],
+      //     d20: d["d20"],
+      //     d21: d["d21"],
+      //     d22: d["d22"],
+      //     d23: d["d23"],
+      //     d24: d["d24"],
+      //     d25: d["d25"],
+      //     d26: d["d26"],
+      //   c1: d["d23"],
+      //   c2: d["d24"],
+      //   c3: d["d25"],
+      //   c4: d["d26"],
+      //   c5: d["d27"],
+      //   c6: d["d28"],
+      //   c7: d["d29"],
+      //   c8: d["d30"],
+      //   c8: d["d31"],
+      //   c8: d["d32"],
+      //   c8: d["d33"],
+      //   c8: d["d34"],
+      //   c8: d["d35"],
+      //   c8: d["d36"],
+      //   c8: d["d37"],
+      //   c8: d["d38"],
+      //   c8: d["d39"],
+      //   c8: d["d40"],
+      //   c9: d["d41"],
+      //   c10: d["d42"],
+      //   c11: d["d43"],
+      //   c12: d["d44"],
+      //   c13: d["d45"],
+      //   c14: d["d46"],
+      //   c15: d["d47"],
+      //   c16: d["d48"],
+      //   c17: d["d49"],
+      //   c18: d["d50"],
+      //   c19: d["d51"],
+      //   c20: d["d52"],
+      //   c21: d["d53"],
+      //   c22: d["d54"],
+      //   c23: d["d55"],
+      //   c24: d["d56"],
+      //   c25: d["d57"],
+      //   c26: d["d58"],
+      //   c27: d["d59"],
+      //   c28: d["d60"],
+      //   c29: d["d61"],
+      //   c30: d["d62"],
+      //   c31: d["d63"],
+      //   c32: d["d64"],
+      //   c33: d["d65"],
+      //   c34: d["d66"],
+      //   c35: d["d67"],
+      //   c36: d["d68"],
+      //   c37: d["d69"],
+      //   c38: d["d70"],
     });
   };
 
   //data initial state
   let zero = 0;
   const [homedata, setHomeData] = useState({
-    r1: zero, //거실상부 슬라이더 초기값
-    r2: zero, //거실하부 슬라이더 초기값
-    r3: zero, //침실상부 슬라이더 초기값
-    r4: zero, //침실하부 슬라이더 초기값
-    r5: zero, //어닝좌 슬라이더 초기값
-    r6: zero, //어닝우 슬라이더 초기값
-    r7: zero, //바닥난방 슬라이더 초기값
-    r8: zero, //온풍난방 슬라이더 초기값
-    r9: zero, //침대온수 슬라이더 초기값
-    r10: zero, //벙커온수 슬라이더 초기값
-    i1: zero, //거실메인 버튼 초기값 (check버튼의 zero를 1로 바꿔보면 체크된 버튼을 볼 수 있음)
-    i2: zero, //거실상부 버튼 초기값
-    i3: zero, //거실하부 버튼 초기값
-    i4: zero, //침실메인 버튼 초기값
-    i5: zero, //침실상부 버튼 초기값
-    i6: zero, //침실하부 버튼 초기값
-    i7: zero, //전체등 버튼 초기값
-    i8: zero, //어닝좌 버튼 초기값
-    i9: zero, //어닝우 버튼 초기값
-    i10: zero, //벙커메인 버튼 초기값
-    i11: zero, //벙커간접등 버튼 초기값
-    i12: zero, //화장실메인 버튼 초기값
-    i13: zero, //화장실간접등 버튼 초기값
-    i14: zero, //aux1 버튼 초기값
-    i15: zero, //aux2 버튼 초기값
-    i16: zero, //aux3 버튼 초기값
-    i17: zero, //aux4 버튼 초기값
-    i18: zero, //청수퇴수 버튼 초기값
-    i19: zero, //물펌프 버튼 초기값
-    i20: zero, //오수퇴수 버튼 초기값
-    i21: zero, //냉장고 버튼 초기값
-    i22: zero, //인버터 버튼 초기값
-    i23: zero, //화장실팬 버튼 기값
-    i24: zero, //유압레벨 버튼 초기값
-    i25: zero, //차량하부등 버튼 초기값
-    i26: zero, //차량시동 버튼 초기값
-    i27: zero, //에어컨거실 버튼 초기값
-    i28: zero, //에어컨모드 버튼 초기값
-    i29: zero, //에어컨침실 버튼 초기값
-    i30: zero, //에어컨모드 버튼 초기값
-    i31: zero, //히터d2 버튼 초기값
-    i32: zero, //히터d5 버튼 초기값
-    i33: zero, //맥스팬on 버튼 초기값
-    i34: zero, //맥스팬 인아웃 버튼 초기값
-    pb1: zero, //청수막대바 초기값
-    pb2: zero, //오수막대바 초기값
-    pb3: zero, //배터리잔량막대바 초기값
-    pb4: zero, //태양광막대바 초기값
-    pb5: zero, //알터막대바 초기값
-    pi1: zero, //배터리전압 텍스트 초기값
-    pi2: zero, //배터리전류 텍스트 초기값
-    pi3: zero, //배터리온도 텍스트 초기값
-    pi4: "00:00:00", //배터리남은시간 텍스트 초기값
-    pi5: zero, //태양광전류 텍스트 초기값
-    pi6: zero, //태양광발전량 텍스트 초기값
-    pi7: zero, //알터전류 텍스트 초기값
-    pi8: zero, //알터발전량 텍스트 초기값
+    d1: zero,
+    d2: zero,
+    d3: zero,
+    d4: zero,
+    d5: zero,
+    d6: zero,
+    d7: zero,
+    d8: zero,
+    d9: zero,
+    d10: zero,
+    d11: zero,
+    d12: zero,
+    d13: zero,
+    d14: zero,
+    d15: zero,
+    d16: zero,
+    d17: zero,
+    d18: zero,
+    d19: zero,
+    d20: zero,
+    d21: zero,
+    d22: zero,
+    d23: zero,
+    d24: zero,
+    d25: zero,
+    d26: zero,
+    c1: zero, //check버튼의 zero를 1로 바꿔보면 체크된 버튼을 볼 수 있음
+    c2: zero,
+    c3: zero,
+    c4: zero,
+    c5: zero,
+    c6: zero,
+    c7: zero,
+    c8: zero,
+    c9: zero,
+    c10: zero,
+    c11: zero,
+    c12: zero,
+    c13: zero,
+    c14: zero,
+    c15: zero,
+    c16: zero,
+    c17: zero,
+    c18: zero,
+    c19: zero,
+    c20: zero,
+    c21: zero,
+    c22: zero,
+    c23: zero,
+    c24: zero,
+    c25: zero,
+    c26: zero,
+    c27: zero,
+    c28: zero,
+    c29: zero,
+    c30: zero,
+    c31: zero,
+    c32: zero,
+    c33: zero,
+    c34: zero,
+    c35: zero,
+    c36: zero,
+    c37: zero,
+    c38: zero,
   });
 
   //horizontal range slider state
   const [rangeValue, setrangeValue] = useState({
-    livingroom_top: homedata.r1, //거실상부 슬라이더 초기값
-    livingroom_bottom: homedata.r2, //거실하부 슬라이더 초기값
-    bedroom_top: homedata.r3, //침실상부 슬라이더 초기값
-    bedroom_bottom: homedata.r4, //침실하부 슬라이더 초기값
-    earning_left: homedata.r5, //어닝좌 슬라이더 초기값
-    earning_right: homedata.r6, //어닝우 슬라이더 초기값
-    floor_heater: homedata.r7, //바닥난방 슬라이더 초기값
-    air_heater: homedata.r8, //온풍난방 슬라이더 초기값
-    aqua_bed_warmer: homedata.r9, //침대온수 슬라이더 초기값
-    aqua_bunker_warmer: homedata.r10, //벙커온수 슬라이더 초기값
+    li_3_livingroom_top: homedata.d1,
+    li_3_livingroom_bottom: homedata.d2,
+    li_3_bedroom_top: homedata.d3,
+    li_3_bedroom_bottom: homedata.d4,
+    li_3_earning_left: homedata.d5,
+    li_3_earning_right: homedata.d6,
+    air_1_livingroom_temp: homedata.d7,
+    air_1_bedroom_temp: homedata.d8,
+    air_2_mixfan_temp: homedata.d11,
+    floor_heater: homedata.d23,
+    air_heater: homedata.d24,
+    aqua_bed_warmer: homedata.d25,
+    aqua_bunker_warmer: homedata.d26,
   });
-
-  //slider value
   const rangdesliderHandle = (e) => {
     const value = e.target.value;
     setrangeValue({
@@ -196,11 +221,11 @@ const Home = ({ data, sendCmd, primarykey }) => {
 
   //progress bar state
   const [progressBar, setprogressbar] = useState({
-    freshWater: homedata.pb1, //청수막대바 초기값
-    wasteWater: homedata.pb2, //오수막대바 초기값
-    batteryLevel: homedata.pb3, //배터리잔량막대바 초기값
-    photovoltaics: homedata.pb4, //태양광막대바 초기값
-    alternator: homedata.pb5, //알터막대바 초기값
+    freshWater: homedata.d16,
+    wasteWater: homedata.d17,
+    batteryLevel: homedata.d18,
+    alternator: homedata.d20,
+    photovoltaics: homedata.d21,
   });
 
   //camera modal
@@ -246,69 +271,137 @@ const Home = ({ data, sendCmd, primarykey }) => {
     ],
   };
 
-  //ON OFF 버튼 및
-  const onOffHandle = (target, name, e) => {
-    sendCmd(target, name, e.target.checked === true ? 1 : 0);
+  //onoff
+  const onOffHandle = (e, name) => {
+    sendCmd("0.1", name, e.target.checked === true ? 1 : 0);
   };
 
-  //온도 및 풍량조절
-  const TempControl = (target, name, op) => {
-    sendCmd(target, name, op);
+  const [airconLivingroomTempCount, setairconLivingroomTempCount] = useState(5);
+  const [airconLivingroomWindCount, setairconLivingroomWindCount] = useState(5);
+  const [airconBedroomTempCount, setairconBedroomTempCount] = useState(5);
+  const [airconBedroomWindCount, setairconBedroomWindCount] = useState(5);
+  const [maxfantempCount, setmaxfantempCount] = useState(5);
+  const [heaterd2Count, setheaterd2Count] = useState(5);
+
+  // 에어컨 거실 온도
+  const airconLivingroomTempCal = (target, name, op) => {
+    // if (op === "p") {
+    //   setairconLivingroomTempCount(
+    //     (prevairconLivingroomTempCount) => prevairconLivingroomTempCount + 1
+    //   );
+    // } else if (op === "m") {
+    //   setairconLivingroomTempCount(
+    //     (prevairconLivingroomTempCount) => prevairconLivingroomTempCount - 1
+    //   );
+    // }
+    //console.log("Count liv temp: ", target, name, airconLivingroomTempCount);
+    sendCmd(target, name, op === "p" ? 1 : -1);
   };
 
-  //에러리셋 및 모드 클릭
-  const resetAndMode = (target, name) => {
-    sendCmd(target, name);
+  //에어컨 거실 풍향
+  const airconLivingroomWindCal = (target, name, op) => {
+    // if (op === "p") {
+    //   setairconLivingroomWindCount(
+    //     (prevairconLivingroomWindCount) => prevairconLivingroomWindCount + 1
+    //   );
+    // } else if (op === "m") {
+    //   setairconLivingroomWindCount(
+    //     (prevairconLivingroomWindCount) => prevairconLivingroomWindCount - 1
+    //   );
+    // }
+    //console.log("Count liv wind: ", target, name, airconLivingroomWindCount);
+    sendCmd(target, name, op === "p" ? 1 : -1);
   };
 
-  //버튼의 초기 셋팅값
+  //에어컨 침실 온도
+  const airconBedroomTempCal = (target, name, op) => {
+    // if (op === "p") {
+    //   setairconBedroomTempCount(
+    //     (prevairconBedroomTempCount) => prevairconBedroomTempCount + 1
+    //   );
+    // } else if (op === "m") {
+    //   setairconBedroomTempCount(
+    //     (prevairconBedroomTempCount) => prevairconBedroomTempCount - 1
+    //   );
+    // }
+    //console.log("Count bed temp: ", target, name, airconBedroomTempCount);
+    sendCmd(target, name, op === "p" ? 1 : -1);
+  };
+
+  //에어컨 침실 풍향
+  const airconBedroomWindCal = (target, name, op) => {
+    // if (op === "p") {
+    //   setairconBedroomWindCount(
+    //     (prevairconBedroomWindCount) => prevairconBedroomWindCount + 1
+    //   );
+    // } else if (op === "m") {
+    //   setairconBedroomWindCount(
+    //     (prevairconBedroomWindCount) => prevairconBedroomWindCount - 1
+    //   );
+    // }
+    //console.log("Count bed wind: ", target, name, airconBedroomWindCount);
+    sendCmd(target, name, op === "p" ? 1 : -1);
+  };
+
+  //맥스팬 온도
+  const maxfanCal = (target, name, op) => {
+    // if (op === "p") {
+    //   setmaxfantempCount((prevmaxfantempCount) => prevmaxfantempCount + 1);
+    // } else if (op === "m") {
+    //   setmaxfantempCount((prevmaxfantempCount) => prevmaxfantempCount - 1);
+    // }
+    // console.log("Count maxfan temp: ", target, name, maxfantempCount);
+    sendCmd(target, name, op === "p" ? 1 : -1);
+  };
+
+  //히터 D2 온도
+  const heaterd2Cal = (target, name, op) => {
+    // if (op === "p") {
+    //   setheaterd2Count((prevheaterd2Count) => prevheaterd2Count + 1);
+    // } else if (op === "m") {
+    //   setheaterd2Count((prevheaterd2Count) => prevheaterd2Count - 1);
+    // }
+    // console.log("Count maxfan temp: ", target, name, heaterd2Count);
+    sendCmd(target, name, op === "p" ? 1 : -1);
+  };
+
+  //토글버튼 ex거실상부, 침실상부
+  //버튼 체크 상태 1이면 체크됨, 0이면 체크안됨, setDefaultToggle를 homeDataHandle함수에 넣어서 데이터를 지정해주면됨.
+  //예시 const [defaultToggle, setDefaultToggle] = useState(1);
+
   const [defaultToggle, setDefaultToggle] = useState({
-    livingroom_main_check: homedata.i1, //거실메인 버튼 초기값
-    livingroom_top_check: homedata.i2, //거실상부 버튼 초기값
-    livingroom_bottom_check: homedata.i3, //거실하부 버튼 초기값
-    bedroom_main_check: homedata.i4, //침실메인 버튼 초기값
-    bedroom_top_check: homedata.i5, //침실상부 버튼 초기값
-    bedroom_bottom_check: homedata.i6, //침실하부 버튼 초기값
-    all_light_check: homedata.i7, //전체등 버튼 초기값
-    earning_left_check: homedata.i8, //어닝좌 버튼 초기값
-    earning_right_check: homedata.i9, //어닝우 버튼 초기값
-    bunker_main_check: homedata.i10, //벙커메인 버튼 초기값
-    bunker_indirect_light_check: homedata.i11, //벙커간접등 버튼 초기값
-    restroom_main_check: homedata.i12, //화장실메인 버튼 초기값
-    restroom_indirect_light_check: homedata.i13, //화장실간접등 버튼 초기값
-    aux1_check: homedata.i14, //aux1 버튼 초기값
-    aux2_check: homedata.i15, //aux2 버튼 초기값
-    aux3_check: homedata.i16, //aux3 버튼 초기값
-    aux4_check: homedata.i17, //aux4 버튼 초기값
-    freshWater_check: homedata.i18, //청수퇴수 버튼 초기값
-    water_pump_check: homedata.i19, //물펌프 버튼 초기값
-    wasteWater_check: homedata.i20, //오수퇴수 버튼 초기값
-    refrigerator_check: homedata.i21, //냉장고 버튼 초기값
-    inverter_check: homedata.i22, //인버터 버튼 초기값
-    restroom_fan_check: homedata.i23, //화장실팬 버튼 기값
-    Hydraulics_level_check: homedata.i24, //유압레벨 버튼 초기값
-    vehicle_bottom_light_check: homedata.i25, //차량하부등 버튼 초기값
-    vehicle_start_check: homedata.i26, //차량시동 버튼 초기값
-    aircon_livingroom_check: homedata.i27, //에어컨거실 버튼 초기값
-    aircon_livingroom_mode: homedata.i28, //에어컨모드 버튼 초기값
-    aircon_bedroom_check: homedata.i29, //에어컨침실 버튼 초기값
-    aircon_bedroom_mode: homedata.i30, //에어컨모드 버튼 초기값
-    heaterd2_check: homedata.i31, //히터d2 버튼 초기값
-    heaterd5_check: homedata.i32, //히터d5 버튼 초기값
-    maxfan_check: homedata.i33, //맥스팬on 버튼 초기값
-    maxfan_inout_check: homedata.i34, //맥스팬 인아웃 버튼 초기값
+    livingroom_top_check: homedata.c1,
+    bedroom_top_check: homedata.c2,
+    earning_left_check: homedata.c3,
+    livingroom_bottom_check: homedata.c4,
+    bedroom_bottom_check: homedata.c5,
+    earning_right_check: homedata.c6,
+    livingroom_main_check: homedata.c7,
+    bedroom_main_check: homedata.c8,
+    restroom_main_check: homedata.c9,
+    restroom_indirect_light_check: homedata.c10,
+    bunker_main_check: homedata.c11,
+    bunker_indirect_light_check: homedata.c12,
+    vehicle_bottom_light_check: homedata.c14,
+    all_light_check: homedata.c15,
+    freshWater_check: homedata.c16,
+    wasteWater_check: homedata.c17,
+    refrigerator_check: homedata.c18,
+    water_pump_check: homedata.c19,
+    inverter_check: homedata.c21,
+    vehicle_start_check: homedata.c23,
+    Hydraulics_level_check: homedata.c24,
+    restroom_fan_check: homedata.c31,
+    aux1_check: homedata.c32,
+    aux2_check: homedata.c33,
+    aux3_check: homedata.c34,
+    aux4_check: homedata.c35,
+    maxfan_check: homedata.c36,
+    heaterd2_check: homedata.c37,
+    heaterd5_check: homedata.c38,
   });
 
-  const [progressbarDefault, setProgressbarDefault] = useState({
-    battery_voltage_value: homedata.pi1, //배터리전압 텍스트 초기값
-    battery_electric_current_value: homedata.pi2, //배터리전류 텍스트 초기값
-    battery_temp_value: homedata.pi3, //배터리온도 텍스트 초기값
-    battery_remaining_time: homedata.pi4, //배터리남은시간 텍스트 초기값
-    photovoltaics_electric_current_value: homedata.pi5, //태양광전류 텍스트 초기값
-    photovoltaics_power_generation_value: homedata.pi6, //태양광발전량 텍스트 초기값
-    alternator_electric_current_value: homedata.pi7, //알터전류 텍스트 초기값
-    alternator_power_generation_value: homedata.pi8, //알터발전량 텍스트 초기값
-  });
+  console.log(homedata.c1);
 
   return (
     <div className="inner_contents home_wrap">
@@ -325,7 +418,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) => onOffHandle("0.1", "livingroom_main", e)}
+                      onChange={(e) => onOffHandle(e, "livingroom_main")}
                       defaultChecked={
                         defaultToggle.livingroom_main_check === 1 ? true : false
                       }
@@ -354,9 +447,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                             ? true
                             : false
                         }
-                        onChange={(e) =>
-                          onOffHandle("0.1", "livingroom_top", e)
-                        }
+                        onChange={(e) => onOffHandle(e, "livingroom_top")}
                       />
                       <span className="dot">
                         <div className="text_on">
@@ -376,9 +467,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) =>
-                          onOffHandle("0.1", "livingroom_bottom", e)
-                        }
+                        onChange={(e) => onOffHandle(e, "livingroom_bottom")}
                         defaultChecked={
                           defaultToggle.bedroom_bottom_check === 1
                             ? true
@@ -402,8 +491,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="inner_col_wrap slider_height">
                 <div className="range_slider slider_margin_bottom">
                   <RangeSlider
-                    name="livingroom_top"
-                    value={rangeValue.livingroom_top}
+                    name="li_3_livingroom_top"
+                    value={rangeValue.li_3_livingroom_top}
                     step={5}
                     min={0}
                     max={100}
@@ -412,8 +501,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="range_slider">
                   <RangeSlider
-                    name="livingroom_bottom"
-                    value={rangeValue.livingroom_bottom}
+                    name="li_3_livingroom_bottom"
+                    value={rangeValue.li_3_livingroom_bottom}
                     step={5}
                     min={0}
                     max={100}
@@ -430,7 +519,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) => onOffHandle("0.1", "bedroom_main", e)}
+                      onChange={(e) => onOffHandle(e, "bedroom_main")}
                       defaultChecked={
                         defaultToggle.bedroom_main_check === 1 ? true : false
                       }
@@ -454,7 +543,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "bedroom_top", e)}
+                        onChange={(e) => onOffHandle(e, "bedroom_top")}
                         defaultChecked={
                           defaultToggle.bedroom_top_check === 1 ? true : false
                         }
@@ -477,9 +566,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) =>
-                          onOffHandle("0.1", "bedroom_bottom", e)
-                        }
+                        onChange={(e) => onOffHandle(e, "bedroom_bottom")}
                         defaultChecked={
                           defaultToggle.bedroom_bottom_check === 1
                             ? true
@@ -503,8 +590,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="inner_col_wrap slider_height">
                 <div className="range_slider">
                   <RangeSlider
-                    name="bedroom_top"
-                    value={rangeValue.bedroom_top}
+                    name="li_3_bedroom_top"
+                    value={rangeValue.li_3_bedroom_top}
                     step={5}
                     min={0}
                     max={100}
@@ -513,8 +600,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="range_slider">
                   <RangeSlider
-                    name="bedroom_bottom"
-                    value={rangeValue.bedroom_bottom}
+                    name="li_3_bedroom_bottom"
+                    value={rangeValue.li_3_bedroom_bottom}
                     step={5}
                     min={0}
                     max={100}
@@ -531,7 +618,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) => onOffHandle("0.1", "all_light", e)}
+                      onChange={(e) => onOffHandle(e, "all_light")}
                       defaultChecked={
                         defaultToggle.all_light_check === 1 ? true : false
                       }
@@ -553,7 +640,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "earning_left", e)}
+                        onChange={(e) => onOffHandle(e, "earning_left")}
                         defaultChecked={
                           defaultToggle.earning_left_check === 1 ? true : false
                         }
@@ -576,7 +663,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "earning_right", e)}
+                        onChange={(e) => onOffHandle(e, "earning_right")}
                         defaultChecked={
                           defaultToggle.earning_right_check === 1 ? true : false
                         }
@@ -598,8 +685,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="inner_col_wrap slider_height">
                 <div className="range_slider">
                   <RangeSlider
-                    name="earning_left"
-                    value={rangeValue.earning_left}
+                    name="li_3_earning_left"
+                    value={rangeValue.li_3_earning_left}
                     step={5}
                     min={0}
                     max={100}
@@ -608,8 +695,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="range_slider">
                   <RangeSlider
-                    name="earning_right"
-                    value={rangeValue.earning_right}
+                    name="li_3_earning_right"
+                    value={rangeValue.li_3_earning_right}
                     step={5}
                     min={0}
                     max={100}
@@ -626,7 +713,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) => onOffHandle("0.1", "bunker_main", e)}
+                      onChange={(e) => onOffHandle(e, "bunker_main")}
                       defaultChecked={
                         defaultToggle.bunker_main_check === 1 ? true : false
                       }
@@ -649,9 +736,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) =>
-                        onOffHandle("0.1", "bunker_indirect_light", e)
-                      }
+                      onChange={(e) => onOffHandle(e, "bunker_indirect_light")}
                       defaultChecked={
                         defaultToggle.bunker_indirect_light_check === 1
                           ? true
@@ -678,7 +763,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       id="mycheckbox"
                       type="checkbox"
                       className="default"
-                      onChange={(e) => onOffHandle("0.1", "restroom_main", e)}
+                      onChange={(e) => onOffHandle(e, "restroom_main")}
                       defaultChecked={
                         defaultToggle.restroom_main_check === 1 ? true : false
                       }
@@ -702,7 +787,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                       type="checkbox"
                       className="default"
                       onChange={(e) =>
-                        onOffHandle("0.1", "restroom_indirect_light", e)
+                        onOffHandle(e, "restroom_indirect_light")
                       }
                       defaultChecked={
                         defaultToggle.restroom_indirect_light_check === 1
@@ -736,7 +821,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "aux1", e)}
+                    onChange={(e) => onOffHandle(e, "aux1")}
                     defaultChecked={
                       defaultToggle.aux1_check === 1 ? true : false
                     }
@@ -757,7 +842,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "aux2", e)}
+                    onChange={(e) => onOffHandle(e, "aux2")}
                     defaultChecked={
                       defaultToggle.aux2_check === 1 ? true : false
                     }
@@ -778,7 +863,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "aux3", e)}
+                    onChange={(e) => onOffHandle(e, "aux3")}
                     defaultChecked={
                       defaultToggle.aux3_check === 1 ? true : false
                     }
@@ -799,7 +884,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "aux4", e)}
+                    onChange={(e) => onOffHandle(e, "aux4")}
                     defaultChecked={
                       defaultToggle.aux4_check === 1 ? true : false
                     }
@@ -851,7 +936,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "freshWater", e)}
+                        onChange={(e) => onOffHandle(e, "freshWater")}
                         defaultChecked={
                           defaultToggle.freshWater_check === 1 ? true : false
                         }
@@ -872,7 +957,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "water_pump", e)}
+                        onChange={(e) => onOffHandle(e, "water_pump")}
                         defaultChecked={
                           defaultToggle.water_pump_check === 1 ? true : false
                         }
@@ -921,7 +1006,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle("0.1", "wasteWater", e)}
+                        onChange={(e) => onOffHandle(e, "wasteWater")}
                         defaultChecked={
                           defaultToggle.wasteWater_check === 1 ? true : false
                         }
@@ -973,13 +1058,10 @@ const Home = ({ data, sendCmd, primarykey }) => {
                   </div>
                 </div>
                 <div className="progress_right">
-                  <div>전압 {progressbarDefault.battery_voltage_value}V</div>
-                  <div>
-                    전류
-                    {progressbarDefault.photovoltaics_electric_current_value}A
-                  </div>
-                  <div>온도 {progressbarDefault.battery_temp_value}도</div>
-                  <div>{progressbarDefault.battery_remaining_time}</div>
+                  <div>전압 {}V</div>
+                  <div>전류 {}A</div>
+                  <div>온도 {}도</div>
+                  <div>{}</div>
                 </div>
               </div>
               <div className="inner_col_wrap battery_flex">
@@ -1002,14 +1084,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
                   </div>
                 </div>
                 <div className="progress_right">
-                  <div>
-                    전류
-                    {progressbarDefault.photovoltaics_electric_current_value}A
-                  </div>
-                  <div>
-                    발전량
-                    {progressbarDefault.photovoltaics_power_generation_value}Ah
-                  </div>
+                  <div>전류 {}A</div>
+                  <div>발전량 {}Ah</div>
                 </div>
               </div>
             </div>
@@ -1034,13 +1110,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
                   </div>
                 </div>
                 <div className="progress_right">
-                  <div>
-                    전류 {progressbarDefault.alternator_electric_current_value}A
-                  </div>
-                  <div>
-                    발전량
-                    {progressbarDefault.alternator_power_generation_value}Ah
-                  </div>
+                  <div>전류 {}A</div>
+                  <div>발전량 {}Ah</div>
                 </div>
               </div>
               <div className="inner_col_wrap battery_flex"></div>
@@ -1057,7 +1128,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "refrigerator", e)}
+                    onChange={(e) => onOffHandle(e, "refrigerator")}
                     defaultChecked={
                       defaultToggle.refrigerator_check === 1 ? true : false
                     }
@@ -1078,7 +1149,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "inverter", e)}
+                    onChange={(e) => onOffHandle(e, "inverter")}
                     defaultChecked={
                       defaultToggle.inverter_check === 1 ? true : false
                     }
@@ -1100,7 +1171,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "Hydraulics_level", e)}
+                    onChange={(e) => onOffHandle(e, "Hydraulics_level")}
                     defaultChecked={
                       defaultToggle.Hydraulics_level_check === 1 ? true : false
                     }
@@ -1125,7 +1196,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "restroom_fan", e)}
+                    onChange={(e) => onOffHandle(e, "restroom_fan")}
                     defaultChecked={
                       defaultToggle.restroom_fan_check === 1 ? true : false
                     }
@@ -1149,9 +1220,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) =>
-                      onOffHandle("0.1", "vehicle_bottom_light", e)
-                    }
+                    onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
                     defaultChecked={
                       defaultToggle.vehicle_bottom_light_check === 1
                         ? true
@@ -1176,7 +1245,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "vehicle_start", e)}
+                    onChange={(e) => onOffHandle(e, "vehicle_start")}
                     defaultChecked={
                       defaultToggle.vehicle_start_check === 1 ? true : false
                     }
@@ -1211,14 +1280,12 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) =>
-                          onOffHandle("0.1", "aircon_livingroom_check", e)
-                        }
-                        defaultChecked={
-                          defaultToggle.aircon_livingroom_check === 1
-                            ? true
-                            : false
-                        }
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
                       />
                       <span className="dot">
                         <div className="text_on">
@@ -1236,7 +1303,11 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn"
                       onClick={() =>
-                        TempControl("0.1", "aircon_livingroom_temp", 1)
+                        airconLivingroomTempCal(
+                          "0.1",
+                          "aircon_livingroom_temp",
+                          "p"
+                        )
                       }
                     >
                       <div className="pmtext">
@@ -1249,7 +1320,11 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn"
                       onClick={() =>
-                        TempControl("0.1", "aircon_livingroom_temp", -1)
+                        airconLivingroomTempCal(
+                          "0.1",
+                          "aircon_livingroom_temp",
+                          "m"
+                        )
                       }
                     >
                       <div className="pmtext">
@@ -1261,20 +1336,37 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="control_bottom">
                   <div className="control_inner margin_right">
-                    <div
-                      className="mode_btn"
-                      onClick={() => resetAndMode("0.1", "heaterd2_reset")}
-                    >
-                      <div className="modetext">
-                        <div>모드</div>
-                      </div>
-                    </div>
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
                   <div className="control_inner margin_right">
                     <div
                       className="control_btn control_plus"
                       onClick={() =>
-                        TempControl("0.1", "aircon_livingroom_wind", 1)
+                        airconLivingroomWindCal(
+                          "0.1",
+                          "aircon_livingroom_wind",
+                          "p"
+                        )
                       }
                     >
                       <div className="pmtext">
@@ -1287,7 +1379,11 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn"
                       onClick={() =>
-                        TempControl("0.1", "aircon_livingroom_wind", -1)
+                        airconLivingroomWindCal(
+                          "0.1",
+                          "aircon_livingroom_wind",
+                          "m"
+                        )
                       }
                     >
                       <div className="pmtext">
@@ -1306,14 +1402,12 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) =>
-                          onOffHandle("0.1", "aircon_bedroom_check", e)
-                        }
-                        defaultChecked={
-                          defaultToggle.aircon_bedroom_check === 1
-                            ? true
-                            : false
-                        }
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
                       />
                       <span className="dot">
                         <div className="text_on">
@@ -1331,7 +1425,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn control_plus"
                       onClick={() =>
-                        TempControl("0.1", "aircon_bedroom_temp", 1)
+                        airconBedroomTempCal("0.1", "aircon_bedroom_temp", "p")
                       }
                     >
                       <div className="pmtext">
@@ -1344,7 +1438,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn"
                       onClick={() =>
-                        TempControl("0.1", "aircon_bedroom_temp", -1)
+                        airconBedroomTempCal("0.1", "aircon_bedroom_temp", "m")
                       }
                     >
                       <div className="pmtext">
@@ -1356,20 +1450,33 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="control_bottom">
                   <div className="control_inner margin_right">
-                    <div
-                      className="mode_btn"
-                      onClick={() => resetAndMode("0.1", "aircon_bedroom_mode")}
-                    >
-                      <div className="modetext">
-                        <div>모드</div>
-                      </div>
-                    </div>
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        // onChange={(e) => onOffHandle(e, "vehicle_bottom_light")}
+                        // defaultChecked={
+                        //   defaultToggle.vehicle_bottom_light_check === 1
+                        //     ? true
+                        //     : false
+                        // }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
                   <div className="control_inner margin_right">
                     <div
                       className="control_btn control_plus"
                       onClick={() =>
-                        TempControl("0.1", "aircon_bedroom_wind", 1)
+                        airconBedroomWindCal("0.1", "aircon_bedroom_wind", "p")
                       }
                     >
                       <div className="pmtext">
@@ -1382,7 +1489,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     <div
                       className="control_btn"
                       onClick={() =>
-                        TempControl("0.1", "aircon_bedroom_wind", -1)
+                        airconBedroomWindCal("0.1", "aircon_bedroom_wind", "m")
                       }
                     >
                       <div className="pmtext">
@@ -1406,7 +1513,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "heaterd2", e)}
+                    onChange={(e) => onOffHandle(e, "heaterd2")}
                     defaultChecked={
                       defaultToggle.heaterd2_check === 1 ? true : false
                     }
@@ -1426,7 +1533,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="heater_btns margin_right">
                 <div
                   className="control_btn control_plus"
-                  onClick={() => TempControl("0.1", "header_d2_temp", 1)}
+                  onClick={() => heaterd2Cal("0.1", "header_d2_temp", "p")}
                 >
                   <div className="pmtext">
                     <div>온도</div>
@@ -1437,7 +1544,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="heater_btns margin_right">
                 <div
                   className="control_btn control_plus"
-                  onClick={() => TempControl("0.1", "header_d2_temp", -1)}
+                  onClick={() => heaterd2Cal("0.1", "header_d2_temp", "m")}
                 >
                   <div className="pmtext">
                     <div>온도</div>
@@ -1446,15 +1553,24 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
               </div>
               <div className="heater_btns">
-                <div
-                  className="control_btn control_plus"
-                  onClick={() => resetAndMode("0.1", "heaterd2_reset")}
-                >
-                  <div className="pmtext">
-                    <div>에러</div>
-                    <div>리셋</div>
-                  </div>
-                </div>
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd2_reset")}
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                    <div className="text_off">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                  </span>
+                </label>
               </div>
             </div>
             <div className="heater_row">
@@ -1464,7 +1580,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "heaterd5", e)}
+                    onChange={(e) => onOffHandle(e, "heaterd5")}
                     defaultChecked={
                       defaultToggle.heaterd5_check === 1 ? true : false
                     }
@@ -1482,15 +1598,24 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="heater_btns margin_right"></div>
               <div className="heater_btns margin_right"></div>
               <div className="heater_btns">
-                <div
-                  className="control_btn control_plus"
-                  onClick={() => resetAndMode("0.1", "heaterd5_reset")}
-                >
-                  <div className="pmtext">
-                    <div>에러</div>
-                    <div>리셋</div>
-                  </div>
-                </div>
+                <label className="toggle">
+                  <input
+                    id="mycheckbox"
+                    type="checkbox"
+                    className="default"
+                    onChange={(e) => onOffHandle(e, "heaterd5_reset")}
+                  />
+                  <span className="dot">
+                    <div className="text_on">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                    <div className="text_off">
+                      <div>에러</div>
+                      <div>리셋</div>
+                    </div>
+                  </span>
+                </label>
               </div>
             </div>
             <div className="row">
@@ -1504,6 +1629,14 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     max={100}
                     onChange={(e) => rangdesliderHandle(e)}
                   />
+                  {/* <RangeSlider
+                    name="li_3_livingroom_top"
+                    value={rangeValue.li_3_livingroom_top}
+                    step={5}
+                    min={0}
+                    max={100}
+                    onChange={(e) => rangdesliderHandle(e)}
+                  /> */}
                 </div>
                 <div className="slider_wrap">
                   <RangeSlider
@@ -1551,7 +1684,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "maxfan", e)}
+                    onChange={(e) => onOffHandle(e, "maxfan")}
                     defaultChecked={
                       defaultToggle.maxfan_check === 1 ? true : false
                     }
@@ -1574,9 +1707,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
                     id="mycheckbox"
                     type="checkbox"
                     className="default"
-                    onChange={(e) => onOffHandle("0.1", "maxfan", e)}
+                    onChange={(e) => onOffHandle(e, "maxfan")}
                     defaultChecked={
-                      defaultToggle.maxfan_inout_check === 1 ? true : false
+                      defaultToggle.maxfan_check === 1 ? true : false
                     }
                   />
                   <span className="dot">
@@ -1594,7 +1727,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="maxfan_btns margin_right">
                 <div
                   className="control_btn control_plus"
-                  onClick={() => TempControl("0.1", "maxfan", 1)}
+                  onClick={() => maxfanCal("0.1", "maxfan", "p")}
                 >
                   <div className="pmtext">
                     <div>풍량</div>
@@ -1605,7 +1738,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="maxfan_btns">
                 <div
                   className="control_btn"
-                  onClick={() => TempControl("0.1", "maxfan", -1)}
+                  onClick={() => maxfanCal("0.1", "maxfan", "m")}
                 >
                   <div className="pmtext">
                     <div>풍량</div>

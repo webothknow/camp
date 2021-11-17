@@ -80,17 +80,9 @@ body {
 .slider_width {
   height: 50%;
 }
-/* .temp_width {
-  width: 33.33%;
-} */
 .slider_height {
   width: 50%;
 }
-/* .li_text_center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 .li_btn_center {
   display: flex;
   justify-content: center;
@@ -333,6 +325,25 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+.mode_btn {
+  width: 100%;
+  height: 100%;
+  background-color: #525252;
+  border-radius: 0.4rem;
+  border: 2px solid #ddd;
+  color: #bbb;
+  box-shadow: inset -3px -3px 5px #363535;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.mode_btn .modetext {
+  font-size: 1.1rem;
+}
+.mode_btn:active {
+  background-color: #444;
 }
 .temp_wrap .control_btn {
   width: 90%;

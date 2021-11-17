@@ -12,6 +12,7 @@ import { toJS } from "mobx"; //tojs
 // import { apiDefineProperty } from "mobx/dist/internal";
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
+// const wsc = new WebSocketClient("ws://sw.perigee.kr", 8700, "/ws", 100);
 
 //send_cmd 수정필요
 function App() {
@@ -19,20 +20,6 @@ function App() {
   useEffect(() => {
     wsc.openConn();
   }, []);
-
-  let elem = document.documentElement;
-
-  function openFullscreen() {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) {
-      /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      /* IE11 */
-      elem.msRequestFullscreen();
-    }
-  }
 
   //data cmd
   const sendCmd = (target, cmd, status) => {
@@ -44,34 +31,42 @@ function App() {
     wsc.sendMsg(JSON.stringify(obj));
   };
 
-  //data
+  //data state
   let na = "N/A";
   const [data, setData] = useState();
+
+  //data observer
+  const DataObserver = observer(({ store }) => {
+    let d = store.getLastMsg;
+    let target = "data";
+
+    console.log("d1: ", d);
+
+    if (d) {
+      setData(d);
+      if (d["data"] === target) {
+        d = d["data"];
+        if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
+          setHeaderData({
+            ...headerData,
+            t1: d["t1"],
+            t2: d["t2"],
+            t3: d["t3"],
+            humi: d["humi"],
+          });
+        }
+      }
+    }
+
+    return <></>;
+  });
+
+  //data initial state
   const [headerData, setHeaderData] = useState({
     t1: na,
     t2: na,
     t3: na,
     humi: na,
-  });
-
-  //data observer
-  const DataObserver = observer(({ store }) => {
-    let d = store.getLastMsg;
-    console.log("d: ", d);
-
-    // if (d) {
-    //   setData(d);
-    //   if (d["t1"] && d["t2"] && d["humi"]) {
-    //     setHeaderData({
-    //       ...headerData,
-    //       t1: d["t1"],
-    //       t2: d["t2"],
-    //       humi: d["humi"],
-    //     });
-    //   }
-    // }
-
-    return <></>;
   });
 
   //time
@@ -89,7 +84,7 @@ function App() {
 
   //tab menu show hide
   const menuObj = {
-    0: <Home data={data} sendCmd={sendCmd} />, //data props
+    0: <Home data={data} sendCmd={sendCmd} primarykey="data" />, //data props
     1: <Air />,
     2: <Cam />,
     3: <Test />,
@@ -100,7 +95,6 @@ function App() {
     // console.log("hi!", idx);
     setActiveTab(idx);
     colorchange(idx);
-
     if (idx === 4) {
       window.close();
     }
