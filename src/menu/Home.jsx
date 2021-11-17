@@ -1303,7 +1303,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         type="checkbox"
                         className="default"
                         onChange={(e) =>
-                          onOffHandle(e, "aircon_livingroom_mode")
+                          onOffHandle("0.1", "aircon_livingroom_mode", e)
                         }
                         defaultChecked={
                           defaultToggle.aircon_livingroom_mode === 1
@@ -1412,7 +1412,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
                         id="mycheckbox"
                         type="checkbox"
                         className="default"
-                        onChange={(e) => onOffHandle(e, "aircon_bedroom_mode")}
+                        onChange={(e) =>
+                          onOffHandle("0.1", "aircon_bedroom_mode", e)
+                        }
                         defaultChecked={
                           defaultToggle.aircon_bedroom_mode === 1 ? true : false
                         }
