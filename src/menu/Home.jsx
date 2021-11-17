@@ -282,7 +282,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
     ],
   };
 
-  //ON OFF 버튼
+  //ON OFF 버튼 및 모드
   const onOffHandle = (target, name, e) => {
     sendCmd(target, name, e.target.checked === true ? 1 : 0);
   };
@@ -292,8 +292,8 @@ const Home = ({ data, sendCmd, primarykey }) => {
     sendCmd(target, name, op);
   };
 
-  //에러리셋 및 모드 클릭
-  const resetAndMode = (target, name) => {
+  //에러리셋
+  const errorReset = (target, name) => {
     sendCmd(target, name);
   };
 
@@ -1297,14 +1297,29 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="control_bottom">
                   <div className="control_inner margin_right">
-                    <div
-                      className="mode_btn"
-                      onClick={() => resetAndMode("0.1", "heaterd2_reset")}
-                    >
-                      <div className="modetext">
-                        <div>모드</div>
-                      </div>
-                    </div>
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) =>
+                          onOffHandle(e, "aircon_livingroom_mode")
+                        }
+                        defaultChecked={
+                          defaultToggle.aircon_livingroom_mode === 1
+                            ? true
+                            : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
                   <div className="control_inner margin_right">
                     <div
@@ -1392,14 +1407,25 @@ const Home = ({ data, sendCmd, primarykey }) => {
                 </div>
                 <div className="control_bottom">
                   <div className="control_inner margin_right">
-                    <div
-                      className="mode_btn"
-                      onClick={() => resetAndMode("0.1", "aircon_bedroom_mode")}
-                    >
-                      <div className="modetext">
-                        <div>모드</div>
-                      </div>
-                    </div>
+                    <label className="toggle">
+                      <input
+                        id="mycheckbox"
+                        type="checkbox"
+                        className="default"
+                        onChange={(e) => onOffHandle(e, "aircon_bedroom_mode")}
+                        defaultChecked={
+                          defaultToggle.aircon_bedroom_mode === 1 ? true : false
+                        }
+                      />
+                      <span className="dot">
+                        <div className="text_on">
+                          <div>모드</div>
+                        </div>
+                        <div className="text_off">
+                          <div>모드</div>
+                        </div>
+                      </span>
+                    </label>
                   </div>
                   <div className="control_inner margin_right">
                     <div
@@ -1484,7 +1510,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="heater_btns">
                 <div
                   className="control_btn control_plus"
-                  onClick={() => resetAndMode("0.1", "heaterd2_reset")}
+                  onClick={() => errorReset("0.1", "heaterd2_reset")}
                 >
                   <div className="pmtext">
                     <div>에러</div>
@@ -1520,7 +1546,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
               <div className="heater_btns">
                 <div
                   className="control_btn control_plus"
-                  onClick={() => resetAndMode("0.1", "heaterd5_reset")}
+                  onClick={() => errorReset("0.1", "heaterd5_reset")}
                 >
                   <div className="pmtext">
                     <div>에러</div>
