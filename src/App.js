@@ -42,11 +42,11 @@ function App() {
 
     console.log("d1: ", d);
 
-    if (d) {
+    if (d && d.length !== 0) {
       setData(d);
       if (d["data"] === target) {
         d = d["data"];
-        if ((d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) != null) {
+        if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
           setHeaderData({
             ...headerData,
             t1: d["t1"],
