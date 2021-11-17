@@ -46,7 +46,7 @@ function App() {
       setData(d);
       if (d["data"] === target) {
         d = d["data"];
-        if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
+        if ((d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) != null) {
           setHeaderData({
             ...headerData,
             t1: d["t1"],

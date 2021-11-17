@@ -21,7 +21,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
   const homeDataHandle = (d) => {
     console.log("d2: ", d);
 
-    // if (
+    // if ((
     //   d &&
     //   d["d1"] &&
     //   d["d2"] &&
@@ -81,7 +81,7 @@ const Home = ({ data, sendCmd, primarykey }) => {
     //   d["d55"]&&
     //   d["d56"]&&
     //   d["d57"]
-    // ) {
+    // ) != null) {
     setHomeData({
       ...homedata,
       //     r1: d["d1"],
