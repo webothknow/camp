@@ -157,50 +157,65 @@ function App() {
     }
   };
 
+  const [errorPg, setErrorPg] = useState(false);
+
   return (
     <div className="App">
       <DataObserver store={wsc.store} />
       <div className="wrapper">
-        <div className="top_bar">
-          <div className="top_bar_col time">{time}</div>
-          <div className="top_bar_col logo">
-            <img src={unnamed} alt=""></img>
-          </div>
-          <div className="top_bar_col fahrenheit">실내 {headerData.t1}</div>
-          <div className="top_bar_col humid">습도 {headerData.humi}%</div>
-          <div className="top_bar_col celsius">실외 {headerData.t2}</div>
-          <div className="top_bar_col celsius">오수통 {headerData.t3}</div>
-        </div>
-        <div className="bottom_contents">
-          <div className="navi">
-            <div
-              className="menu"
-              onClick={() => navDisplayHandle(0)}
-              style={{ backgroundColor: bg.li }}
-            ></div>
-            <div
-              className="menu"
-              onClick={() => navDisplayHandle(1)}
-              style={{ backgroundColor: bg.air }}
-            ></div>
-            <div
-              className="menu"
-              onClick={() => navDisplayHandle(2)}
-              style={{ backgroundColor: bg.util }}
-            ></div>
-            <div
-              className="menu"
-              onClick={() => navDisplayHandle(3)}
-              style={{ backgroundColor: bg.cam }}
-            ></div>
-            <div
-              className="menu"
-              onClick={() => navDisplayHandle(4)}
-              style={{ backgroundColor: bg.set }}
-            ></div>
-          </div>
-          <div className="contents">{menuObj[activeTab]}</div>
-        </div>
+        {errorPg ? (
+          <>
+            <div className="errorpg">
+              <div className="pgcenter">
+                <div>Error</div>
+                <button>Retry</button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="top_bar">
+              <div className="top_bar_col time">{time}</div>
+              <div className="top_bar_col logo">
+                <img src={unnamed} alt=""></img>
+              </div>
+              <div className="top_bar_col fahrenheit">실내 {headerData.t1}</div>
+              <div className="top_bar_col humid">습도 {headerData.humi}%</div>
+              <div className="top_bar_col celsius">실외 {headerData.t2}</div>
+              <div className="top_bar_col celsius">오수통 {headerData.t3}</div>
+            </div>
+            <div className="bottom_contents">
+              <div className="navi">
+                <div
+                  className="menu"
+                  onClick={() => navDisplayHandle(0)}
+                  style={{ backgroundColor: bg.li }}
+                ></div>
+                <div
+                  className="menu"
+                  onClick={() => navDisplayHandle(1)}
+                  style={{ backgroundColor: bg.air }}
+                ></div>
+                <div
+                  className="menu"
+                  onClick={() => navDisplayHandle(2)}
+                  style={{ backgroundColor: bg.util }}
+                ></div>
+                <div
+                  className="menu"
+                  onClick={() => navDisplayHandle(3)}
+                  style={{ backgroundColor: bg.cam }}
+                ></div>
+                <div
+                  className="menu"
+                  onClick={() => navDisplayHandle(4)}
+                  style={{ backgroundColor: bg.set }}
+                ></div>
+              </div>
+              <div className="contents">{menuObj[activeTab]}</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

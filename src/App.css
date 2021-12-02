@@ -34,6 +34,27 @@ body {
   overflow: hidden;
   /* border: 1px solid yellow; */
 }
+.errorpg {
+  width: 100%;
+  height: 100vh;
+  background-color: #121212;
+}
+.errorpg .pgcenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 25rem;
+  transform: translate(-50%, -50%);
+  /* border: 1px solid green; */
+}
+.errorpg .pgcenter div:nth-child(1) {
+  font-size: 7rem;
+  margin-bottom: 2rem;
+}
+.errorpg .pgcenter button {
+  font-size: 2rem;
+  padding: 1rem 2rem;
+}
 .top_bar {
   width: 100%;
   height: 10%;
