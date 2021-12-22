@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./menu/Home";
-import Login from "./menu/Login";
+import Air from "./menu/Air";
 import Test from "./menu/Test";
 import Cam from "./menu/Cam";
 import Set from "./menu/Set";
@@ -40,7 +40,7 @@ function App() {
     let d = store.getLastMsg;
     let target = "data";
 
-    console.log("d1: ", d);
+    // console.log("d1: ", d);
 
     // let d = {
     //   data: {
@@ -51,28 +51,78 @@ function App() {
     //   },
     // };
 
+    //if (d && d.length !== 0) {
+
+    //풀어씀
+    // if (d) {
+    //   console.log("d? ", d);
+    //   if (d["data"]) {
+    //     console.log("d data? ", d["data"]);
+    //     if (d["data"]["d1"] ) {
+    //       console.log("d d1? ", d["data"]["d1"]);
+    //       setT1(d["data"]["d1"]);
+    //     }
+    //     if (d["data"]["d2"]) {
+    //       console.log("d d2? ", d["data"]["d2"]);
+    //       setT2(d["data"]["d2"]);
+    //     }
+    //     if (d["data"]["d3"]) {
+    //       console.log("d d3? ", d["data"]["d3"]);
+    //       setT3(d["data"]["d3"]);
+    //     }
+    //     if (d["data"]["d4"]) {
+    //       console.log("d d4? ", d["data"]["d4"]);
+    //       setT4(d["data"]["d4"]);
+    //     }
+    //   }
+
+    //축약
+    // if (d) {
+    //   console.log("d? ", d);
+    //   d = d["data"];
+    //   if (d["d1"]) {
+    //     console.log("d1? ", d["d1"]);
+    //     setT1(d["d1"]);
+    //   }
+    //   if (d["d2"]) {
+    //     console.log("d2? ", d["d2"]);
+    //     setT2(d["d2"]);
+    //   }
+    //   if (d["d3"]) {
+    //     console.log("d3? ", d["d3"]);
+    //     setT3(d["d3"]);
+    //   }
+    //   if (d["d4"]) {
+    //     console.log("d4? ", d["d4"]);
+    //     setT4(d["d4"]);
+    //   }
+
+    //축약에서 usestate한개 이용
     // if (d) {
     //   console.log("d? ", d);
     //   d = d["data"];
     //   if (d["d1"] && d["d2"] && d["d3"] && d["d4"]) {
-    //     setHeaderData((prevState) => ({
-    //       ...prevState,
-    //       t1: d["t1"],
-    //       t2: d["t2"],
-    //       t3: d["t3"],
-    //       humi: d["humi"],
-    //     }));
+    //     setT1(d["d1"]);
+    //     setT2(d["d2"]);
+    //     setT3(d["d3"]);
+    //     setT4(d["d4"]);
     //   }
     // }
 
-    if (d && d.length !== 0) {
-      setData(d);
-      // if (d["data"] === target) {
-      //   d = d["data"];
-      //   if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
-      //     setData(d);
-      //   }
-      // }
+    //축약에서 usestate여러개 이용 : 스테이트 무한루프 빠짐
+    //https://javascript.tutorialink.com/maximum-update-depth-exceeded-with-useeffect-map/
+    if (d) {
+      console.log("d? ", d);
+      d = d["data"];
+      if (d["d1"] && d["d2"] && d["d3"] && d["d4"]) {
+        setHeaderData({
+          ...headerData,
+          t1: d["t1"],
+          t2: d["t2"],
+          t3: d["t3"],
+          humi: d["t4"],
+        });
+      }
     }
 
     return <></>;
@@ -85,6 +135,10 @@ function App() {
     t3: na,
     humi: na,
   });
+  // const [t1, setT1] = useState();
+  // const [t2, setT2] = useState();
+  // const [t3, setT3] = useState();
+  // const [t4, setT4] = useState();
 
   //time
   const tempo = new Date().toLocaleTimeString();
@@ -102,9 +156,9 @@ function App() {
   //tab menu show hide
   const menuObj = {
     0: <Home data={data} sendCmd={sendCmd} primarykey="data" />, //data props
-    1: <Cam />,
-    2: <Test />,
-    3: <Login sendCmd={sendCmd} />,
+    1: <Air />,
+    2: <Cam />,
+    3: <Test />,
     4: <Set />,
   };
   const [activeTab, setActiveTab] = useState(0);
@@ -185,7 +239,7 @@ function App() {
             <div className="errorpg">
               <div className="pgcenter">
                 <div>Error</div>
-                <button onClick={wsc.openConn()}>Retry</button>
+                <button>Retry</button>
               </div>
             </div>
           </>

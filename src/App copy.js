@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./menu/Home";
-import Login from "./menu/Login";
+import Air from "./menu/Air";
 import Test from "./menu/Test";
 import Cam from "./menu/Cam";
 import Set from "./menu/Set";
@@ -42,37 +42,14 @@ function App() {
 
     console.log("d1: ", d);
 
-    // let d = {
-    //   data: {
-    //     d1: "가",
-    //     d2: "나",
-    //     d3: "다",
-    //     d4: "라",
-    //   },
-    // };
-
-    // if (d) {
-    //   console.log("d? ", d);
-    //   d = d["data"];
-    //   if (d["d1"] && d["d2"] && d["d3"] && d["d4"]) {
-    //     setHeaderData((prevState) => ({
-    //       ...prevState,
-    //       t1: d["t1"],
-    //       t2: d["t2"],
-    //       t3: d["t3"],
-    //       humi: d["humi"],
-    //     }));
-    //   }
-    // }
-
     if (d && d.length !== 0) {
       setData(d);
-      // if (d["data"] === target) {
-      //   d = d["data"];
-      //   if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
-      //     setData(d);
-      //   }
-      // }
+      if (d["data"] === target) {
+        d = d["data"];
+        if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
+          pushData(d);
+        }
+      }
     }
 
     return <></>;
@@ -85,6 +62,16 @@ function App() {
     t3: na,
     humi: na,
   });
+
+  const pushData = (d) => {
+    setHeaderData({
+      ...headerData,
+      t1: d["t1"],
+      t2: d["t2"],
+      t3: d["t3"],
+      humi: d["humi"],
+    });
+  };
 
   //time
   const tempo = new Date().toLocaleTimeString();
@@ -102,9 +89,9 @@ function App() {
   //tab menu show hide
   const menuObj = {
     0: <Home data={data} sendCmd={sendCmd} primarykey="data" />, //data props
-    1: <Cam />,
-    2: <Test />,
-    3: <Login sendCmd={sendCmd} />,
+    1: <Air />,
+    2: <Cam />,
+    3: <Test />,
     4: <Set />,
   };
   const [activeTab, setActiveTab] = useState(0);
@@ -185,7 +172,7 @@ function App() {
             <div className="errorpg">
               <div className="pgcenter">
                 <div>Error</div>
-                <button onClick={wsc.openConn()}>Retry</button>
+                <button>Retry</button>
               </div>
             </div>
           </>
@@ -200,14 +187,6 @@ function App() {
               <div className="top_bar_col humid">습도 {headerData.humi}%</div>
               <div className="top_bar_col celsius">실외 {headerData.t2}</div>
               <div className="top_bar_col celsius">오수통 {headerData.t3}</div>
-              {/* <div className="top_bar_col fahrenheit">
-                실내 {t1 ? t1 : "N/A"}
-              </div>
-              <div className="top_bar_col humid">습도 {t2 ? t2 : "N/A"}%</div>
-              <div className="top_bar_col celsius">실외 {t3 ? t3 : "N/A"}</div>
-              <div className="top_bar_col celsius">
-                오수통 {t4 ? t4 : "N/A"}
-              </div> */}
             </div>
             <div className="bottom_contents">
               <div className="navi">

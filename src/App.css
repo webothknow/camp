@@ -28,6 +28,9 @@ body {
   font-family: "FuturaBT-Book" !important;
   /* border: 1px solid red; */
 }
+.App {
+  text-align: center;
+}
 .wrapper {
   width: 100%;
   height: 100vh;
@@ -886,42 +889,41 @@ input[type="range"].range-slider.range-slider--primary:not(.disabled):active::-m
   height: 100%;
 }
 
-/* app.css */
-.App {
-  text-align: center;
+/* login */
+.login_wrap {
+  background-color: #161616;
+  max-width: 30rem;
+  margin: auto;
+  border-radius: 0.3rem;
+  overflow: hidden;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.top_wrap {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.login_wrap label {
+  display: block;
+  width: 3rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.top_wrap .form-group:nth-child(1) {
+  margin-bottom: 0.5rem;
+}
+.login_wrap .okbtn {
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: #ddd;
+  background-color: #5a5c69;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+.login_wrap .okbtn:hover {
+  color: #ddd;
+  background-color: #484a54;
 }
