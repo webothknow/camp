@@ -192,14 +192,23 @@ function App() {
         ) : (
           <>
             <div className="top_bar">
-              <div className="top_bar_col time">{time}</div>
+              <div className="top_bar_col time">
+                <div>{time}</div>
+              </div>
               <div className="top_bar_col logo">
                 <img src={unnamed} alt=""></img>
               </div>
-              <div className="top_bar_col fahrenheit">실내 {headerData.t1}</div>
-              <div className="top_bar_col humid">습도 {headerData.humi}%</div>
-              <div className="top_bar_col celsius">실외 {headerData.t2}</div>
-              <div className="top_bar_col celsius">오수통 {headerData.t3}</div>
+              <div className="top_bar_data">
+                <div className="top_bar_col fahrenheit">
+                  실내 {headerData.t1}
+                </div>
+                <div className="top_bar_col humid">습도 {headerData.humi}%</div>
+                <div className="top_bar_col celsius">실외 {headerData.t2}</div>
+                <div className="top_bar_col celsius">
+                  오수통 {headerData.t3}
+                </div>
+              </div>
+
               {/* <div className="top_bar_col fahrenheit">
                 실내 {t1 ? t1 : "N/A"}
               </div>

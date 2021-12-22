@@ -351,7 +351,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
       {/* column 1 */}
       <div className="col">
         <div className="wrap_bg li_wrap">
-          <div className="title">조명</div>
+          <div className="title">
+            <div>조명</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap margin_right li_flex">
@@ -763,7 +765,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
           </div>
         </div>
         <div className="wrap_bg other_wrap">
-          <div className="title">장치</div>
+          <div className="title">
+            <div>장치</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap margin_right">
@@ -858,7 +862,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
       <div className="col">
         <div className="water_wrap_flex">
           <div className="wrap_bg water_wrap water_margin">
-            <div className="title">청수</div>
+            <div className="title">
+              <div>청수</div>
+            </div>
             <div className="row_wrap">
               <div className="row">
                 <div className="inner_col_wrap margin_right">
@@ -928,7 +934,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
             </div>
           </div>
           <div className="wrap_bg water_wrap">
-            <div className="title">오수</div>
+            <div className="title">
+              <div>오수</div>
+            </div>
             <div className="row_wrap">
               <div className="row">
                 <div className="inner_col_wrap margin_right">
@@ -983,7 +991,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
           </div>
         </div>
         <div className="wrap_bg battery_wrap">
-          <div className="title">배터리</div>
+          <div className="title">
+            <div>배터리</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap margin_right battery_flex">
@@ -1084,7 +1094,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
           </div>
         </div>
         <div className="wrap_bg util_wrap">
-          <div className="title">전기장치</div>
+          <div className="title">
+            <div>전기장치</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap margin_right">
@@ -1236,7 +1248,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
       {/* column 3 */}
       <div className="col">
         <div className="wrap_bg temp_wrap">
-          <div className="title">에어컨</div>
+          <div className="title">
+            <div>에어컨</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="inner_col_wrap temp_width margin_right">
@@ -1461,7 +1475,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
           </div>
         </div>
         <div className="wrap_bg heater_wrap">
-          <div className="title">히터</div>
+          <div className="title">
+            <div>히터</div>
+          </div>
           <div className="row_wrap">
             <div className="heater_row">
               <div className="heater_btns margin_right">
@@ -1606,7 +1622,9 @@ const Home = ({ data, sendCmd, primarykey }) => {
           </div>
         </div>
         <div className="wrap_bg maxfan_wrap">
-          <div className="title">맥스팬</div>
+          <div className="title">
+            <div>맥스팬</div>
+          </div>
           <div className="row_wrap">
             <div className="row">
               <div className="maxfan_btns margin_right">
