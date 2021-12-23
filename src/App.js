@@ -208,7 +208,6 @@ function App() {
                   오수통 {headerData.t3}
                 </div>
               </div>
-
               {/* <div className="top_bar_col fahrenheit">
                 실내 {t1 ? t1 : "N/A"}
               </div>
