@@ -43,13 +43,15 @@ function App() {
     setInterval(getTime, 1000);
     //dataSetting(); //debug
 
-    console.log("id? ", reactLocalStorage.get("userId", true));
-    console.log("pw?", reactLocalStorage.get("userPw", true));
-    sendCmd(
-      "bw0.1",
-      reactLocalStorage.get("userId", true),
-      reactLocalStorage.get("userPw", true)
-    );
+    if (reactLocalStorage) {
+      console.log("id? ", reactLocalStorage.get("userId", true));
+      console.log("pw?", reactLocalStorage.get("userPw", true));
+      sendCmd(
+        "bw0.1",
+        reactLocalStorage.get("userId", true),
+        reactLocalStorage.get("userPw", true)
+      );
+    }
   }, []);
 
   //data cmd
