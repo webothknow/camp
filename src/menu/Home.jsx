@@ -35,7 +35,6 @@ const Home = ({ data, sendCmd }) => {
 
   //버튼의 초기 셋팅값
   const [defaultToggle, setDefaultToggle] = useState({
-    livingroom_bottom: bool,
     livingroom_main_check: bool, //거실메인 버튼 초기값
     livingroom_top_check: bool, //거실상부 버튼 초기값
     livingroom_bottom_check: bool, //거실하부 버튼 초기값
