@@ -28,9 +28,7 @@ function App() {
 
   //time
   const tempo = new Date().toLocaleTimeString();
-  const dia = new Date().toLocaleDateString();
   const [time, setTime] = useState(tempo);
-  const [date, setDate] = useState(dia);
 
   //tab
   const [activeTab, setActiveTab] = useState(0);
@@ -45,6 +43,8 @@ function App() {
 
   useEffect(() => {
     setInterval(getTime, 1000);
+
+    dataSetting(); //debug
   }, []);
 
   //data cmd
@@ -74,13 +74,21 @@ function App() {
 
   const dataSetting = (d) => {
     if (d.t1 && d.t2 && d.t3 && d.t4) {
-      setHeaderData(...headerData, {
+      setHeaderData({
         t1: d.t1,
         t2: d.t2,
         t3: d.t3,
         t4: d.t4,
       });
     }
+
+    // //debug
+    // setHeaderData({
+    //   t1: 1,
+    //   t2: 2,
+    //   t3: 3,
+    //   t4: 4,
+    // });
   };
 
   function getTime() {
@@ -190,10 +198,10 @@ function App() {
                 <div className="top_bar_col fahrenheit">
                   실내 {headerData.t1}
                 </div>
-                <div className="top_bar_col humid">습도 {headerData.humi}%</div>
-                <div className="top_bar_col celsius">실외 {headerData.t2}</div>
+                <div className="top_bar_col humid">습도 {headerData.t2}%</div>
+                <div className="top_bar_col celsius">실외 {headerData.t3}</div>
                 <div className="top_bar_col celsius">
-                  오수통 {headerData.t3}
+                  오수통 {headerData.t4}
                 </div>
               </div>
               {/* <div className="top_bar_col fahrenheit">

@@ -150,7 +150,7 @@ const Home = ({ data, sendCmd }) => {
         d.d57 &&
         d.d58
       ) {
-        setrangeValue(...rangeValue, {
+        setrangeValue({
           livingroom_top: d.d1,
           livingroom_bottom: d.d2,
           bedroom_top: d.d3,
@@ -162,14 +162,14 @@ const Home = ({ data, sendCmd }) => {
           aqua_bed_warmer: d.d9,
           aqua_bunker_warmer: d.d10,
         });
-        setprogressbar(...progressBar, {
+        setprogressbar({
           freshWater: d.d11,
           wasteWater: d.d12,
           batteryLevel: d.d13,
           photovoltaics: d.d14,
           alternator: d.d15,
         });
-        setDefaultToggle(...defaultToggle, {
+        setDefaultToggle({
           livingroom_bottom: d.d16,
           livingroom_main_check: d.d17,
           livingroom_top_check: d.d18,
@@ -206,7 +206,7 @@ const Home = ({ data, sendCmd }) => {
           maxfan_check: d.d49,
           maxfan_inout_check: d.d50,
         });
-        setProgressbarDefault(...progressbarDefault, {
+        setProgressbarDefault({
           battery_voltage_value: d.d51,
           battery_electric_current_value: d.d52,
           battery_temp_value: d.d53,
@@ -218,6 +218,10 @@ const Home = ({ data, sendCmd }) => {
         });
       }
     }
+
+    // setprogressbar({
+    //   freshWater: 50,
+    // }); //debug
   }, [data]);
 
   //ON OFF 버튼 및 모드
@@ -615,8 +619,8 @@ const Home = ({ data, sendCmd }) => {
                         aria-valuenow="30"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                        //style={{ height: `${progressBar.freshWater}%` }}
-                        style={{ height: "10%" }}
+                        style={{ height: `${progressBar.freshWater}%` }}
+                        // style={{ height: "10%" }}
                       >
                         <span className="sr-only">
                           <div>{progressBar.freshWater}%</div>
@@ -659,8 +663,8 @@ const Home = ({ data, sendCmd }) => {
                         aria-valuenow="30"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                        //style={{ height: `${progressBar.wasteWater}%` }}
-                        style={{ height: "10%" }}
+                        style={{ height: `${progressBar.wasteWater}%` }}
+                        // style={{ height: "10%" }} //debug
                       >
                         <span className="sr-only">
                           <div>{progressBar.wasteWater}%</div>
@@ -702,8 +706,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      //style={{ height: `${progressBar.batteryLevel}%` }}
-                      style={{ height: "10%" }}
+                      style={{ height: `${progressBar.batteryLevel}%` }}
+                      // style={{ height: "10%" }} //debug
                     >
                       <span className="sr-only">
                         <div>
@@ -734,8 +738,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      //style={{ height: `${progressBar.photovoltaics}%` }}
-                      style={{ height: "10%" }}
+                      style={{ height: `${progressBar.photovoltaics}%` }}
+                      // style={{ height: "10%" }} //debug
                     >
                       <span className="sr-only">
                         <div>태양광</div>
@@ -766,8 +770,8 @@ const Home = ({ data, sendCmd }) => {
                       aria-valuenow="30"
                       aria-valuemin="0"
                       aria-valuemax="100"
-                      // style={{ height: `${progressBar.alternator}%` }}
-                      style={{ height: "10%" }}
+                      style={{ height: `${progressBar.alternator}%` }}
+                      // style={{ height: "10%" }} //debug
                     >
                       <span className="sr-only">
                         <div>알터</div>
