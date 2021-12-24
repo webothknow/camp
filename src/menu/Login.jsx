@@ -12,9 +12,6 @@ const Login = ({ sendCmd }) => {
     alert("welcome");
     console.log("welcome");
     sendCmd("bw0.1", id, password);
-    //LocalStorage 데이터는 만료되지 않습니다.
-    //브라우저를 다시 시작한 후에도
-    //OS를 재부팅 한 후에도 유지됩니다.
   };
 
   const onChangeId = (e) => {
