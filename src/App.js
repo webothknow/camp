@@ -16,9 +16,37 @@ const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 
 //send_cmd 수정필요
 function App() {
+  //data state
+  const [data, setData] = useState();
+  let na = "N/A";
+
+  //data initial state
+  const [headerData, setHeaderData] = useState({
+    t1: na,
+    t2: na,
+    t3: na,
+    t4: na,
+  });
+
+  //time
+  const tempo = new Date().toLocaleTimeString();
+  const dia = new Date().toLocaleDateString();
+  const [time, setTime] = useState(tempo);
+  const [date, setDate] = useState(dia);
+
+  //tab
+  const [activeTab, setActiveTab] = useState(0);
+
+  //error
+  const [errorPg, setErrorPg] = useState(false);
+
   //websocket
   useEffect(() => {
     wsc.openConn();
+  }, []);
+
+  useEffect(() => {
+    setInterval(getTime, 1000);
   }, []);
 
   //data cmd
@@ -31,83 +59,47 @@ function App() {
     wsc.sendMsg(JSON.stringify(obj));
   };
 
-  //data state
-  let na = "N/A";
-  const [data, setData] = useState();
-
   //data observer
   const DataObserver = observer(({ store }) => {
     let d = store.getLastMsg;
     let target = "data";
 
-    console.log("d1: ", d);
-
-    // let d = {
-    //   data: {
-    //     d1: "가",
-    //     d2: "나",
-    //     d3: "다",
-    //     d4: "라",
-    //   },
-    // };
-
-    // if (d) {
-    //   console.log("d? ", d);
-    //   d = d["data"];
-    //   if (d["d1"] && d["d2"] && d["d3"] && d["d4"]) {
-    //     setHeaderData((prevState) => ({
-    //       ...prevState,
-    //       t1: d["t1"],
-    //       t2: d["t2"],
-    //       t3: d["t3"],
-    //       humi: d["humi"],
-    //     }));
-    //   }
-    // }
-
     if (d && d.length !== 0) {
-      setData(d);
-      // if (d["data"] === target) {
-      //   d = d["data"];
-      //   if (d && d["t1"] && d["t2"] && d["t3"] && d["humi"]) {
-      //     setData(d);
-      //   }
-      // }
+      if (d.target === target) {
+        setData(d);
+        dataSetting(d);
+      }
     }
 
     return <></>;
   });
 
-  //data initial state
-  const [headerData, setHeaderData] = useState({
-    t1: na,
-    t2: na,
-    t3: na,
-    humi: na,
-  });
+  const dataSetting = (d) => {
+    if (d.t1 && d.t2 && d.t3 && d.t4) {
+      setHeaderData(...headerData, {
+        t1: d.t1,
+        t2: d.t2,
+        t3: d.t3,
+        t4: d.t4,
+      });
+    }
+  };
 
-  //time
-  const tempo = new Date().toLocaleTimeString();
-  const dia = new Date().toLocaleDateString();
-  const [time, setTime] = useState(tempo);
-  const [date, setDate] = useState(dia);
   function getTime() {
     let time = new Date().toLocaleTimeString();
     setTime(time);
   }
-  useEffect(() => {
-    setInterval(getTime, 1000);
-  }, []);
 
-  //tab menu show hide
+  //tab menu
   const menuObj = {
-    0: <Home data={data} sendCmd={sendCmd} primarykey="data" />, //data props
+    0: <Home data={data} sendCmd={sendCmd} />, //data props
     1: <Cam />,
     2: <Test />,
     3: <Login sendCmd={sendCmd} />,
     4: <Set />,
   };
-  const [activeTab, setActiveTab] = useState(0);
+
+  //tab menu color index
   const navDisplayHandle = (idx) => {
     // console.log("hi!", idx);
     setActiveTab(idx);
@@ -173,8 +165,6 @@ function App() {
       });
     }
   };
-
-  const [errorPg, setErrorPg] = useState(false);
 
   return (
     <div className="App">
