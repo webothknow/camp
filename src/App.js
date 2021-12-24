@@ -9,12 +9,10 @@ import unnamed from "./image/unnamed.png";
 import WebSocketClient from "./js/ws/WebSocketClient"; //websocket
 import { observer } from "mobx-react"; //observer
 import { toJS } from "mobx"; //tojs
-// import { apiDefineProperty } from "mobx/dist/internal";
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 // const wsc = new WebSocketClient("ws://sw.perigee.kr", 8700, "/ws", 100);
 
-//send_cmd 수정필요
 function App() {
   //data state
   const [data, setData] = useState();
