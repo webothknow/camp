@@ -62,33 +62,32 @@ function App() {
     let d = store.getLastMsg;
     let target = "data";
 
-    if (d && d.length !== 0) {
+    if (d && d.length !== 0 && d !== null) {
       if (d.target === target) {
         setData(d);
         dataSetting(d);
       }
     }
-
     return <></>;
   });
 
   const dataSetting = (d) => {
-    if (d.t1 && d.t2 && d.t3 && d.t4) {
-      setHeaderData({
-        t1: d.t1,
-        t2: d.t2,
-        t3: d.t3,
-        t4: d.t4,
-      });
-    }
-
-    // //debug
-    // setHeaderData({
-    //   t1: 1,
-    //   t2: 2,
-    //   t3: 3,
-    //   t4: 4,
-    // });
+    console.log("dataSetting : ", d);
+    // if (d.t1 && d.t2 && d.t3 && d.t4) {
+    //   setHeaderData({
+    //     t1: d.t1,
+    //     t2: d.t2,
+    //     t3: d.t3,
+    //     t4: d.t4,
+    //   });
+    // }
+    //debug
+    setHeaderData({
+      t1: 1,
+      t2: 2,
+      t3: 3,
+      t4: 4,
+    });
   };
 
   function getTime() {
@@ -196,7 +195,7 @@ function App() {
               </div>
               <div className="top_bar_data">
                 <div className="top_bar_col fahrenheit">
-                  실내 {headerData.t1}
+                  실내 {headerData.t1 ? headerData.t1 : null}
                 </div>
                 <div className="top_bar_col humid">습도 {headerData.t2}%</div>
                 <div className="top_bar_col celsius">실외 {headerData.t3}</div>
