@@ -9,6 +9,7 @@ import unnamed from "./image/unnamed.png";
 import WebSocketClient from "./js/ws/WebSocketClient"; //websocket
 import { observer } from "mobx-react"; //observer
 import { toJS } from "mobx"; //tojs
+import { reactLocalStorage } from "reactjs-localstorage";
 
 const wsc = new WebSocketClient(null, 8700, "/ws", 100);
 // const wsc = new WebSocketClient("ws://sw.perigee.kr", 8700, "/ws", 100);
@@ -39,12 +40,16 @@ function App() {
   //websocket
   useEffect(() => {
     wsc.openConn();
-  }, []);
-
-  useEffect(() => {
     setInterval(getTime, 1000);
+    //dataSetting(); //debug
 
-    dataSetting(); //debug
+    console.log("id? ", reactLocalStorage.get("userId", true));
+    console.log("pw?", reactLocalStorage.get("userPw", true));
+    sendCmd(
+      "bw0.1",
+      reactLocalStorage.get("userId", true),
+      reactLocalStorage.get("userPw", true)
+    );
   }, []);
 
   //data cmd

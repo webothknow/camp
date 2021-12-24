@@ -10,7 +10,10 @@ const Login = ({ sendCmd }) => {
     reactLocalStorage.set("userId", id);
     reactLocalStorage.set("userPw", password);
     alert("welcome");
-    sendCmd("0.1", id, password);
+    console.log("welcome");
+    //LocalStorage 데이터는 만료되지 않습니다.
+    //브라우저를 다시 시작한 후에도
+    //OS를 재부팅 한 후에도 유지됩니다.
   };
 
   const onChangeId = (e) => {
