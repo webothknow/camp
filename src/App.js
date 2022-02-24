@@ -106,7 +106,7 @@ function App() {
   const menuObj = {
     0: <Home data={data} sendCmd={sendCmd} />, //data props
     1: <Cam />,
-    2: <Test />,
+    2: <Test x={0} y={0} />,
     3: <Login sendCmd={sendCmd} />,
     4: <Set />,
   };
